@@ -1,37 +1,22 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-
-interface WeatherForecast {
-  date: string;
-  temperatureC: number;
-  temperatureF: number;
-  summary: string;
-}
-
+import { Component } from '@angular/core';
+import { CommonModule, DatePipe } from '@angular/common';
+import { Router, RouterLink, RouterLinkActive, RouterModule, RouterOutlet } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 @Component({
   selector: 'app-root',
+  standalone: true,
+  imports: [CommonModule, RouterOutlet, RouterLink, RouterLinkActive, FormsModule, ReactiveFormsModule, HttpClientModule, RouterModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css'],
+  providers: []
+  //{provide : HTTP_INTERCEPTORS, useClass : AuthTokenInterceptor, multi : true},
+
 })
-export class AppComponent implements OnInit {
-  public forecasts: WeatherForecast[] = [];
+export class AppComponent {
+  title = 'One-Umbrella';
 
-  constructor(private http: HttpClient) {}
 
-  ngOnInit() {
-    this.getForecasts();
-  }
 
-  getForecasts() {
-    this.http.get<WeatherForecast[]>('/weatherforecast').subscribe(
-      (result) => {
-        this.forecasts = result;
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
-  }
 
-  title = 'one-umbrella.client';
 }
