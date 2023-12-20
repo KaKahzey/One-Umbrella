@@ -9,9 +9,8 @@ import { NavbarComponent } from './shared/components/navbar/navbar.component';
   standalone: true,
   imports: [CommonModule, RouterOutlet, RouterLink, RouterLinkActive, FormsModule, ReactiveFormsModule, HttpClientModule, RouterModule, NavbarComponent],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  styleUrls: ['./app.component.scss'],
   providers: []
-  //{provide : HTTP_INTERCEPTORS, useClass : AuthTokenInterceptor, multi : true},
 
 })
 export class AppComponent {

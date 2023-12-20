@@ -8,7 +8,7 @@
     <PublishAssetsDirectory>$(MSBuildProjectDirectory)\dist\one-umbrella.client\</PublishAssetsDirectory>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="src\app\pages\" />
-    <Folder Include="src\app\shared\components\" />
+    <Folder Include="src\app\pages\customer\" />
+    <Folder Include="src\app\pages\owner\" />
   </ItemGroup>
 </Project>

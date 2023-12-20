@@ -1,0 +1,40 @@
+.main {
+    font-size :  2em;
+    @apply p-4 flex bg-forest-500 text-forest-200 justify-between;
+}
+.search-area {
+  width: 35%;
+
+  @apply items-center flex;
+}
+.bar-area {
+  height: 50%;
+  @apply border-b-2 border-forest-300 flex;
+}
+input {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  width :  fit-content;
+}
+input::placeholder {
+    @apply text-forest-300;
+}
+.main-title {
+  font-size :  3em;
+  @apply items-center flex;
+}
+.main-title:hover {
+    cursor:  pointer;
+}
+.account-area {
+    width :  35%;
+  @apply flex justify-end items-center;
+}
+.in-account{
+    margin-right :  3%;
+}
+.account-area img {
+    cursor :  pointer;
+}
+

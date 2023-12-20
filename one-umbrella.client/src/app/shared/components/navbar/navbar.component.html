@@ -1,1 +1,26 @@
-<p>navbar works!</p>
+<div class="main">
+    <div class="search-area">
+        <div class="bar-area">
+            <input type="text" placeholder=" Restaurant / adresse" />
+            <img src="/assets/img/navbar/search.svg" alt="loupe" />
+        </div>
+    </div>
+    <div class="main-title">
+        <a routerLink="/">One Umbrella</a>
+    </div>
+    <div class="account-area">
+        @if(user.name){
+        <a routerLink="/my-reservations" class="in-account">Mes réservations</a>
+
+        <a routerLink="/favorites" class="in-account">Mes favoris</a>
+        @if(user.role === "owner"){
+        <a routerLink="/own-restaurants" class="in-account">Mes restaurants</a>
+        }
+        <img [src]="avatar" alt="avatar" />
+        }
+        @else {
+        <a>S'enregister</a>
+        <a>Se connecter</a>
+        }
+    </div>
+</div>
