@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "One-Umbrella.Server", "One-Umbrella.Server\One-Umbrella.Server.csproj", "{BAB01735-9E3D-4672-AD5A-E6BFB73409C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "One-Umbrella.Server", "One-Umbrella.Server\One-Umbrella.Server.csproj", "{BAB01735-9E3D-4672-AD5A-E6BFB73409C4}"
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "one-umbrella.client", "one-umbrella.client\one-umbrella.client.esproj", "{363429C0-0CAE-4840-BEDA-FFEF15F59977}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "One-Umbrella.Database", "One-Umbrella.Database\One-Umbrella.Database.sqlproj", "{EEE5E30F-210C-4288-AE8A-B824F5A01990}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +25,12 @@ Global
 		{363429C0-0CAE-4840-BEDA-FFEF15F59977}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{363429C0-0CAE-4840-BEDA-FFEF15F59977}.Release|Any CPU.Build.0 = Release|Any CPU
 		{363429C0-0CAE-4840-BEDA-FFEF15F59977}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{EEE5E30F-210C-4288-AE8A-B824F5A01990}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEE5E30F-210C-4288-AE8A-B824F5A01990}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEE5E30F-210C-4288-AE8A-B824F5A01990}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{EEE5E30F-210C-4288-AE8A-B824F5A01990}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEE5E30F-210C-4288-AE8A-B824F5A01990}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEE5E30F-210C-4288-AE8A-B824F5A01990}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
