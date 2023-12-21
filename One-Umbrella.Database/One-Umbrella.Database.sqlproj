@@ -66,5 +66,6 @@
     <Build Include="Customer.sql" />
     <Build Include="Reservation.sql" />
     <Build Include="ReservedCell.sql" />
+    <Build Include="Favorite.sql" />
   </ItemGroup>
 </Project>
