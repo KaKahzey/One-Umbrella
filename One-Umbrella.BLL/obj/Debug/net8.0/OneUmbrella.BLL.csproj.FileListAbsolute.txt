@@ -1,0 +1,12 @@
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.BLL\bin\Debug\net8.0\OneUmbrella.BLL.deps.json
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.BLL\bin\Debug\net8.0\OneUmbrella.BLL.dll
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.BLL\bin\Debug\net8.0\OneUmbrella.BLL.pdb
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.BLL\obj\Debug\net8.0\OneUmbrella.BLL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.BLL\obj\Debug\net8.0\OneUmbrella.BLL.AssemblyInfoInputs.cache
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.BLL\obj\Debug\net8.0\OneUmbrella.BLL.AssemblyInfo.cs
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.BLL\obj\Debug\net8.0\OneUmbrella.BLL.csproj.CoreCompileInputs.cache
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.BLL\obj\Debug\net8.0\OneUmbrella.BLL.sourcelink.json
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.BLL\obj\Debug\net8.0\OneUmbrella.BLL.dll
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.BLL\obj\Debug\net8.0\refint\OneUmbrella.BLL.dll
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.BLL\obj\Debug\net8.0\OneUmbrella.BLL.pdb
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.BLL\obj\Debug\net8.0\ref\OneUmbrella.BLL.dll

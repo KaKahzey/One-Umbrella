@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace One_Umbrella.Domain.Entities
+namespace OneUmbrella.Domain.Entities
 {
-    internal class Reservation
+    public class Reservation
     {
         public int ReservationId { get; set; }
         public int RestaurantId { get; set; }

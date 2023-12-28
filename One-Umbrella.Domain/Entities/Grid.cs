@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace One_Umbrella.Domain.Entities
+namespace OneUmbrella.Domain.Entities
 {
-    internal class Grid
+    public class Grid
     {
         public int GridId { get; set; }
         public string GridName { get; set; }

@@ -1,5 +1,5 @@
 
-namespace One_Umbrella.Server
+namespace OneUmbrella.Server
 {
     public class Program
     {

@@ -1,15 +1,15 @@
 {
   "Version": 1,
-  "Hash": "+vVxXKcW+fMzYhryNqxk/QI4C2OFqxBhhMyjkgFeNf4=",
-  "Source": "One-Umbrella.Server",
-  "BasePath": "_content/One-Umbrella.Server",
+  "Hash": "gBReWBLpYnPlIE79c4X3YEOsemHWV3bwIb6e2OhEYO8=",
+  "Source": "OneUmbrella.Server",
+  "BasePath": "_content/OneUmbrella.Server",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [
     {
-      "Identity": "C:\\Users\\Julien\\Desktop\\progra\\One-Umbrella\\one-umbrella.client\\one-umbrella.client.esproj",
+      "Identity": "C:\\Users\\Julien\\Desktop\\progra\\One-Umbrella\\one-umbrella.client\\OneUmbrella.client.esproj",
       "Version": 2,
-      "Source": "one-umbrella.client",
+      "Source": "OneUmbrella.client",
       "GetPublishAssetsTargets": "GetCurrentProjectPublishStaticWebAssetItems",
       "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
       "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained",

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "fPJrs+V3bDSX+moKZYmvdx5dO5b19H8YNyltbIYECOLTbxJvv3NLVRgRUHsGE1vhRm3jGHF3s5AFCQZz8MbMiA==",
+  "dgSpecHash": "kxQJDJEJUDHzN1O/MevnZdpBiGUNtVjN0odCGj4ewFrZZDaKWWKKcwuX5O/c8l5UAVuAEG62uu8zWOtdVZO7Nw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Julien\\Desktop\\progra\\One-Umbrella\\One-Umbrella.Server\\One-Umbrella.Server.csproj",
+  "projectFilePath": "C:\\Users\\Julien\\Desktop\\progra\\One-Umbrella\\One-Umbrella.Server\\OneUmbrella.Server.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Julien\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\Julien\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

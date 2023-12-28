@@ -1,0 +1,35 @@
+﻿** Highlights
+     Tables that will be recreated with data migrated
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [dbo].[Cell] (Table)
+       [dbo].[Favorite] (Table)
+       [dbo].[Grid] (Table)
+       [dbo].[Human] (Table)
+       [dbo].[ImageRestaurant] (Table)
+       [dbo].[Reservation] (Table)
+       [dbo].[ReservedCell] (Table)
+       [dbo].[Restaurant] (Table)
+       Default Constraint: unnamed constraint on [dbo].[Human] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[Reservation] (Default Constraint)
+       [dbo].[FK_Cell_Grid] (Foreign Key)
+       [dbo].[FK_FAVORITE_USER] (Foreign Key)
+       [dbo].[FK_FAVORITE_RESTAURANT] (Foreign Key)
+       [dbo].[FK_GRID_RESTAURANT] (Foreign Key)
+       [dbo].[FK_RESERVATION_RESTAURANT] (Foreign Key)
+       [dbo].[FK_RESERVATION_USER] (Foreign Key)
+       [dbo].[FK_RESERVED_CELL_RESERVATION] (Foreign Key)
+       [dbo].[FK_RESERVEDCELL_CELL] (Foreign Key)
+       [dbo].[FK_RESTAURANT_OWNER] (Foreign Key)
+       Check Constraint: unnamed constraint on [dbo].[Human] (Check Constraint)
+       [dbo].[ENSURE_BIT] (Check Constraint)
+
+** Supporting actions

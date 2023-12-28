@@ -711,6 +711,30 @@
             "rid": "win"
           }
         }
+      },
+      "OneUmbrella.DAL/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Microsoft.Data.SqlClient": "5.1.2",
+          "OneUmbrella.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/OneUmbrella.DAL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/OneUmbrella.DAL.dll": {}
+        }
+      },
+      "OneUmbrella.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/OneUmbrella.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/OneUmbrella.Domain.dll": {}
+        }
       }
     }
   },
@@ -1995,11 +2019,22 @@
         "system.windows.extensions.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "OneUmbrella.DAL/1.0.0": {
+      "type": "project",
+      "path": "../One-Umbrella.DAL/OneUmbrella.DAL.csproj",
+      "msbuildProject": "../One-Umbrella.DAL/OneUmbrella.DAL.csproj"
+    },
+    "OneUmbrella.Domain/1.0.0": {
+      "type": "project",
+      "path": "../One-Umbrella.Domain/OneUmbrella.Domain.csproj",
+      "msbuildProject": "../One-Umbrella.Domain/OneUmbrella.Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "Microsoft.Data.SqlClient >= 5.1.2"
+      "Microsoft.Data.SqlClient >= 5.1.2",
+      "OneUmbrella.DAL >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -2009,9 +2044,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Julien\\Desktop\\progra\\One-Umbrella\\One-Umbrella.DAL.Console\\One-Umbrella.DAL.Console.csproj",
-      "projectName": "One-Umbrella.DAL.Console",
-      "projectPath": "C:\\Users\\Julien\\Desktop\\progra\\One-Umbrella\\One-Umbrella.DAL.Console\\One-Umbrella.DAL.Console.csproj",
+      "projectUniqueName": "C:\\Users\\Julien\\Desktop\\progra\\One-Umbrella\\One-Umbrella.DAL.Console\\OneUmbrella.DAL.Console.csproj",
+      "projectName": "OneUmbrella.DAL.Console",
+      "projectPath": "C:\\Users\\Julien\\Desktop\\progra\\One-Umbrella\\One-Umbrella.DAL.Console\\OneUmbrella.DAL.Console.csproj",
       "packagesPath": "C:\\Users\\Julien\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Julien\\Desktop\\progra\\One-Umbrella\\One-Umbrella.DAL.Console\\obj\\",
       "projectStyle": "PackageReference",
@@ -2034,7 +2069,11 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Julien\\Desktop\\progra\\One-Umbrella\\One-Umbrella.DAL\\OneUmbrella.DAL.csproj": {
+              "projectPath": "C:\\Users\\Julien\\Desktop\\progra\\One-Umbrella\\One-Umbrella.DAL\\OneUmbrella.DAL.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

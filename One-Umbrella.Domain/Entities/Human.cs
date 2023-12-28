@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace One_Umbrella.Domain.Entities
+namespace OneUmbrella.Domain.Entities
 {
-    internal class Human
+    public class Human
     {
         private string humanType;
         public int HumanId { get; set; }
@@ -15,7 +15,7 @@ namespace One_Umbrella.Domain.Entities
         public string HumanMail { get; set; }
         public string HumanPassword { get; set; }
         public string HumanPhoneNumber { get; set; }
-        public DateTime HumanDateInscription { get; }
+        public DateTime HumanDateInscription { get; set; }
         public string HumanType
         {
             get

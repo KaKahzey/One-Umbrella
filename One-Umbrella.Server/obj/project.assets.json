@@ -2457,9 +2457,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Julien\\Desktop\\progra\\One-Umbrella\\One-Umbrella.Server\\One-Umbrella.Server.csproj",
-      "projectName": "One-Umbrella.Server",
-      "projectPath": "C:\\Users\\Julien\\Desktop\\progra\\One-Umbrella\\One-Umbrella.Server\\One-Umbrella.Server.csproj",
+      "projectUniqueName": "C:\\Users\\Julien\\Desktop\\progra\\One-Umbrella\\One-Umbrella.Server\\OneUmbrella.Server.csproj",
+      "projectName": "OneUmbrella.Server",
+      "projectPath": "C:\\Users\\Julien\\Desktop\\progra\\One-Umbrella\\One-Umbrella.Server\\OneUmbrella.Server.csproj",
       "packagesPath": "C:\\Users\\Julien\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Julien\\Desktop\\progra\\One-Umbrella\\One-Umbrella.Server\\obj\\",
       "projectStyle": "PackageReference",

@@ -14,9 +14,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Julien\\Desktop\\progra\\One-Umbrella\\One-Umbrella.Domain\\One-Umbrella.Domain.csproj",
-      "projectName": "One-Umbrella.Domain",
-      "projectPath": "C:\\Users\\Julien\\Desktop\\progra\\One-Umbrella\\One-Umbrella.Domain\\One-Umbrella.Domain.csproj",
+      "projectUniqueName": "C:\\Users\\Julien\\Desktop\\progra\\One-Umbrella\\One-Umbrella.Domain\\OneUmbrella.Domain.csproj",
+      "projectName": "OneUmbrella.Domain",
+      "projectPath": "C:\\Users\\Julien\\Desktop\\progra\\One-Umbrella\\One-Umbrella.Domain\\OneUmbrella.Domain.csproj",
       "packagesPath": "C:\\Users\\Julien\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Julien\\Desktop\\progra\\One-Umbrella\\One-Umbrella.Domain\\obj\\",
       "projectStyle": "PackageReference",
