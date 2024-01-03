@@ -9,8 +9,8 @@ namespace OneUmbrella.DAL.Interfaces
 {
     internal interface IRestaurantRepository : ICrudRepository<int, Restaurant>
     {
-        string? getAddressByIdentifier(string identifier);
-        IEnumerable<Restaurant>? getAllByCity(string city);
-
+        Restaurant? getByIdentifier(string identifier);
+        IEnumerable<Restaurant>? getByPageAndSorted(int page, int pageSize, string sortBy, bool isDescending, int? humanId, string? city);
+        int getTotalRestaurants();
     }
 }

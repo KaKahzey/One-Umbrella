@@ -67,6 +67,7 @@
     <Build Include="Tables\Reservation.sql" />
     <Build Include="Tables\ReservedCell.sql" />
     <Build Include="Tables\Restaurant.sql" />
+    <Build Include="Tables\Rating.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Data\Script.PostDeployment.sql" />
