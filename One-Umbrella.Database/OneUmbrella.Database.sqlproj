@@ -59,15 +59,16 @@
     <Folder Include="Indexes" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="Tables\Cell.sql" />
     <Build Include="Tables\Favorite.sql" />
     <Build Include="Tables\Grid.sql" />
     <Build Include="Tables\Human.sql" />
     <Build Include="Tables\ImageRestaurant.sql" />
     <Build Include="Tables\Reservation.sql" />
-    <Build Include="Tables\ReservedCell.sql" />
     <Build Include="Tables\Restaurant.sql" />
     <Build Include="Tables\Rating.sql" />
+    <Build Include="Tables\TableEntity.sql" />
+    <Build Include="Tables\ReservedTable.sql" />
+    <Build Include="Tables\StructuralElement.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Data\Script.PostDeployment.sql" />

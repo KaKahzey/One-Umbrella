@@ -4,3 +4,7 @@ C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.Database\bin\Debug\One_
 C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.Database\obj\Debug\OneUmbrella.Database.sqlproj.AssemblyReference.cache
 C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.Database\obj\Debug\One_Umbrella.Database.dll
 C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.Database\obj\Debug\One_Umbrella.Database.pdb
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.Database\obj\Debug\Model.xml
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.Database\obj\Debug\refactor.xml
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.Database\obj\Debug\postdeploy.sql
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.Database\obj\Debug\predeploy.sql
