@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 
 namespace OneUmbrella.DAL.Interfaces
 {
-    internal interface IReservationRepository : ICrudRepository<int, Reservation>
+    public interface IReservationRepository : ICrudRepository<int, Reservation>
     {
         IEnumerable<Reservation> getAllForOneRestaurantForOneDay(int restaurantId, DateTime date);
-        IEnumerable<Reservation> getAllPending(int restaurantId);
+        IEnumerable<Reservation> getAllForOneHuman(int humanId);
+        IEnumerable<Reservation> getAllByStatus(int restaurantId, int status);
         bool changeStatus(int reservationId, int status);
     }
 }

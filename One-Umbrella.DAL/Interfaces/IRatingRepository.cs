@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OneUmbrella.DAL.Interfaces
 {
-    internal interface IRatingRepository
+    public interface IRatingRepository
     {
         IEnumerable<Rating> getAll(int id, bool isHuman);
         bool create(Rating rating);

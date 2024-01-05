@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OneUmbrella.DAL.Interfaces
 {
-    internal interface IHumanRepository :ICrudRepository<int, Human>
+    public interface IHumanRepository :ICrudRepository<int, Human>
     {
         bool checkMailValidity(string mail);
         bool checkPhoneValidity(string phoneNumber);

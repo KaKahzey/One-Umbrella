@@ -47,16 +47,47 @@ namespace OneUmbrella.DAL.Repositories
             connection.Close();
             return reservations;
         }
-        public IEnumerable<Reservation> getAllPending(int restaurantId)
+        public IEnumerable<Reservation> getAllForOneHuman(int humanId)
+        {
+            List<Reservation> reservations = new List<Reservation>();
+            connection.Open();
+            using (SqlCommand command = new SqlCommand(
+                "SELECT * FROM Reservation WHERE HUMAN_ID = @HumanId"
+                , connection))
+            {
+                command.Parameters.AddWithValue("@HumanId", humanId);
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Reservation reservation = new Reservation
+                        {
+                            ReservationId = reader.GetInt32(reader.GetOrdinal("RESERVATION_ID")),
+                            RestaurantId = reader.GetInt32(reader.GetOrdinal("RESTAURANT_ID")),
+                            HumanId = reader.GetInt32(reader.GetOrdinal("HUMAN_ID")),
+                            ReservationTimeStart = reader.GetDateTime(reader.GetOrdinal("RESERVATION_TIME_START")),
+                            ReservationTimeEnd = reader.GetDateTime(reader.GetOrdinal("RESERVATION_TIME_END")),
+                            ReservationStatus = reader.GetByte(reader.GetOrdinal("RESERVATION_STATUS"))
+
+                        };
+                        reservations.Add(reservation);
+                    }
+                }
+            }
+            connection.Close();
+            return reservations;
+        }
+        public IEnumerable<Reservation> getAllByStatus(int restaurantId, int status)
         {
             List<Reservation> reservations = new List<Reservation>();
             connection.Open();
             using (SqlCommand command = new SqlCommand(
                 "SELECT * FROM Reservation WHERE RESTAURANT_ID = @RestaurantId " +
-                "AND RESERVATION_STATUS = 1"
+                "AND RESERVATION_STATUS = @Status"
                 , connection))
             {
                 command.Parameters.AddWithValue("@RestaurantId", restaurantId);
+                command.Parameters.AddWithValue("@Status", status);
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())

@@ -159,8 +159,8 @@ namespace OneUmbrella.DAL.Repositories
         {
             connection.Open();
             using (SqlCommand command = new SqlCommand(
-                "DELETE" +
-                " FROM Grid" +
+                "DELETE " +
+                "FROM Grid" +
                 " WHERE [GRID_ID] = @GridId"
                 , connection))
             {

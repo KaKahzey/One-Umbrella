@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OneUmbrella.DAL.Interfaces
 {
-    internal interface IStructuralElementRepository
+    public interface IStructuralElementRepository : ICrudRepository<int, StructuralElement>
     {
         IEnumerable<StructuralElement> getAllForOneGrid(int gridId);
     }

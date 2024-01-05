@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OneUmbrella.DAL.Interfaces
 {
-    internal interface ICrudRepository<TId, TEntity> where TEntity : class
+    public interface ICrudRepository<TId, TEntity> where TEntity : class
     {
         IEnumerable<TEntity>? getAll();
         TEntity? getById(TId id);

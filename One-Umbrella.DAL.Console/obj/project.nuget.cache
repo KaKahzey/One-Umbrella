@@ -1,11 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "NXlZhj8NlaFrTFDI3C2YLHe0dkU3Y4mm7bb3jwbxEsYqKlMlTJyb/LOOafJfgPts/jP56GsakPemTjVm4EQzYA==",
+  "dgSpecHash": "yDOoeBHNJn9yZx3VVD4z7sZBa1SruUgISKaOaVde2D+ulWEz4NJXizyLadE7vNN4Qie14wYE/KLZRbO9hh+1mg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Julien\\Desktop\\progra\\One-Umbrella\\One-Umbrella.DAL.Console\\OneUmbrella.DAL.Console.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Julien\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\Julien\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
+    "C:\\Users\\Julien\\.nuget\\packages\\isopoh.cryptography.argon2\\2.0.0\\isopoh.cryptography.argon2.2.0.0.nupkg.sha512",
+    "C:\\Users\\Julien\\.nuget\\packages\\isopoh.cryptography.blake2b\\2.0.0\\isopoh.cryptography.blake2b.2.0.0.nupkg.sha512",
+    "C:\\Users\\Julien\\.nuget\\packages\\isopoh.cryptography.securearray\\2.0.0\\isopoh.cryptography.securearray.2.0.0.nupkg.sha512",
     "C:\\Users\\Julien\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\Julien\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\Julien\\.nuget\\packages\\microsoft.data.sqlclient\\5.1.2\\microsoft.data.sqlclient.5.1.2.nupkg.sha512",

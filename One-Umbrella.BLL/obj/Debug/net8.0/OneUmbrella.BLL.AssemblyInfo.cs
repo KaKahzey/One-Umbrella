@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OneUmbrella.BLL")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7a32d74b1e7adf8d37d18d5ab31eb57eaa1fa951")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+130aef3053e14051bd0b8957b233d02f651ad58e")]
 [assembly: System.Reflection.AssemblyProductAttribute("OneUmbrella.BLL")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OneUmbrella.BLL")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

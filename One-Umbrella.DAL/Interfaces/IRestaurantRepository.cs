@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OneUmbrella.DAL.Interfaces
 {
-    internal interface IRestaurantRepository : ICrudRepository<int, Restaurant>
+    public interface IRestaurantRepository : ICrudRepository<int, Restaurant>
     {
         Restaurant? getByIdentifier(string identifier);
         IEnumerable<Restaurant>? getByPageAndSorted(int page, int pageSize, string sortBy, bool isDescending, int? humanId, string? city);

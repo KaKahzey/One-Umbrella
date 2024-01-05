@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OneUmbrella.DAL.Interfaces
 {
-    internal interface IFavoriteRepository
+    public interface IFavoriteRepository
     {
         IEnumerable<Restaurant> getAllForHuman(int id);
         bool create(Favorite favorite);

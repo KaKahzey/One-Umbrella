@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OneUmbrella.DAL.Interfaces
 {
-    internal interface IGridRepository : ICrudRepository<int, Grid>
+    public interface IGridRepository : ICrudRepository<int, Grid>
     {
         IEnumerable<Grid>? getAllForOneRestaurant(int restaurantId);
     }

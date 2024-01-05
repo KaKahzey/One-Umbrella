@@ -10,6 +10,18 @@ namespace OneUmbrella.Server
             // Add services to the container.
 
             builder.Services.AddControllers();
+
+
+            builder.Services.AddCors(opt =>
+            {
+                opt.AddPolicy("AllowAnyCors", config =>
+                {
+                    config.AllowAnyOrigin();
+                    config.AllowAnyHeader();
+                    config.AllowAnyMethod();
+                });
+            });
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
@@ -30,10 +42,9 @@ namespace OneUmbrella.Server
 
             app.UseAuthorization();
 
+            app.UseCors("AllowAnyCors");
 
             app.MapControllers();
-
-            app.MapFallbackToFile("/index.html");
 
             app.Run();
         }

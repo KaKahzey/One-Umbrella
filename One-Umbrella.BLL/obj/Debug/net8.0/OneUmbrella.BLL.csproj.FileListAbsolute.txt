@@ -10,3 +10,9 @@ C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.BLL\obj\Debug\net8.0\On
 C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.BLL\obj\Debug\net8.0\refint\OneUmbrella.BLL.dll
 C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.BLL\obj\Debug\net8.0\OneUmbrella.BLL.pdb
 C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.BLL\obj\Debug\net8.0\ref\OneUmbrella.BLL.dll
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.BLL\obj\Debug\net8.0\OneUmbrella.BLL.csproj.AssemblyReference.cache
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.BLL\bin\Debug\net8.0\OneUmbrella.DAL.dll
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.BLL\bin\Debug\net8.0\OneUmbrella.Domain.dll
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.BLL\bin\Debug\net8.0\OneUmbrella.DAL.pdb
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.BLL\bin\Debug\net8.0\OneUmbrella.Domain.pdb
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.BLL\obj\Debug\net8.0\OneUmbrella.BLL.csproj.CopyComplete

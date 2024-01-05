@@ -8,13 +8,13 @@ namespace OneUmbrella.Domain.Entities
 {
     public class Human
     {
-        private string humanType;
+        private string? humanType;
         public int HumanId { get; set; }
-        public string HumanLastName { get; set; }
-        public string HumanFirstName { get; set; }
-        public string HumanMail { get; set; }
-        public string HumanPassword { get; set; }
-        public string HumanPhoneNumber { get; set; }
+        public string? HumanLastName { get; set; }
+        public string? HumanFirstName { get; set; }
+        public string? HumanMail { get; set; }
+        public string? HumanPassword { get; set; }
+        public string? HumanPhoneNumber { get; set; }
         public DateTime HumanDateInscription { get; set; }
         public string HumanType
         {

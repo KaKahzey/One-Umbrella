@@ -9,7 +9,7 @@ namespace OneUmbrella.Domain.Entities
     public class Grid
     {
         public int GridId { get; set; }
-        public string GridName { get; set; }
+        public string? GridName { get; set; }
         public int RestaurantId { get; set; }
         public int GridRows { get; set; }
         public int GridColumns { get; set; }

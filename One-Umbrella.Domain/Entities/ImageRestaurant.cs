@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace OneUmbrella.Domain.Entities
 {
-    internal class ImageRestaurant
+    public class ImageRestaurant
     {
         public int ImageId { get; set; }
         public int RestaurantId { get; set; }
-        public byte[] ImageData { get; set; }
+        public byte[]? ImageData { get; set; }
         public bool IsFront { get; set; }
+        public bool IsMenu { get; set; }
     }
 }

@@ -53,3 +53,6 @@ C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.DAL.Console\obj\Debug\n
 C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.DAL.Console\obj\Debug\net8.0\OneUmbrella.DAL.Console.pdb
 C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.DAL.Console\obj\Debug\net8.0\OneUmbrella.DAL.Console.genruntimeconfig.cache
 C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.DAL.Console\obj\Debug\net8.0\ref\OneUmbrella.DAL.Console.dll
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.DAL.Console\bin\Debug\net8.0\Isopoh.Cryptography.Argon2.dll
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.DAL.Console\bin\Debug\net8.0\Isopoh.Cryptography.Blake2b.dll
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.DAL.Console\bin\Debug\net8.0\Isopoh.Cryptography.SecureArray.dll

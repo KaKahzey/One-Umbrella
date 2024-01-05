@@ -8,8 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Interfaces\" />
-    <Folder Include="Services\" />
+    <PackageReference Include="Isopoh.Cryptography.Argon2" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\One-Umbrella.DAL\OneUmbrella.DAL.csproj" />
+    <ProjectReference Include="..\One-Umbrella.Domain\OneUmbrella.Domain.csproj" />
   </ItemGroup>
 
 </Project>
