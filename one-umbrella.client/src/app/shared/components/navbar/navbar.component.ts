@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
+
+
 @Component({
   selector: 'app-navbar',
   standalone: true,
@@ -11,7 +13,7 @@ import { RouterLink } from '@angular/router';
 export class NavbarComponent {
   user: any = {
     name: "Sébastien",
-    role: "owner"
+    type: "Owner"
   }
 
   avatar: string = "/assets/img/navbar/avatar.png"
