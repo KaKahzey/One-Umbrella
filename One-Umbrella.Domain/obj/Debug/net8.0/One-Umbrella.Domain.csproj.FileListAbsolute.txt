@@ -1,0 +1,12 @@
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.Domain\bin\Debug\net8.0\One-Umbrella.Domain.deps.json
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.Domain\bin\Debug\net8.0\One-Umbrella.Domain.dll
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.Domain\bin\Debug\net8.0\One-Umbrella.Domain.pdb
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.Domain\obj\Debug\net8.0\One-Umbrella.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.Domain\obj\Debug\net8.0\One-Umbrella.Domain.AssemblyInfoInputs.cache
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.Domain\obj\Debug\net8.0\One-Umbrella.Domain.AssemblyInfo.cs
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.Domain\obj\Debug\net8.0\One-Umbrella.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.Domain\obj\Debug\net8.0\One-Umbrella.Domain.sourcelink.json
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.Domain\obj\Debug\net8.0\One-Umbrella.Domain.dll
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.Domain\obj\Debug\net8.0\refint\One-Umbrella.Domain.dll
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.Domain\obj\Debug\net8.0\One-Umbrella.Domain.pdb
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.Domain\obj\Debug\net8.0\ref\One-Umbrella.Domain.dll
