@@ -45,11 +45,11 @@ namespace OneUmbrella.BLL.Services
                 return null;
             }
             string hashPassword = user.HumanPassword;
-            if(!Argon2.Verify(hashPassword, password))
+            if(Argon2.Verify(hashPassword, password))
             {
-                return null;
+                return user;
             }
-            return user;
+            return null;
         }
         public Human? getUser(int userId)
         {
@@ -57,6 +57,7 @@ namespace OneUmbrella.BLL.Services
         }
         public bool updateUser(int userId, Human user)
         {
+            user.HumanPassword = Argon2.Hash(user.HumanPassword);
             return _humanRepository.update(userId, user);
         }
     }

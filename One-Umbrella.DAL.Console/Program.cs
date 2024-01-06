@@ -11,9 +11,9 @@ internal class Program
     static void Main(string[] args)
     {
 
-        SqlConnection connection = new SqlConnection("Data Source=PC;Initial Catalog=One-Umbrella;User ID=Kahzey;Password=Umbrella4321;Encrypt=True");
-        
-
+        SqlConnection connection = new SqlConnection("Server=PC;DataBase=One-Umbrella;User ID=Kahzey;Password='Umbrella4321';Encrypt=True");
+        HumanRepository h = new HumanRepository(connection);
+        Console.WriteLine(h.getById(1).HumanFirstName);
 
 
 

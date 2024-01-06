@@ -238,6 +238,9 @@
             "projectReferences": {
               "C:\\Users\\Julien\\Desktop\\progra\\One-Umbrella\\One-Umbrella.BLL\\OneUmbrella.BLL.csproj": {
                 "projectPath": "C:\\Users\\Julien\\Desktop\\progra\\One-Umbrella\\One-Umbrella.BLL\\OneUmbrella.BLL.csproj"
+              },
+              "C:\\Users\\Julien\\Desktop\\progra\\One-Umbrella\\One-Umbrella.DAL\\OneUmbrella.DAL.csproj": {
+                "projectPath": "C:\\Users\\Julien\\Desktop\\progra\\One-Umbrella\\One-Umbrella.DAL\\OneUmbrella.DAL.csproj"
               }
             }
           }
@@ -263,6 +266,10 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.5.0, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[7.0.3, )"
             }
           },
           "imports": [
