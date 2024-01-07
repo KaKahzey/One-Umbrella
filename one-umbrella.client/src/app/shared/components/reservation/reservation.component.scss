@@ -1,0 +1,81 @@
+.main {
+    height : 100%;
+    margin-top: 5%;
+    padding : 2%;
+    font-size: 1em;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    overflow-y: auto;
+    max-height: 82vh;
+    @apply border bg-forest-400;
+}
+.card {
+    border-radius: 10px;
+    height : 6em;
+    max-height : 6em;
+    padding : 2%;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+    @apply border bg-forest-100;
+}
+.title{
+    font-weight: bold;
+    border-color: black;
+    align-items: center;
+    @apply flex justify-between border-b-2;
+}
+.title-name {
+    max-width : 85%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.period {
+    @apply flex justify-between;
+}
+.pending {
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    background-color: grey;
+}
+.validated {
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    background-color: green;
+}
+.denied {
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    background-color: red;
+}
+.option {
+    margin-top: 3%;
+}
+button {
+    width: 100%;
+    text-align: center;
+    border-radius: 10px;
+    border-color: black;
+    @apply border;
+}
+.btn-pending:after {
+    content : "En attente";
+}
+.btn-pending:hover::after {
+    content : "Annuler";
+}
+.btn-validated:after {
+    content : "Confirmé";
+}
+.btn-validated:hover::after {
+    content : "Annuler";
+}
+.btn-denied:after {
+    content : "Refusé";
+}
+.btn-denied:hover::after {
+    content : "Compris";
+}

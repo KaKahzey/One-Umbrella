@@ -2,8 +2,19 @@
     flex-direction: column;
     @apply flex;
 }
-.main{
+.main-reservation{
     font-size: 2em;
-    margin-top: 10vh;
+    margin-top: 11.7vh;
     margin-left : 14%;
+    height : 86vh;
+    max-height : 86vh;
+    @apply flex justify-between;
+}
+.main{
+    width : 73%;
+    height : 100%;
+}
+.reservation {
+    width :  25%;
+    height : 100%;
 }

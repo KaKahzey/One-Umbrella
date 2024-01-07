@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       colors: {
         "forest": {
+          0 : "#f1eeee",
           100: "#F8F7FF",
           200: "#DAD7CD",
           300: "#A3B18A",

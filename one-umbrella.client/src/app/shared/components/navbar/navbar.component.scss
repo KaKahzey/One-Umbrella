@@ -1,11 +1,8 @@
-.main{
-  font-size :  2em;
-  width: 100%;
-  height: 100%;
-  position: fixed;
-}
 .top {
-    width:100%;
+    width:100vw;
+    height:10vh;
+    font-size :  2em;
+    position: fixed;
     @apply flex bg-forest-500 text-forest-200 justify-between;
 }
 .search-area {
@@ -45,7 +42,8 @@ input::placeholder {
     cursor:  pointer;
 }
 .account-area {
-    width :  35%;
+    width :  30%;
+    padding-right: 0.4vw;
   @apply flex justify-end items-center;
 }
 .in-account{
@@ -53,13 +51,17 @@ input::placeholder {
 }
 .account-area img {
     cursor :  pointer;
+    height:3em;
 }
 .left{
-  
+  font-size :  2em;
+  position: fixed;
   width: 13%;
-  height: 100%;
+  height: 90vh;
+  margin-top: 10vh;
   border-top-color: white; 
   border-top-width: 1px;
+  overflow-y: auto;
   @apply bg-forest-500 text-forest-200;
 }
 .left input {
@@ -72,4 +74,11 @@ input::placeholder {
 .title-list{
   margin-left : 15%;
   font-size: 0.80em;
+}
+.left li{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; 
+  width : 90%;
+  padding-left : 5%;
 }

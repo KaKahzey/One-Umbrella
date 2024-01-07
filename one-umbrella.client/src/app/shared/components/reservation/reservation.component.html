@@ -1,0 +1,45 @@
+<div class="main">
+    @if(reservations.length == 0) {
+        <div class="card">
+            <div class="title">
+                Vous n'avez pas de réservation
+            </div>
+        </div>
+    }
+    @else{
+        @for(r of reservations; track r.id){
+            <div class="card">
+                <div class="title">
+                    <span class="title-name">
+                        <a [routerLink]="['/restaurant', r.restaurantId]" >
+                            {{r.restaurantName}}
+                        </a>
+                        
+                    </span>
+                    <span [class]="setReservationStatus(r.status)">
+                            
+                    </span>
+                </div>
+                <div class="period">
+                    <span>
+                        {{addZero(r.timeStart.getHours())}} : {{addZero(r.timeStart.getMinutes())}}
+                    </span>
+                    <span>
+                        {{addZero(r.timeStart.getDate())}} {{getMonthName(r.timeStart.getMonth())}}
+                    </span>
+                </div>
+                <div class="option">
+                    @if(r.status == 0){
+                        <button class="btn-pending"></button>
+                    }
+                    @else if(r.status == 1){
+                        <button class="btn-validated"></button>
+                    }
+                    @else if(r.status == 2){
+                        <button class="btn-denied"></button>
+                    }
+                </div>
+            </div>
+        }
+    }
+</div>

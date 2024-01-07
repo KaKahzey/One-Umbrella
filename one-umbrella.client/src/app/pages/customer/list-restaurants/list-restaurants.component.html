@@ -1,1 +1,46 @@
-<p>list-restaurants works!</p>
+<div class="list-main">
+    <div class="list-top">
+        <span class="list-title">
+            Liste des restaurants
+        </span>
+        <span class="list-tri">
+            Trier par : 
+        </span>
+    </div>
+    <div class="list">
+        @if(restaurants.length < 1){
+            Aucun restaurant trouvé
+        }
+        @else{
+            @for(r of restaurants; track r.id){
+                <div class="card">
+                    <div class="image-area">
+                        {{r.image}}<img src="/assets/img/list/placeholderFront.jpg" alt="façade restaurant" />
+                    </div>
+                    <div class="info">
+                        <div class="title-area">
+                            <div class="title-card">
+                                {{r.name}}
+                            </div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div>(1024)</div>
+                        </div>
+                        <div class="address-area">
+                            <span class="name-category">Adresse :</span> {{r.street}} {{r.city}} {{r.postCode}}
+                        </div>
+                        <div class="description">
+                            <span class="name-category">Description :</span> <br />
+                            {{r.description}}
+                        </div>
+                        <div class="ratin-area">
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>

@@ -1,7 +1,7 @@
 <div class="main">
     <div class="top">
         <div class="main-title">
-            <img src="/assets/img/navbar/logoUmbrella.png" alt="<a href='https://pngtree.com/freepng/umbrella-icon_4859781.html'>png image from pngtree.com/</a>">
+            <img src="/assets/img/navbar/logoUmbrella.png" alt="<a href='https://pngtree.com/freepng/umbrella-icon_4859781.html'>png image from pngtree.com/</a>" routerLink="/" />
             <a routerLink="/">One Umbrella</a>
         </div>
         <div class="search-area">
@@ -12,17 +12,14 @@
         </div>
         <div class="account-area">
             @if(user.name){
-            <a routerLink="/my-reservations" class="in-account">Mes réservations</a>
-    
-            <a routerLink="/favorites" class="in-account">Mes favoris</a>
-            @if(user.type === "Owner"){
-            <a routerLink="/own-restaurants" class="in-account">Mes restaurants</a>
-            }
-            <img [src]="avatar" alt="avatar" />
+                @if(user.type === "Owner"){
+                    <a routerLink="/own-restaurants" class="in-account">Mes restaurants</a>
+                }
+                <img [src]="avatar" alt="avatar" />
             }
             @else {
-            <a>S'enregister</a>
-            <a>Se connecter</a>
+                <a>S'enregister</a>
+                <a>Se connecter</a>
             }
         </div>
     </div>
@@ -39,7 +36,7 @@
         <div>
             <span class="title-list">Favoris</span>
             <ul class="list favorites">
-                
+                <li>zzzzzzzzzzzzzzzzzzzzzzzzzzzzz</li>
             </ul>
         </div>
     </div>
