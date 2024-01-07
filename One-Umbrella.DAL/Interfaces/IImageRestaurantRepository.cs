@@ -9,6 +9,7 @@ namespace OneUmbrella.DAL.Interfaces
 {
     public interface IImageRestaurantRepository : ICrudRepository<int, ImageRestaurant>
     {
+        ImageRestaurant? getFrontImage(int restaurantId);
         IEnumerable<ImageRestaurant> getAllForOneRestaurant(int restaurantId);
     }
 }

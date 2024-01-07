@@ -14,6 +14,6 @@ namespace OneUmbrella.Domain.Entities
         public DateTime ReservationTimeStart { get; set; }
         public DateTime ReservationTimeEnd { get; set; }
         public int ReservationStatus { get; set; }
-        //1 for pending, 0 for denied, 2 for validated
+        // 0 for pending, 1 for validated, 2 for denied,  3 for denied-seen
     }
 }

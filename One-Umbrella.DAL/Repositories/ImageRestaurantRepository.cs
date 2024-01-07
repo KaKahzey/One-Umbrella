@@ -15,6 +15,38 @@ namespace OneUmbrella.DAL.Repositories
     {
         public ImageRestaurantRepository(SqlConnection dbConnection) : base(dbConnection) { }
 
+        public ImageRestaurant getFrontImage(int restaurantId)
+        {
+            ImageRestaurant image = null;
+            connection.Open();
+            using (SqlCommand command = new SqlCommand(
+                "SELECT * FROM ImageRestaurant WHERE RESTAURANT_ID = @RestaurantId AND IS_FRONT = 1"
+                , connection))
+            {
+                command.Parameters.AddWithValue("@RestaurantId", restaurantId);
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        image = new ImageRestaurant
+                        {
+                            ImageId = reader.GetInt32(reader.GetOrdinal("IMAGE_ID")),
+                            RestaurantId = reader.GetInt32(reader.GetOrdinal("RESTAURANT_ID")),
+                            IsFront = reader.GetBoolean(reader.GetOrdinal("IS_FRONT")),
+                            IsMenu = reader.GetBoolean(reader.GetOrdinal("IS_MENU"))
+
+                        };
+                        byte[] imageData = new byte[reader.GetBytes(reader.GetOrdinal("IMAGE_DATA"), 0, null, 0, int.MaxValue)];
+                        reader.GetBytes(reader.GetOrdinal("IMAGE_DATA"), 0, imageData, 0, imageData.Length);
+                        image.ImageData = imageData;
+                    }
+                }
+            }
+            connection.Close();
+            return image;
+        }
+
         public IEnumerable<ImageRestaurant> getAllForOneRestaurant(int restaurantId)
         {
             List<ImageRestaurant> images = new List<ImageRestaurant>();

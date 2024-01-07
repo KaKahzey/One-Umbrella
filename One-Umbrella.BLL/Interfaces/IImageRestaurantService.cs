@@ -9,6 +9,7 @@ namespace OneUmbrella.BLL.Interfaces
 {
     public interface IImageRestaurantService
     {
+        ImageRestaurant? getFrontImage(int restaurantId);
         IEnumerable<ImageRestaurant> getAllForOneRestaurant(int restaurantId);
         bool create(ImageRestaurant image);
         bool delete(int imageId);

@@ -18,6 +18,10 @@ namespace OneUmbrella.BLL.Services
             _imageRepository = imageRepository;
         }
 
+        public ImageRestaurant? getFrontImage(int restaurantId)
+        {
+            return _imageRepository.getFrontImage(restaurantId);
+        }
         public IEnumerable<ImageRestaurant> getAllForOneRestaurant(int restaurantId)
         {
             return _imageRepository.getAllForOneRestaurant(restaurantId);
