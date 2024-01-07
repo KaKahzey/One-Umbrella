@@ -1,6 +1,6 @@
 ﻿namespace OneUmbrella.Server.DataTransferObjects
 {
-    public class listRestaurantDTO
+    public class ListRestaurantDTO
     {
         public int RestaurantId { get; set; }
         public string RestaurantName { get; set; }

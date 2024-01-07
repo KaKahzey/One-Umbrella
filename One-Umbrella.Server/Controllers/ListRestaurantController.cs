@@ -25,12 +25,12 @@ namespace OneUmbrella.Server.Controllers
         [HttpGet("ListRestaurant")]
         [AllowAnonymous]
         [Produces("application/json")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<listRestaurantDTO>))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<ListRestaurantDTO>))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult GetListRestaurants([FromRoute] int page, int pageSize, string sortBy, bool isDescending, int? humanId, string? city)
         {
-            IEnumerable<listRestaurantDTO>? restaurants = _restaurantService.getListRestaurants(page, pageSize, sortBy, isDescending, humanId, city).Select(r => r.ToDTO(_imageService.getFrontImage(r.RestaurantId)));
+            IEnumerable<ListRestaurantDTO>? restaurants = _restaurantService.getListRestaurants(page, pageSize, sortBy, isDescending, humanId, city).Select(r => r.ToDTO(_imageService.getFrontImage(r.RestaurantId)));
 
             return Ok(restaurants);
         }
