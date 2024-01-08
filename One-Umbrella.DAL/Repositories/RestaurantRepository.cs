@@ -22,7 +22,8 @@ namespace OneUmbrella.DAL.Repositories
                 "SELECT " +
                 "*" +
                 " FROM Restaurant" +
-                " WHERE [RESTAURANT_NAME] = @Identifier"
+                " WHERE [RESTAURANT_NAME] = @Identifier " +
+                "OR [RESTAURANT_CITY] = @Identifier"
                 , connection))
             {
                 command.Parameters.AddWithValue("@Identifier", identifier);

@@ -6,6 +6,7 @@ using OneUmbrella.BLL.Services;
 using OneUmbrella.Domain.Entities;
 using OneUmbrella.Server.DataTransferObjects;
 using OneUmbrella.Server.DataTransferObjects.Mappers;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace OneUmbrella.Server.Controllers
 {
@@ -22,19 +23,32 @@ namespace OneUmbrella.Server.Controllers
             _imageService = imageService;
         }
 
-        [HttpGet("ListRestaurant")]
+        [HttpGet]
         [AllowAnonymous]
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<ListRestaurantDTO>))]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult GetListRestaurants([FromRoute] int page, int pageSize, string sortBy, bool isDescending, int? humanId, string? city)
+        public IActionResult GetListRestaurants(int page, int pageSize, string sortBy, bool isDescending, int? humanId, string? city)
         {
-            IEnumerable<ListRestaurantDTO>? restaurants = _restaurantService.getListRestaurants(page, pageSize, sortBy, isDescending, humanId, city).Select(r => r.ToDTO(_imageService.getFrontImage(r.RestaurantId)));
-
-            return Ok(restaurants);
+            List<ListRestaurantDTO> restaurantsDTO = new List<ListRestaurantDTO>();
+            IEnumerable<Restaurant>? restaurants = _restaurantService.getListRestaurants(page, pageSize, sortBy, isDescending, humanId, city);
+            foreach(Restaurant r in restaurants)
+            {
+                if(_imageService.getFrontImage(r.RestaurantId) != null)
+                {
+                    string image = _imageService.getFrontImage(r.RestaurantId).ToDTO().ImageData;
+                    restaurantsDTO.Add(ListRestaurantMapper.ToDTO(r, image));
+                }
+                else
+                {
+                    restaurantsDTO.Add(ListRestaurantMapper.ToDTO(r, "")); ;
+                }
+            }
+            IEnumerable<ListRestaurantDTO> convertedRestaurants = restaurantsDTO;
+            return Ok(convertedRestaurants);
         }
 
         
+
     }
 }

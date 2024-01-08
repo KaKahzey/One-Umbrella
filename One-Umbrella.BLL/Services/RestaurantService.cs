@@ -22,9 +22,13 @@ namespace OneUmbrella.BLL.Services
         {
             return _restaurantRepository.getByPageAndSorted(page, pageSize, sortBy, isDescending, humanId, city);
         }
-        public Restaurant? getRestaurant(int restaurantId)
+        public Restaurant? getRestaurantById(int restaurantId)
         {
             return _restaurantRepository.getById(restaurantId);
+        }
+        public Restaurant? getRestaurantByIdentifier(string restaurantName)
+        {
+            return _restaurantRepository.getByIdentifier(restaurantName);
         }
         public bool createRestaurant(Restaurant restaurant)
         {

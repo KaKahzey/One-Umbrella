@@ -1,4 +1,6 @@
-﻿namespace OneUmbrella.Server.DataTransferObjects
+﻿using OneUmbrella.Domain.Entities;
+
+namespace OneUmbrella.Server.DataTransferObjects
 {
     public class RestaurantDTO
     {
@@ -9,6 +11,6 @@
         public string RestaurantPostCode { get; set; }
         public string RestaurantDescription { get; set; }
         public int RestaurantRating { get; set; }
-        public string RestaurantImage { get; set; }
+        public IEnumerable<ImageRestaurantDTO> RestaurantImages { get; set; }
     }
 }

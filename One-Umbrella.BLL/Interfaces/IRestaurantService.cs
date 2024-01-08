@@ -10,7 +10,8 @@ namespace OneUmbrella.BLL.Interfaces
     public interface IRestaurantService
     {
         IEnumerable<Restaurant>? getListRestaurants(int page, int pageSize, string sortBy, bool isDescending, int? humanId, string? city);
-        Restaurant? getRestaurant(int restaurantId);
+        Restaurant? getRestaurantById(int restaurantId);
+        Restaurant? getRestaurantByIdentifier(string restaurantName);
         bool createRestaurant(Restaurant restaurant);
         bool updateRestaurant(int restaurantId, Restaurant restaurant);
         bool deleteRestaurant(int restaurantId);

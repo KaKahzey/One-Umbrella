@@ -40,8 +40,10 @@ C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.DAL.Console\bin\Debug\n
 C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.DAL.Console\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
 C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.DAL.Console\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.DAL.Console\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.DAL.Console\bin\Debug\net8.0\OneUmbrella.BLL.dll
 C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.DAL.Console\bin\Debug\net8.0\OneUmbrella.DAL.dll
 C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.DAL.Console\bin\Debug\net8.0\OneUmbrella.Domain.dll
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.DAL.Console\bin\Debug\net8.0\OneUmbrella.BLL.pdb
 C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.DAL.Console\bin\Debug\net8.0\OneUmbrella.DAL.pdb
 C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.DAL.Console\bin\Debug\net8.0\OneUmbrella.Domain.pdb
 C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.DAL.Console\obj\Debug\net8.0\OneUmbrella.DAL.Console.csproj.AssemblyReference.cache

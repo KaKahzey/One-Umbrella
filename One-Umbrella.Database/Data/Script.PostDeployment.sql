@@ -7,7 +7,7 @@ INSERT INTO [dbo].[Human] ([HUMAN_LASTNAME], [HUMAN_FIRSTNAME], [HUMAN_MAIL], [H
 VALUES ('Noël', 'Brody', 'brody@gnorp.be', 'test14', '0032476322655', 'Customer')
 
 INSERT INTO [dbo].[Human] ([HUMAN_LASTNAME], [HUMAN_FIRSTNAME], [HUMAN_MAIL], [HUMAN_PASSWORD], [HUMAN_PHONE_NUMBER], [HUMAN_TYPE])
-VALUES ('Blop', 'Swish', 'swish@blop.be', 'ploplo', '0474565473', 'Owner')
+VALUES ('Blop', 'Swish', 'string', 'b45cffe084dd3d20d928bee85e7b0f21d4ca49decb7b02b45b6531b8bdc9998', '0474565473', 'Owner')
 
 INSERT INTO [dbo].[Human] ([HUMAN_LASTNAME], [HUMAN_FIRSTNAME], [HUMAN_MAIL], [HUMAN_PASSWORD], [HUMAN_PHONE_NUMBER], [HUMAN_TYPE])
 VALUES ('Custo', 'Mer', 'custo@mer.be', 'hoii', '0475658495', 'Customer')
