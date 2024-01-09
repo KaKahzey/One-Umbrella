@@ -3,14 +3,12 @@
     "",
     "\\One-Umbrella.BLL",
     "\\One-Umbrella.BLL\\Services",
-    "\\one-umbrella.client",
-    "\\one-umbrella.client\\src",
-    "\\one-umbrella.client\\src\\app",
-    "\\one-umbrella.client\\src\\app\\pages",
-    "\\one-umbrella.client\\src\\app\\pages\\customer",
-    "\\one-umbrella.client\\src\\app\\pages\\customer\\list-restaurants",
     "\\One-Umbrella.DAL",
-    "\\One-Umbrella.DAL\\Repositories"
+    "\\One-Umbrella.DAL\\Repositories",
+    "\\One-Umbrella.Server",
+    "\\One-Umbrella.Server\\Controllers",
+    "\\One-Umbrella.Server\\DataTransferObjects",
+    "\\One-Umbrella.Server\\DataTransferObjects\\Mappers"
   ],
   "SelectedNode": "\\One-Umbrella.DAL\\Repositories\\ReservationRepository.cs",
   "PreviewInSolutionExplorer": false

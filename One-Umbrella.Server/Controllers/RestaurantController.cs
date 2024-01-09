@@ -5,6 +5,7 @@ using OneUmbrella.BLL.Interfaces;
 using OneUmbrella.Server.DataTransferObjects;
 using OneUmbrella.Domain.Entities;
 using OneUmbrella.Server.DataTransferObjects.Mappers;
+using OneUmbrella.BLL.Services;
 
 namespace OneUmbrella.Server.Controllers
 {
@@ -39,6 +40,19 @@ namespace OneUmbrella.Server.Controllers
             return Ok(restaurant.ToDTO(convertedImages));
         }
 
-        
+        [HttpPost]
+        [Consumes("application/json")]
+        [Produces("application/json")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult Create(RestaurantDataDTO restaurant)
+        {
+            Restaurant convertedRestaurant = restaurant.ToEntity();
+            if(convertedRestaurant == null)
+            {
+                return BadRequest();
+            }
+            return Ok(_restaurantService.createRestaurant(convertedRestaurant));
+        }
     }
 }

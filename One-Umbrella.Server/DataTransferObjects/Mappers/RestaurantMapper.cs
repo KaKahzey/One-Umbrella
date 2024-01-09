@@ -18,5 +18,16 @@ namespace OneUmbrella.Server.DataTransferObjects.Mappers
                 RestaurantImages = images
             };
         }
+        public static Restaurant ToEntity(this RestaurantDataDTO restaurant)
+        {
+            return new Restaurant()
+            {
+                RestaurantName = restaurant.RestaurantName,
+                RestaurantStreet = restaurant.RestaurantStreet,
+                RestaurantCity = restaurant.RestaurantCity,
+                RestaurantPostCode = restaurant.RestaurantPostCode,
+                RestaurantDescription = restaurant.RestaurantDescription
+            };
+        }
     }
 }
