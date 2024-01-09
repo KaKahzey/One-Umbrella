@@ -1,33 +1,35 @@
 # OneUmbrella
 
-restaurant :
----
-    restaurantId : number,
-    name : string,
-    address : {
-        street : string,
-        city : string,
-        postCode : string
-    },
-    tablesCount : number,
-    disposal : string[],
-    averageMealTime : number
----
+TODO : 
 
-tables : 
----
-    tableId : number,
-    sizeMin : number,
-    sizeMax : number,
-    <!-- 1 : available, 2 : pending, 3 : taken -->
-    reserved : number
----
+Code
+--
+Ajouter commentaires
+Changer convention de nommage
+--
 
-reservation :
----
-    reservationId : number,
-    customerName : string,
-    numberOfPeople : number,
-    tablesUsed : [],
-    status : string,
----
+Restaurants :
+--
+pagination pour les restaurants qu'on obtient par identification
+--
+
+Users :
+--
+
+--
+
+Reservations :
+--
+Alerte/Mise en évidence pour les réservations de la journée
+--
+
+Favoris : 
+--
+Afficher la miniature du restaurant que la souris hover
+--
+
+Grids : 
+--
+Coté front, rendre les éléments plus évident
+--
+

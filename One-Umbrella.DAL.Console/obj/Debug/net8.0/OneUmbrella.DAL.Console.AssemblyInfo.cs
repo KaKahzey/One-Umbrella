@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OneUmbrella.DAL.Console")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e1375f0ca97c6c1bc84b2b4b6ded4eb5053112c3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("OneUmbrella.DAL.Console")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OneUmbrella.DAL.Console")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

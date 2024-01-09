@@ -29,6 +29,76 @@ export class ListRestaurantsComponent {
       description : "Parfait domaine pour un moment en famille",
       rating : 4,
       image : ""
+    },
+    {
+      id : 1,
+      name : "McDonald",
+      street : "Rue de la Fontaine",
+      city : "Marbais",
+      postCode : "1495",
+      description : "Parfait domaine pour un moment en famille",
+      rating : 4,
+      image : ""
+    },
+    {
+      id : 1,
+      name : "McDonald",
+      street : "Rue de la Fontaine",
+      city : "Marbais",
+      postCode : "1495",
+      description : "Parfait domaine pour un moment en famille",
+      rating : 4,
+      image : ""
+    },
+    {
+      id : 1,
+      name : "McDonald",
+      street : "Rue de la Fontaine",
+      city : "Marbais",
+      postCode : "1495",
+      description : "Parfait domaine pour un moment en famille",
+      rating : 4,
+      image : ""
+    },
+    {
+      id : 1,
+      name : "McDonald",
+      street : "Rue de la Fontaine",
+      city : "Marbais",
+      postCode : "1495",
+      description : "Parfait domaine pour un moment en famille",
+      rating : 4,
+      image : ""
+    },
+    {
+      id : 1,
+      name : "McDonald",
+      street : "Rue de la Fontaine",
+      city : "Marbais",
+      postCode : "1495",
+      description : "Parfait domaine pour un moment en famille",
+      rating : 4,
+      image : ""
+    },
+    {
+      id : 1,
+      name : "McDonald",
+      street : "Rue de la Fontaine",
+      city : "Marbais",
+      postCode : "1495",
+      description : "Parfait domaine pour un moment en famille",
+      rating : 4,
+      image : ""
+    },
+    {
+      id : 1,
+      name : "McDonald",
+      street : "Rue de la Fontaine",
+      city : "Marbais",
+      postCode : "1495",
+      description : "Parfait domaine pour un moment en famille",
+      rating : 4,
+      image : ""
     }
   ]
 
