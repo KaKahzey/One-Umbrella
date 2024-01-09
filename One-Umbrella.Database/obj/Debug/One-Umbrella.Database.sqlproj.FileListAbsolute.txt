@@ -1,0 +1,6 @@
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.Database\bin\Debug\One-Umbrella.Database.dacpac
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.Database\bin\Debug\One_Umbrella.Database.dll
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.Database\bin\Debug\One_Umbrella.Database.pdb
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.Database\obj\Debug\One-Umbrella.Database.sqlproj.AssemblyReference.cache
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.Database\obj\Debug\One_Umbrella.Database.dll
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.Database\obj\Debug\One_Umbrella.Database.pdb

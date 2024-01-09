@@ -1,26 +1,43 @@
 <div class="main">
-    <div class="search-area">
-        <div class="bar-area">
-            <input type="text" placeholder=" Restaurant / adresse" />
-            <img src="/assets/img/navbar/search.svg" alt="loupe" />
+    <div class="top">
+        <div class="main-title">
+            <img src="/assets/img/navbar/logoUmbrella.png" alt="<a href='https://pngtree.com/freepng/umbrella-icon_4859781.html'>png image from pngtree.com/</a>" routerLink="/" />
+            <a routerLink="/">One Umbrella</a>
+        </div>
+        <div class="search-area">
+            <div class="bar-area">
+                <input type="text" placeholder=" Restaurant / adresse" />
+                <img src="/assets/img/navbar/search.svg" alt="loupe" />
+            </div>
+        </div>
+        <div class="account-area">
+            @if(user.name){
+                @if(user.type === "Owner"){
+                    <a routerLink="/own-restaurants" class="in-account">Mes restaurants</a>
+                }
+                <img [src]="avatar" alt="avatar" />
+            }
+            @else {
+                <a>S'enregister</a>
+                <a>Se connecter</a>
+            }
         </div>
     </div>
-    <div class="main-title">
-        <a routerLink="/">One Umbrella</a>
-    </div>
-    <div class="account-area">
-        @if(user.name){
-        <a routerLink="/my-reservations" class="in-account">Mes réservations</a>
-
-        <a routerLink="/favorites" class="in-account">Mes favoris</a>
-        @if(user.role === "owner"){
-        <a routerLink="/own-restaurants" class="in-account">Mes restaurants</a>
+    <div class="left">
+        <div>
+            <input type="text" placeholder="Filtre" formControlName="text"/>
+            
+        </div>
+        @if(user.type === "Owner"){
+            <div class="list properties">
+                
+            </div>
         }
-        <img [src]="avatar" alt="avatar" />
-        }
-        @else {
-        <a>S'enregister</a>
-        <a>Se connecter</a>
-        }
+        <div>
+            <span class="title-list">Favoris</span>
+            <ul class="list favorites">
+                <li>zzzzzzzzzzzzzzzzzzzzzzzzzzzzz</li>
+            </ul>
+        </div>
     </div>
 </div>

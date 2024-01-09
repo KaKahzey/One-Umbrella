@@ -4,5 +4,13 @@
 
 html {
   font-size :  65.5%;
+  height : 100%;
   @apply bg-forest-100;
+}
+body {
+  height : 100%;
+  font-family: "Gill Sans", sans-serif;
+}
+app-root{
+  height : 100%;
 }

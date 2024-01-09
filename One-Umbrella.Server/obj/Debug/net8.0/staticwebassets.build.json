@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "yfKrT9b5bDsY5ksfrkxVvsZ10AhfwKW1P0oZwYvNJ7g=",
+  "Source": "OneUmbrella.Server",
+  "BasePath": "_content/OneUmbrella.Server",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

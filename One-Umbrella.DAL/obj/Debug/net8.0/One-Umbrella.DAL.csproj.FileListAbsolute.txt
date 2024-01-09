@@ -1,0 +1,12 @@
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.DAL\bin\Debug\net8.0\One-Umbrella.DAL.deps.json
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.DAL\bin\Debug\net8.0\One-Umbrella.DAL.dll
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.DAL\bin\Debug\net8.0\One-Umbrella.DAL.pdb
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.DAL\obj\Debug\net8.0\One-Umbrella.DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.DAL\obj\Debug\net8.0\One-Umbrella.DAL.AssemblyInfoInputs.cache
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.DAL\obj\Debug\net8.0\One-Umbrella.DAL.AssemblyInfo.cs
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.DAL\obj\Debug\net8.0\One-Umbrella.DAL.csproj.CoreCompileInputs.cache
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.DAL\obj\Debug\net8.0\One-Umbrella.DAL.sourcelink.json
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.DAL\obj\Debug\net8.0\One-Umbrella.DAL.dll
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.DAL\obj\Debug\net8.0\refint\One-Umbrella.DAL.dll
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.DAL\obj\Debug\net8.0\One-Umbrella.DAL.pdb
+C:\Users\Julien\Desktop\progra\One-Umbrella\One-Umbrella.DAL\obj\Debug\net8.0\ref\One-Umbrella.DAL.dll
