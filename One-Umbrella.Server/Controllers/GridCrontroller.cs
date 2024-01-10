@@ -78,10 +78,10 @@ namespace OneUmbrella.Server.Controllers
         [Consumes("application/json")]
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult Delete([FromRoute] int id)
         {
-            return Ok();
+            return _gridService.delete(id) ? Ok() : NotFound();
         }
     }
 }

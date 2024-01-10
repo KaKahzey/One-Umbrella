@@ -13,10 +13,10 @@ internal class Program
     {
 
         SqlConnection connection = new SqlConnection("Server=SONIC-11;DataBase=OneUmbrella;User ID=sa; Password=Umbrella4321;Encrypt=False");
-        ReservationRepository r = new ReservationRepository(connection);
-        foreach(var e in r.getAllForOneRestaurantForOneDay(1, DateTime.Now))
+        RestaurantRepository r = new RestaurantRepository(connection);
+        foreach(var e in r.getByPageAndSorted(1, 2, "Restaurant_name", true, null, null))
         {
-
+            Console.WriteLine(e.RestaurantName);
         }
 
         //foreach (var e in restaurantRepository.getByPageAndSorted(1, 10, "RESTAURANT_NAME", false, null, null))

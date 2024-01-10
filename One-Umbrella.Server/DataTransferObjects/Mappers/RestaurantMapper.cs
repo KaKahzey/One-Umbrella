@@ -9,12 +9,12 @@ namespace OneUmbrella.Server.DataTransferObjects.Mappers
             return new RestaurantDTO()
             {
                 RestaurantId = restaurant.RestaurantId,
+                OwnerId = restaurant.HumanId,
                 RestaurantName = restaurant.RestaurantName,
                 RestaurantStreet = restaurant.RestaurantStreet,
                 RestaurantCity = restaurant.RestaurantCity,
                 RestaurantPostCode = restaurant.RestaurantPostCode,
                 RestaurantDescription = restaurant.RestaurantDescription,
-                RestaurantRating = restaurant.RestaurantRating,
                 RestaurantImages = images
             };
         }
@@ -23,6 +23,7 @@ namespace OneUmbrella.Server.DataTransferObjects.Mappers
             return new Restaurant()
             {
                 RestaurantName = restaurant.RestaurantName,
+                HumanId = restaurant.OwnerId,
                 RestaurantStreet = restaurant.RestaurantStreet,
                 RestaurantCity = restaurant.RestaurantCity,
                 RestaurantPostCode = restaurant.RestaurantPostCode,

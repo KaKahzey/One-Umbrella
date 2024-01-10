@@ -17,7 +17,7 @@ namespace OneUmbrella.DAL.Repositories
         }
         protected SqlConnection connection;
 
-        public IEnumerable<Rating> getAll(int id, bool isHuman)
+        public IEnumerable<Rating> getAllByRestaurant(int id, bool isHuman)
         {
             List<Rating> ratings = new List<Rating>();
             SqlCommand command = null;

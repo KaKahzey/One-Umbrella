@@ -18,9 +18,9 @@ namespace OneUmbrella.BLL.Services
             _ratingRepository = ratingRepository;
         }
 
-        public IEnumerable<Rating> getAll(int id, bool isHuman)
+        public IEnumerable<Rating> getAllByRestaurant(int id, bool isHuman)
         {
-            return _ratingRepository.getAll(id, isHuman);
+            return _ratingRepository.getAllByRestaurant(id, isHuman);
         }
         public bool create(Rating rating)
         {

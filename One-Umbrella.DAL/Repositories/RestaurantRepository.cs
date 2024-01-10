@@ -57,8 +57,8 @@ namespace OneUmbrella.DAL.Repositories
             {
                 var sql = "SELECT * FROM (";
                 sql += "SELECT *, ROW_NUMBER() OVER (ORDER BY ";
-                sql += $"{sortBy} {(isDescending ? "DESC" : "ASC")}) AS RowNum FROM Restaurant WHERE 1 = 1";
-
+                sql += "@SortBy " + (isDescending ? "DESC" : "ASC") + ") AS RowNum FROM Restaurant WHERE 1 = 1";
+                command.Parameters.AddWithValue("@SortBy", sortBy);
                 if (humanId.HasValue)
                 {
                     sql += " AND HUMAN_ID = @HumanId";
@@ -69,9 +69,7 @@ namespace OneUmbrella.DAL.Repositories
                     sql += " AND [RESTAURANT_CITY] = @City";
                     command.Parameters.AddWithValue("@City", city);
                 }
-
-                sql += ") AS SubQuery ";
-                sql += "WHERE RowNum BETWEEN @StartRow AND @EndRow";
+                sql += ") AS SubQuery WHERE RowNum BETWEEN @StartRow AND @EndRow";
 
                 command.Parameters.AddWithValue("@StartRow", (page - 1) * pageSize + 1);
                 command.Parameters.AddWithValue("@EndRow", page * pageSize);

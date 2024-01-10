@@ -54,5 +54,26 @@ namespace OneUmbrella.Server.Controllers
             }
             return Ok(_restaurantService.createRestaurant(convertedRestaurant));
         }
+
+        [HttpPut("{id}")]
+        [Consumes("application/json")]
+        [Produces("application/json")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult Update([FromRoute] int id, RestaurantDataDTO restaurant)
+        {
+            Restaurant changedRestaurant = restaurant.ToEntity();
+            return _restaurantService.updateRestaurant(id, changedRestaurant) ? Ok() : BadRequest();
+        }
+
+        [HttpDelete("{id}")]
+        [Consumes("application/json")]
+        [Produces("application/json")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult Delete([FromRoute] int id)
+        {
+            return _restaurantService.deleteRestaurant(id) ? Ok() : NotFound();
+        }
     }
 }
