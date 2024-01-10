@@ -40,12 +40,12 @@ namespace OneUmbrella.Server.Controllers
             return Ok(grids);
         }
 
-        [HttpPost("Create")]
+        [HttpPost]
         [Consumes("application/json")]
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult Create(GridDTO grid)
+        public IActionResult Create(GridDataDTO grid)
         {
             IEnumerable<TableEntity>? tables = grid.GridTables;
             IEnumerable<StructuralElement>? elements = grid.GridElements;
@@ -62,7 +62,7 @@ namespace OneUmbrella.Server.Controllers
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult Update([FromRoute] int id,  GridDTO grid)
+        public IActionResult Update([FromRoute] int id, GridDataDTO grid)
         {
             IEnumerable<TableEntity>? tables = grid.GridTables;
             IEnumerable<StructuralElement>? elements = grid.GridElements;

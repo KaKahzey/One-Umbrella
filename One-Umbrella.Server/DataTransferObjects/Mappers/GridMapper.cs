@@ -18,16 +18,15 @@ namespace OneUmbrella.Server.DataTransferObjects.Mappers
                 GridElements = elements
             };
         }
-        public static Grid ToEntity(this GridDTO gridDTO)
+        public static Grid ToEntity(this GridDataDTO gridDataDTO)
         {
             return new Grid()
             {
                 
-                RestaurantId = gridDTO.RestaurantId,
-                GridId = gridDTO.GridId,
-                GridName = gridDTO.GridName,
-                GridRows = gridDTO.GridRows,
-                GridColumns = gridDTO.GridColumns
+                RestaurantId = gridDataDTO.RestaurantId,
+                GridName = gridDataDTO.GridName,
+                GridRows = gridDataDTO.GridRows,
+                GridColumns = gridDataDTO.GridColumns
             };
         }
     }

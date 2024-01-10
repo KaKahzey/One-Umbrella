@@ -3,7 +3,7 @@
 "ServerUrl": "https://localhost:4200",
 "RedirectUrl": "",
 "LaunchCommand": "npm start",
-"WorkingDirectory": "C:\\Users\\Student\\Desktop\\progra\\One-Umbrella\\One-Umbrella.Server\\..\\one-umbrella.client",
+"WorkingDirectory": "C:\\Users\\Julien\\Desktop\\progra\\One-Umbrella\\One-Umbrella.Server\\..\\one-umbrella.client",
 "MaxTimeoutInSeconds": "120",
 "KeepRunning": "false"
 }

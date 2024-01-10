@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Student\\Desktop\\progra\\One-Umbrella\\One-Umbrella.Server\\OneUmbrella.Server.csproj": {}
+    "C:\\Users\\Julien\\Desktop\\progra\\One-Umbrella\\One-Umbrella.Server\\OneUmbrella.Server.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Student\\Desktop\\progra\\One-Umbrella\\One-Umbrella.BLL\\OneUmbrella.BLL.csproj": {
+    "C:\\Users\\Julien\\Desktop\\progra\\One-Umbrella\\One-Umbrella.BLL\\OneUmbrella.BLL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Student\\Desktop\\progra\\One-Umbrella\\One-Umbrella.BLL\\OneUmbrella.BLL.csproj",
+        "projectUniqueName": "C:\\Users\\Julien\\Desktop\\progra\\One-Umbrella\\One-Umbrella.BLL\\OneUmbrella.BLL.csproj",
         "projectName": "OneUmbrella.BLL",
-        "projectPath": "C:\\Users\\Student\\Desktop\\progra\\One-Umbrella\\One-Umbrella.BLL\\OneUmbrella.BLL.csproj",
-        "packagesPath": "C:\\Users\\Student\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Student\\Desktop\\progra\\One-Umbrella\\One-Umbrella.BLL\\obj\\",
+        "projectPath": "C:\\Users\\Julien\\Desktop\\progra\\One-Umbrella\\One-Umbrella.BLL\\OneUmbrella.BLL.csproj",
+        "packagesPath": "C:\\Users\\Julien\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Julien\\Desktop\\progra\\One-Umbrella\\One-Umbrella.BLL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Student\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Julien\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -33,11 +33,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Student\\Desktop\\progra\\One-Umbrella\\One-Umbrella.DAL\\OneUmbrella.DAL.csproj": {
-                "projectPath": "C:\\Users\\Student\\Desktop\\progra\\One-Umbrella\\One-Umbrella.DAL\\OneUmbrella.DAL.csproj"
+              "C:\\Users\\Julien\\Desktop\\progra\\One-Umbrella\\One-Umbrella.DAL\\OneUmbrella.DAL.csproj": {
+                "projectPath": "C:\\Users\\Julien\\Desktop\\progra\\One-Umbrella\\One-Umbrella.DAL\\OneUmbrella.DAL.csproj"
               },
-              "C:\\Users\\Student\\Desktop\\progra\\One-Umbrella\\One-Umbrella.Domain\\OneUmbrella.Domain.csproj": {
-                "projectPath": "C:\\Users\\Student\\Desktop\\progra\\One-Umbrella\\One-Umbrella.Domain\\OneUmbrella.Domain.csproj"
+              "C:\\Users\\Julien\\Desktop\\progra\\One-Umbrella\\One-Umbrella.Domain\\OneUmbrella.Domain.csproj": {
+                "projectPath": "C:\\Users\\Julien\\Desktop\\progra\\One-Umbrella\\One-Umbrella.Domain\\OneUmbrella.Domain.csproj"
               }
             }
           }
@@ -77,20 +77,20 @@
         }
       }
     },
-    "C:\\Users\\Student\\Desktop\\progra\\One-Umbrella\\One-Umbrella.DAL\\OneUmbrella.DAL.csproj": {
+    "C:\\Users\\Julien\\Desktop\\progra\\One-Umbrella\\One-Umbrella.DAL\\OneUmbrella.DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Student\\Desktop\\progra\\One-Umbrella\\One-Umbrella.DAL\\OneUmbrella.DAL.csproj",
+        "projectUniqueName": "C:\\Users\\Julien\\Desktop\\progra\\One-Umbrella\\One-Umbrella.DAL\\OneUmbrella.DAL.csproj",
         "projectName": "OneUmbrella.DAL",
-        "projectPath": "C:\\Users\\Student\\Desktop\\progra\\One-Umbrella\\One-Umbrella.DAL\\OneUmbrella.DAL.csproj",
-        "packagesPath": "C:\\Users\\Student\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Student\\Desktop\\progra\\One-Umbrella\\One-Umbrella.DAL\\obj\\",
+        "projectPath": "C:\\Users\\Julien\\Desktop\\progra\\One-Umbrella\\One-Umbrella.DAL\\OneUmbrella.DAL.csproj",
+        "packagesPath": "C:\\Users\\Julien\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Julien\\Desktop\\progra\\One-Umbrella\\One-Umbrella.DAL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Student\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Julien\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -106,8 +106,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Student\\Desktop\\progra\\One-Umbrella\\One-Umbrella.Domain\\OneUmbrella.Domain.csproj": {
-                "projectPath": "C:\\Users\\Student\\Desktop\\progra\\One-Umbrella\\One-Umbrella.Domain\\OneUmbrella.Domain.csproj"
+              "C:\\Users\\Julien\\Desktop\\progra\\One-Umbrella\\One-Umbrella.Domain\\OneUmbrella.Domain.csproj": {
+                "projectPath": "C:\\Users\\Julien\\Desktop\\progra\\One-Umbrella\\One-Umbrella.Domain\\OneUmbrella.Domain.csproj"
               }
             }
           }
@@ -124,7 +124,7 @@
           "dependencies": {
             "Microsoft.Data.SqlClient": {
               "target": "Package",
-              "version": "[5.1.2, )"
+              "version": "[5.1.4, )"
             }
           },
           "imports": [
@@ -147,20 +147,20 @@
         }
       }
     },
-    "C:\\Users\\Student\\Desktop\\progra\\One-Umbrella\\One-Umbrella.Domain\\OneUmbrella.Domain.csproj": {
+    "C:\\Users\\Julien\\Desktop\\progra\\One-Umbrella\\One-Umbrella.Domain\\OneUmbrella.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Student\\Desktop\\progra\\One-Umbrella\\One-Umbrella.Domain\\OneUmbrella.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Julien\\Desktop\\progra\\One-Umbrella\\One-Umbrella.Domain\\OneUmbrella.Domain.csproj",
         "projectName": "OneUmbrella.Domain",
-        "projectPath": "C:\\Users\\Student\\Desktop\\progra\\One-Umbrella\\One-Umbrella.Domain\\OneUmbrella.Domain.csproj",
-        "packagesPath": "C:\\Users\\Student\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Student\\Desktop\\progra\\One-Umbrella\\One-Umbrella.Domain\\obj\\",
+        "projectPath": "C:\\Users\\Julien\\Desktop\\progra\\One-Umbrella\\One-Umbrella.Domain\\OneUmbrella.Domain.csproj",
+        "packagesPath": "C:\\Users\\Julien\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Julien\\Desktop\\progra\\One-Umbrella\\One-Umbrella.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Student\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Julien\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -207,20 +207,20 @@
         }
       }
     },
-    "C:\\Users\\Student\\Desktop\\progra\\One-Umbrella\\One-Umbrella.Server\\OneUmbrella.Server.csproj": {
+    "C:\\Users\\Julien\\Desktop\\progra\\One-Umbrella\\One-Umbrella.Server\\OneUmbrella.Server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Student\\Desktop\\progra\\One-Umbrella\\One-Umbrella.Server\\OneUmbrella.Server.csproj",
+        "projectUniqueName": "C:\\Users\\Julien\\Desktop\\progra\\One-Umbrella\\One-Umbrella.Server\\OneUmbrella.Server.csproj",
         "projectName": "OneUmbrella.Server",
-        "projectPath": "C:\\Users\\Student\\Desktop\\progra\\One-Umbrella\\One-Umbrella.Server\\OneUmbrella.Server.csproj",
-        "packagesPath": "C:\\Users\\Student\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Student\\Desktop\\progra\\One-Umbrella\\One-Umbrella.Server\\obj\\",
+        "projectPath": "C:\\Users\\Julien\\Desktop\\progra\\One-Umbrella\\One-Umbrella.Server\\OneUmbrella.Server.csproj",
+        "packagesPath": "C:\\Users\\Julien\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Julien\\Desktop\\progra\\One-Umbrella\\One-Umbrella.Server\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Student\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Julien\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -236,11 +236,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Student\\Desktop\\progra\\One-Umbrella\\One-Umbrella.BLL\\OneUmbrella.BLL.csproj": {
-                "projectPath": "C:\\Users\\Student\\Desktop\\progra\\One-Umbrella\\One-Umbrella.BLL\\OneUmbrella.BLL.csproj"
+              "C:\\Users\\Julien\\Desktop\\progra\\One-Umbrella\\One-Umbrella.BLL\\OneUmbrella.BLL.csproj": {
+                "projectPath": "C:\\Users\\Julien\\Desktop\\progra\\One-Umbrella\\One-Umbrella.BLL\\OneUmbrella.BLL.csproj"
               },
-              "C:\\Users\\Student\\Desktop\\progra\\One-Umbrella\\One-Umbrella.DAL\\OneUmbrella.DAL.csproj": {
-                "projectPath": "C:\\Users\\Student\\Desktop\\progra\\One-Umbrella\\One-Umbrella.DAL\\OneUmbrella.DAL.csproj"
+              "C:\\Users\\Julien\\Desktop\\progra\\One-Umbrella\\One-Umbrella.DAL\\OneUmbrella.DAL.csproj": {
+                "projectPath": "C:\\Users\\Julien\\Desktop\\progra\\One-Umbrella\\One-Umbrella.DAL\\OneUmbrella.DAL.csproj"
               }
             }
           }
@@ -261,7 +261,7 @@
             },
             "Microsoft.Data.SqlClient": {
               "target": "Package",
-              "version": "[5.1.2, )"
+              "version": "[5.1.4, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -269,7 +269,7 @@
             },
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
-              "version": "[7.0.3, )"
+              "version": "[7.1.2, )"
             }
           },
           "imports": [
