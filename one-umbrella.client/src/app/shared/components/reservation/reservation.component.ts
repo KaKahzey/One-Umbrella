@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Reservation } from '../../models/reservations/reservation';
 import { RouterLink } from '@angular/router';
+import { Reservation } from '../../models/reservations/reservation';
 
 @Component({
   selector: 'app-reservation',
@@ -11,12 +11,12 @@ import { RouterLink } from '@angular/router';
 })
 export class ReservationComponent {
   reservations : Reservation[] = [
-    {id : 1, restaurantId : 1, restaurantName : "testzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz", humanId : 1, timeStart : new Date, timeEnd : new Date, status : 0},
-    {id : 1, restaurantId : 1, restaurantName : "testzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz", humanId : 1, timeStart : new Date, timeEnd : new Date, status : 1},
-    {id : 1, restaurantId : 1, restaurantName : "testzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz", humanId : 1, timeStart : new Date, timeEnd : new Date, status : 2},
-    {id : 1, restaurantId : 1, restaurantName : "testzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz", humanId : 1, timeStart : new Date, timeEnd : new Date, status : 2},
-    {id : 1, restaurantId : 1, restaurantName : "testzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz", humanId : 1, timeStart : new Date, timeEnd : new Date, status : 2},
-    {id : 1, restaurantId : 1, restaurantName : "testzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz", humanId : 1, timeStart : new Date, timeEnd : new Date, status : 2}
+    {reservationId : 1, restaurantId : 1, restaurantName : "testzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz", reservationTimeStart : new Date, reservationTimeEnd : new Date, reservationStatus : 0},
+    {reservationId : 1, restaurantId : 1, restaurantName : "testzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz", reservationTimeStart : new Date, reservationTimeEnd : new Date, reservationStatus : 1},
+    {reservationId : 1, restaurantId : 1, restaurantName : "testzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz", reservationTimeStart : new Date, reservationTimeEnd : new Date, reservationStatus : 2},
+    {reservationId : 1, restaurantId : 1, restaurantName : "testzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz", reservationTimeStart : new Date, reservationTimeEnd : new Date, reservationStatus : 2},
+    {reservationId : 1, restaurantId : 1, restaurantName : "testzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz", reservationTimeStart : new Date, reservationTimeEnd : new Date, reservationStatus : 2},
+    {reservationId : 1, restaurantId : 1, restaurantName : "testzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz", reservationTimeStart : new Date, reservationTimeEnd : new Date, reservationStatus : 2}
   ]
 
   setReservationStatus(status : number) : string{

@@ -57,10 +57,15 @@ namespace OneUmbrella.Server.Controllers
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult Update([FromRoute] int id, GridDataDTO grid)
         {
             IEnumerable<TableEntity>? tables = grid.GridTables;
             IEnumerable<StructuralElement>? elements = grid.GridElements;
+            if(_gridService.getById(id) == null)
+            {
+                return NotFound();
+            }
 
             foreach(StructuralElement e in _elementService.getAllForOneGrid(id))
             {
@@ -69,6 +74,10 @@ namespace OneUmbrella.Server.Controllers
 
             foreach(TableEntity t in tables)
             {
+                if(t.GridId != grid.GridId)
+                {
+                    return BadRequest();
+                }
                 if(_tableService.getById(t.TableId) != null)
                 {
                     _tableService.update(t.TableId, t);
@@ -89,6 +98,16 @@ namespace OneUmbrella.Server.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult Delete([FromRoute] int id)
         {
+            IEnumerable<TableEntity>? tables = _tableService.getAllForOneGrid(id);
+            IEnumerable<StructuralElement>? elements = _elementService.getAllForOneGrid(id);
+            foreach(TableEntity t in tables)
+            {
+                _tableService.delete(t.TableId);
+            }
+            foreach (StructuralElement e in elements)
+            {
+                _elementService.delete(e.ElementId);
+            }
             return _gridService.delete(id) ? Ok() : NotFound();
         }
     }

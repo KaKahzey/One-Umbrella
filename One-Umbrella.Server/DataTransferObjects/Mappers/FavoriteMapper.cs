@@ -4,21 +4,22 @@ namespace OneUmbrella.Server.DataTransferObjects.Mappers
 {
     public static class FavoriteMapper
     {
-        public static FavoriteDTO ToDTO(Restaurant restaurant)
+        public static FavoriteDTO ToDTO(this Restaurant restaurant, int id)
         {
             return new FavoriteDTO()
             {
-                HumanId = restaurant.RestaurantId,
+                HumanId = id,
+                RestaurantId = restaurant.RestaurantId,
                 RestaurantName = restaurant.RestaurantName
             };
         }
 
-        public static Favorite ToEntity(FavoriteDTO favorite, int id)
+        public static Favorite ToEntity(int humanId, int restaurantId)
         {
             return new Favorite()
             {
-                HumanId = favorite.HumanId,
-                RestaurantId = id
+                HumanId = humanId,
+                RestaurantId = restaurantId
             };
         }
     }

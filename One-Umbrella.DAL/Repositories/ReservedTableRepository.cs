@@ -22,9 +22,12 @@ namespace OneUmbrella.DAL.Repositories
             List<ReservedTable> reservedTables = new List<ReservedTable>();
             connection.Open();
             using (SqlCommand command = new SqlCommand(
-                "SELECT * FROM ReservedTable WHERE RESTAURANT_ID = @RestaurantId " +
-                "AND (CONVERT(DATE, RESERVATION_TIME_START) = @Date OR " +
-                "CONVERT(DATE, RESERVATION_TIME_END) = @Date)"
+                "SELECT * FROM ReservedTable " +
+                "WHERE RESERVATION_ID IN (" +
+                "SELECT RESERVATION_ID FROM Reservation " +
+                "WHERE RESTAURANT_ID = @RestaurantId " +
+                "AND CONVERT(DATE, RESERVATION_TIME_START) = @Date" +
+                ")"
                 , connection))
             {
                 command.Parameters.AddWithValue("@RestaurantId", restaurantId);
@@ -50,9 +53,9 @@ namespace OneUmbrella.DAL.Repositories
         {
             connection.Open();
             using (SqlCommand command = new SqlCommand(
-                "INSERT INTO Favorite(" +
-                "[HUMAN_ID]," +
-                "[RESTAURANT_ID])" +
+                "INSERT INTO ReservedTable(" +
+                "[RESERVATION_ID]," +
+                "[TABLE_ID])" +
                 " VALUES(" +
                 "@ReservationId," +
                 "@TableId)"

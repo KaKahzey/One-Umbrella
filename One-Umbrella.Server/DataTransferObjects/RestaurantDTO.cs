@@ -16,7 +16,6 @@ namespace OneUmbrella.Server.DataTransferObjects
     public class RestaurantDataDTO
     {
         public string RestaurantName { get; set; }
-        public int OwnerId { get; set; }
         public string RestaurantStreet { get; set; }
         public string RestaurantCity { get; set; }
         public string RestaurantPostCode { get; set; }

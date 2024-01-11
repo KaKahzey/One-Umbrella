@@ -26,5 +26,18 @@ namespace OneUmbrella.Server.DataTransferObjects.Mappers
                 ReservationTimeEnd = reservation.ReservationTimeEnd
             };
         }
+
+        public static ReservationForUserDTO ToDTO(this Reservation reservation, Restaurant restaurant)
+        {
+            return new ReservationForUserDTO()
+            {
+                ReservationId = reservation.ReservationId,
+                RestaurantId = reservation.RestaurantId,
+                RestaurantName = restaurant.RestaurantName,
+                ReservationTimeStart = reservation.ReservationTimeStart,
+                ReservationTimeEnd = reservation.ReservationTimeEnd,
+                ReservationStatus = reservation.ReservationStatus
+            };
+        }
     }
 }

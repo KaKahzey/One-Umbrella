@@ -16,9 +16,6 @@ namespace OneUmbrella.Server.DataTransferObjects
     public class ConfigurationProfileDataDTO
     {
         [Required]
-        public int HumanId { get; set; }
-
-        [Required]
         [MinLength(1)]
         [MaxLength(50)]
         public string HumanLastName { get; set; }

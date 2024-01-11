@@ -13,16 +13,8 @@ internal class Program
     {
 
         SqlConnection connection = new SqlConnection("Server=PC;DataBase=One-Umbrella;User ID=Kahzey;Password='Umbrella4321';Encrypt=True");
-        GridRepository g = new GridRepository(connection);
-        Grid gre = new Grid
-        {
-            RestaurantId = 5,
-            GridRows = 100,
-            GridColumns = 45,
-            GridName = "pipi"
-        };
-        Console.WriteLine(g.create(gre)); 
-
+        
+        
         //foreach (var e in restaurantRepository.getByPageAndSorted(1, 10, "RESTAURANT_NAME", false, null, null))
         //{
         //    Console.WriteLine(e.RestaurantName);

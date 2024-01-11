@@ -214,8 +214,7 @@ namespace OneUmbrella.DAL.Repositories
                 "[HUMAN_FIRSTNAME] = @FirstName, " +
                 "[HUMAN_MAIL] = @Mail, " +
                 "[HUMAN_PASSWORD] = @Password, " +
-                "[HUMAN_PHONE_NUMBER] = @PhoneNumber, " +
-                "[HUMAN_TYPE] = @Type " +
+                "[HUMAN_PHONE_NUMBER] = @PhoneNumber " +
                 "WHERE [HUMAN_ID] = @Id"
                 , connection))
             {
@@ -224,7 +223,6 @@ namespace OneUmbrella.DAL.Repositories
                 command.Parameters.AddWithValue("@Mail", updatedHuman.HumanMail);
                 command.Parameters.AddWithValue("@Password", updatedHuman.HumanPassword);
                 command.Parameters.AddWithValue("@PhoneNumber", updatedHuman.HumanPhoneNumber);
-                command.Parameters.AddWithValue("@Type", updatedHuman.HumanType);
                 command.Parameters.AddWithValue("@Id", id);
                 int rowsAffected = command.ExecuteNonQuery();
                 if (rowsAffected > 0)

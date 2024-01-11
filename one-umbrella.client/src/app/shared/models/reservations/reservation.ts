@@ -1,10 +1,9 @@
 export interface Reservation {
-    id : number,
+    reservationId : number,
     restaurantId : number,
     restaurantName : string,
-    humanId : number,
-    timeStart : Date,
-    timeEnd : Date,
-    status : number
-    //1 for pending, 0 for denied, 2 for validated, 3 for denied-seen
+    reservationTimeStart : Date,
+    reservationTimeEnd : Date,
+    reservationStatus : number
+    // 0 for pending, 1 for validated, 2 for denied,  3 for denied-seen
 }

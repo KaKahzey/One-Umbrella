@@ -29,7 +29,7 @@ namespace OneUmbrella.Server.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult GetAllFavoritesForOneUser([FromRoute] int id)
         {
-            IEnumerable<FavoriteDTO> favorites = _favoriteService.getAllForHuman(id).Select(f => FavoriteMapper.ToDTO(f));
+            IEnumerable<FavoriteDTO> favorites = _favoriteService.getAllForHuman(id).Select(f => f.ToDTO(id));
             return favorites.Any() ? Ok(favorites) : NotFound();
         }
 
@@ -38,11 +38,21 @@ namespace OneUmbrella.Server.Controllers
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult Create(FavoriteDTO favorite, int id)
+        public IActionResult Create(int humanId, int restaurantId)
         {
-            Favorite newFavorite = FavoriteMapper.ToEntity(favorite, id);
+            Favorite newFavorite = FavoriteMapper.ToEntity(humanId, restaurantId);
 
             return Ok(_favoriteService.create(newFavorite));
+        }
+
+        [HttpDelete]
+        [Consumes("application/json")]
+        [Produces("application/json")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult Delete(int humanId, int restaurantId)
+        {
+            return _favoriteService.delete(humanId, restaurantId) ? Ok() : NotFound();
         }
     }
 }

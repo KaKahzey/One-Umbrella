@@ -25,7 +25,7 @@ namespace OneUmbrella.Server.Controllers
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ConfigurationProfileDTO))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public IActionResult GetEvent([FromRoute] int id)
+        public IActionResult getUser([FromRoute] int id)
         {
             Human? user = _userService.getUser(id);
 
@@ -44,23 +44,19 @@ namespace OneUmbrella.Server.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public IActionResult Update([FromRoute] int id, [FromBody] ConfigurationProfileDataDTO userDTO)
+        public IActionResult Update([FromRoute] int id, [FromBody] ConfigurationProfileDataDTO userDataDTO)
         {
             Human? user = _userService.getUser(id);
             if(user == null)
             {
                 return NotFound();
             }
-            if (userDTO.HumanId != user.HumanId)
-            {
-                return Unauthorized();
-            }
-            user.HumanLastName = userDTO.HumanLastName;
-            user.HumanFirstName = userDTO.HumanFirstName;
-            user.HumanMail = userDTO.HumanMail;
-            user.HumanPassword = userDTO.HumanPassword;
-            user.HumanPhoneNumber = userDTO.HumanPhoneNumber;
-            _userService.updateUser(id, user);
+            user.HumanLastName = userDataDTO.HumanLastName;
+            user.HumanFirstName = userDataDTO.HumanFirstName;
+            user.HumanMail = userDataDTO.HumanMail;
+            user.HumanPassword = userDataDTO.HumanPassword;
+            user.HumanPhoneNumber = userDataDTO.HumanPhoneNumber;
+            _userService.updateUser(user.HumanId, userDataDTO.ToEntity()); ;
             return Ok();
         }
     }

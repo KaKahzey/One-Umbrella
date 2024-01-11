@@ -16,11 +16,13 @@ namespace OneUmbrella.Server.Controllers
     {
         IReservationService _reservationService;
         IReservedTableService _reservedTableService;
+        IRestaurantService _restaurantService;
 
-        public ReservationController(IReservationService reservationService, IReservedTableService reservedTable)
+        public ReservationController(IReservationService reservationService, IReservedTableService reservedTable, IRestaurantService restaurantService)
         {
             _reservationService = reservationService;
             _reservedTableService = reservedTable;
+            _restaurantService = restaurantService;
         }
 
         [HttpGet("GetAllForOneRestaurant/{id}")]
@@ -42,19 +44,17 @@ namespace OneUmbrella.Server.Controllers
         }
 
         [HttpGet("GetAllForOneUser/{id}")]
-        [AllowAnonymous]
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<ReservationDTO>))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult getAllForOneUser([FromRoute] int id)
         {
-            IEnumerable<ReservationDTO> reservations = _reservationService.getAllForOneHuman(id).Select(r => r.ToDTO());
+            IEnumerable<ReservationForUserDTO> reservations = _reservationService.getAllForOneHuman(id).Select(r => r.ToDTO(_restaurantService.getRestaurantById(r.RestaurantId)));
             return Ok(reservations);
         }
 
         [HttpGet("getAllByStatus/{id}")]
-        [AllowAnonymous]
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<ReservationDTO>))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
