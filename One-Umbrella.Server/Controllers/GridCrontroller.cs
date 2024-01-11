@@ -47,14 +47,9 @@ namespace OneUmbrella.Server.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult Create(GridDataDTO grid)
         {
-            IEnumerable<TableEntity>? tables = grid.GridTables;
-            IEnumerable<StructuralElement>? elements = grid.GridElements;
             Grid newGrid = grid.ToEntity();
-            
-            tables?.Select(t => _tableService.create(t));
-            elements?.Select(e => _elementService.create(e));
-            bool createdGrid = _gridService.create(newGrid);
-            return createdGrid? Ok() : BadRequest();
+            int createdGridId = _gridService.create(newGrid);
+            return createdGridId != null ? Ok(createdGridId) : BadRequest();
         }
 
         [HttpPut("{id}")]
@@ -67,9 +62,22 @@ namespace OneUmbrella.Server.Controllers
             IEnumerable<TableEntity>? tables = grid.GridTables;
             IEnumerable<StructuralElement>? elements = grid.GridElements;
 
-            _elementService.getAllForOneGrid(id).Select(e => _elementService.delete(e.ElementId));
+            foreach(StructuralElement e in _elementService.getAllForOneGrid(id))
+            {
+                _elementService.delete(e.ElementId);
+            }
 
-            tables?.Select(t => _tableService.update(t.TableId, t));
+            foreach(TableEntity t in tables)
+            {
+                if(_tableService.getById(t.TableId) != null)
+                {
+                    _tableService.update(t.TableId, t);
+                }
+                else
+                {
+                    _tableService.create(t);
+                }
+            }
             elements?.Select(e => _elementService.create(e));
             return Ok();
         }

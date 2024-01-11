@@ -10,5 +10,8 @@ namespace OneUmbrella.DAL.Interfaces
     public interface IReservedTableRepository
     {
         IEnumerable<ReservedTable> getAllForOneRestaurantForOneDay(int restaurantId, DateTime date);
+        bool create(int reservationId, int tableId);
+
+
     }
 }

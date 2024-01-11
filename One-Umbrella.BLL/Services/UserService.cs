@@ -28,14 +28,16 @@ namespace OneUmbrella.BLL.Services
         {
             return !_humanRepository.checkPhoneValidity(phoneNumber);
         }
-        public bool register(Human user)
+        public int? register(Human user)
         {
             if (checkEmail(user.HumanMail) && checkPhoneNumber(user.HumanPhoneNumber))
             {
                 user.HumanPassword = Argon2.Hash(user.HumanPassword);
                 return _humanRepository.create(user);
+
             }
-            return false;
+
+            return null;
         }
         public Human? login(string identifier, string password)
         {

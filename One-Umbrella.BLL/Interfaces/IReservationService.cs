@@ -13,7 +13,7 @@ namespace OneUmbrella.BLL.Interfaces
         IEnumerable<Reservation> getAllForOneHuman(int humanId);
         IEnumerable<Reservation> getAllByStatus(int restaurantId, int status);
         bool changeStatus(int reservationId, int status);
-        bool create(Reservation reservation);
+        int create(Reservation reservation);
         bool delete(int reservationId);
     }
 }

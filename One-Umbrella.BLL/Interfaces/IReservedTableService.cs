@@ -10,6 +10,6 @@ namespace OneUmbrella.BLL.Interfaces
     public interface IReservedTableService
     {
         IEnumerable<ReservedTable> getAllForOneRestaurantForOneDay(int restaurantId, DateTime date);
-
+        bool create(int reservationId, int tableId);
     }
 }

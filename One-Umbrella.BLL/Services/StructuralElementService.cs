@@ -22,7 +22,7 @@ namespace OneUmbrella.BLL.Services
         {
             return _structuralElementRepository.getAllForOneGrid(gridId);
         }
-        public bool create(StructuralElement element)
+        public int create(StructuralElement element)
         {
             return _structuralElementRepository.create(element);
         }

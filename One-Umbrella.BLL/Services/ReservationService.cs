@@ -34,7 +34,7 @@ namespace OneUmbrella.BLL.Services
         {
             return _reservationRepository.changeStatus(reservationId, status);
         }
-        public bool create(Reservation reservation)
+        public int create(Reservation reservation)
         {
             return _reservationRepository.create(reservation);
         }

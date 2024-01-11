@@ -179,7 +179,7 @@ namespace OneUmbrella.DAL.Repositories
             connection.Close();
             return restaurant;
         }
-        public override bool create(Restaurant restaurant)
+        public override int create(Restaurant restaurant)
         {
             connection.Open();
             using (SqlCommand command = new SqlCommand(
@@ -191,6 +191,7 @@ namespace OneUmbrella.DAL.Repositories
                 "[RESTAURANT_POSTCODE]," +
                 "[RESTAURANT_DESCRIPTION]," +
                 "[RESTAURANT_RATING])" +
+                " OUTPUT INSERTED.RESTAURANT_ID" +
                 " VALUES(" +
                 "@HumanId," +
                 "@RestaurantName," +
@@ -208,15 +209,10 @@ namespace OneUmbrella.DAL.Repositories
                 command.Parameters.AddWithValue("@RestaurantPostCode", restaurant.RestaurantPostCode);
                 command.Parameters.AddWithValue("@RestaurantDescription", restaurant.RestaurantDescription);
                 command.Parameters.AddWithValue("@RestaurantRating", restaurant.RestaurantRating);
-                int rowsAffected = command.ExecuteNonQuery();
-                if (rowsAffected > 0)
-                {
-                    connection.Close();
-                    return true;
-                }
+                int insertedId = (int)command.ExecuteScalar();
+                connection.Close();
+                return insertedId;
             }
-            connection.Close();
-            return false;
         }
         public override bool update(int id, Restaurant restaurant)
         {

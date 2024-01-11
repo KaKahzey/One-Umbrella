@@ -11,7 +11,7 @@ namespace OneUmbrella.BLL.Interfaces
     {
         IEnumerable<TableEntity> getAllForOneGrid(int gridId);
         TableEntity getById(int tableId);
-        bool create(TableEntity table);
+        int create(TableEntity table);
         bool update(int tableId, TableEntity table);
         bool delete(int tableId);
     }

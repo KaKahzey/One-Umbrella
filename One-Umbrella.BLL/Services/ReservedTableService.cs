@@ -22,5 +22,10 @@ namespace OneUmbrella.BLL.Services
         {
             return _reservedTableRepository.getAllForOneRestaurantForOneDay(restaurantId, date);
         }
+
+        public bool create(int reservationId, int tableId)
+        {
+            return _reservedTableRepository.create(reservationId, tableId);
+        }
     }
 }

@@ -10,7 +10,7 @@ namespace OneUmbrella.DAL.Interfaces
     {
         IEnumerable<TEntity>? getAll();
         TEntity? getById(TId id);
-        bool create(TEntity entity);
+        TId create(TEntity entity);
         bool update(TId id, TEntity entity);
         bool delete(TId id);
 

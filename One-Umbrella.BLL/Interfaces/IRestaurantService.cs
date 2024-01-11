@@ -12,7 +12,7 @@ namespace OneUmbrella.BLL.Interfaces
         IEnumerable<Restaurant>? getListRestaurants(int page, int pageSize, string sortBy, bool isDescending, int? humanId, string? city);
         Restaurant? getRestaurantById(int restaurantId);
         IEnumerable<Restaurant>? getRestaurantsByIdentifier(string restaurantName);
-        bool createRestaurant(Restaurant restaurant);
+        int createRestaurant(Restaurant restaurant);
         bool updateRestaurant(int restaurantId, Restaurant restaurant);
         bool deleteRestaurant(int restaurantId);
     }

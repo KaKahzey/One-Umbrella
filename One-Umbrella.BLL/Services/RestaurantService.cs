@@ -30,7 +30,7 @@ namespace OneUmbrella.BLL.Services
         {
             return _restaurantRepository.getByIdentifier(restaurantName);
         }
-        public bool createRestaurant(Restaurant restaurant)
+        public int createRestaurant(Restaurant restaurant)
         {
             return _restaurantRepository.create(restaurant);
         }

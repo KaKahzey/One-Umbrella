@@ -12,12 +12,16 @@ internal class Program
     static void Main(string[] args)
     {
 
-        SqlConnection connection = new SqlConnection("Server=SONIC-11;DataBase=OneUmbrella;User ID=sa; Password=Umbrella4321;Encrypt=False");
-        RestaurantRepository r = new RestaurantRepository(connection);
-        foreach(var e in r.getByPageAndSorted(1, 2, "Restaurant_name", true, null, null))
+        SqlConnection connection = new SqlConnection("Server=PC;DataBase=One-Umbrella;User ID=Kahzey;Password='Umbrella4321';Encrypt=True");
+        GridRepository g = new GridRepository(connection);
+        Grid gre = new Grid
         {
-            Console.WriteLine(e.RestaurantName);
-        }
+            RestaurantId = 5,
+            GridRows = 100,
+            GridColumns = 45,
+            GridName = "pipi"
+        };
+        Console.WriteLine(g.create(gre)); 
 
         //foreach (var e in restaurantRepository.getByPageAndSorted(1, 10, "RESTAURANT_NAME", false, null, null))
         //{

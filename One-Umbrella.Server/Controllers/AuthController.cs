@@ -50,7 +50,7 @@ namespace OneUmbrella.Server.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult Register([FromBody] AuthRegisterDataDTO registerDataDTO)
         {
-            bool user = _userService.register(new Human()
+            int? userId = _userService.register(new Human()
             {
                 HumanLastName = registerDataDTO.HumanLastName,
                 HumanFirstName = registerDataDTO.HumanFirstName,
@@ -60,12 +60,7 @@ namespace OneUmbrella.Server.Controllers
                 HumanType = registerDataDTO.HumanType,
             });
 
-            if (user is false)
-            {
-                return BadRequest();
-            }
-
-            return NoContent();
+            return userId != null ? Ok(userId) : BadRequest();
         }
     }
 }

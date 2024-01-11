@@ -189,7 +189,7 @@ namespace OneUmbrella.DAL.Repositories
             connection.Close();
             return reservation;
         }
-        public override bool create(Reservation reservation)
+        public override int create(Reservation reservation)
         {
             connection.Open();
             using (SqlCommand command = new SqlCommand(
@@ -199,6 +199,7 @@ namespace OneUmbrella.DAL.Repositories
                 "[RESERVATION_TIME_START]," +
                 "[RESERVATION_TIME_END]," +
                 "[RESERVATION_STATUS])" +
+                " OUTPUT INSERTED.RESERVATION_ID" +
                 " VALUES(" +
                 "@RestaurantId," +
                 "@HumanId," +
@@ -212,15 +213,10 @@ namespace OneUmbrella.DAL.Repositories
                 command.Parameters.AddWithValue("@ReservationTimeStart", reservation.ReservationTimeStart);
                 command.Parameters.AddWithValue("@ReservationTimeEnd", reservation.ReservationTimeEnd);
                 command.Parameters.AddWithValue("@ReservationStatus", reservation.ReservationStatus);
-                int rowsAffected = command.ExecuteNonQuery();
-                if (rowsAffected > 0)
-                {
-                    connection.Close();
-                    return true;
-                }
+                int insertedId = (int)command.ExecuteScalar();
+                connection.Close();
+                return insertedId;
             }
-            connection.Close();
-            return false;
         }
         public override bool update(int reservationId, Reservation reservation)
         {

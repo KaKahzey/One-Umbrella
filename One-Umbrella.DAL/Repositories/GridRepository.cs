@@ -98,7 +98,7 @@ namespace OneUmbrella.DAL.Repositories
             connection.Close();
             return grid;
         }
-        public override bool create(Grid grid)
+        public override int create(Grid grid)
         {
             connection.Open();
             using (SqlCommand command = new SqlCommand(
@@ -107,6 +107,7 @@ namespace OneUmbrella.DAL.Repositories
                 "[RESTAURANT_ID]," +
                 "[GRID_ROWS]," +
                 "[GRID_COLUMNS])" +
+                " OUTPUT INSERTED.GRID_ID" +
                 " VALUES(" +
                 "@GridName," +
                 "@RestaurantId," +
@@ -118,15 +119,10 @@ namespace OneUmbrella.DAL.Repositories
                 command.Parameters.AddWithValue("@RestaurantId", grid.RestaurantId);
                 command.Parameters.AddWithValue("@GridRows", grid.GridRows);
                 command.Parameters.AddWithValue("@GridColumns", grid.GridColumns);
-                int rowsAffected = command.ExecuteNonQuery();
-                if (rowsAffected > 0)
-                {
-                    connection.Close();
-                    return true;
-                }
+                int insertedId = (int)command.ExecuteScalar();
+                connection.Close();
+                return insertedId;
             }
-            connection.Close();
-            return false;
         }
         public override bool update(int gridId, Grid grid)
         {

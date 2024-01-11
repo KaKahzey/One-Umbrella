@@ -21,7 +21,7 @@ namespace OneUmbrella.DAL.Repositories
 
         public abstract IEnumerable<TEntity>? getAll();
         public abstract TEntity? getById(TId id);
-        public abstract bool create(TEntity entity);
+        public abstract TId create(TEntity entity);
         public abstract bool update(TId id, TEntity entity);
         public abstract bool delete(TId id);
     }

@@ -11,7 +11,7 @@ namespace OneUmbrella.BLL.Interfaces
     {
         bool checkEmail(string email);
         bool checkPhoneNumber(string phoneNumber);
-        bool register(Human user);
+        int? register(Human user);
         Human? login(string identifier, string password);
         Human? getUser(int userId);
         bool updateUser(int userId, Human user);

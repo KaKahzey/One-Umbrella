@@ -22,7 +22,6 @@ namespace OneUmbrella.Server.DataTransferObjects.Mappers
         {
             return new Grid()
             {
-                
                 RestaurantId = gridDataDTO.RestaurantId,
                 GridName = gridDataDTO.GridName,
                 GridRows = gridDataDTO.GridRows,

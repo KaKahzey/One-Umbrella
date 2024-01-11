@@ -11,7 +11,7 @@ namespace OneUmbrella.BLL.Interfaces
     {
         ImageRestaurant? getFrontImage(int restaurantId);
         IEnumerable<ImageRestaurant> getAllForOneRestaurant(int restaurantId);
-        bool create(ImageRestaurant image);
+        int create(ImageRestaurant image);
         bool delete(int imageId);
     }
 }

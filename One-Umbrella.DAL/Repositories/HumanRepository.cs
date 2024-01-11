@@ -25,6 +25,7 @@ namespace OneUmbrella.DAL.Repositories
                 {
                     if (reader.HasRows)
                     {
+                        connection.Close();
                         return true;
                     }
                 }
@@ -43,6 +44,7 @@ namespace OneUmbrella.DAL.Repositories
                 {
                     if (reader.HasRows)
                     {
+                        connection.Close();
                         return true;
                     }
                 }
@@ -171,7 +173,7 @@ namespace OneUmbrella.DAL.Repositories
             connection.Close();
             return human;
         }
-        public override bool create(Human human)
+        public override int create(Human human)
         {
             connection.Open();
             using (SqlCommand command = new SqlCommand(
@@ -182,6 +184,7 @@ namespace OneUmbrella.DAL.Repositories
                 "[HUMAN_PASSWORD]," +
                 "[HUMAN_PHONE_NUMBER]," +
                 "[HUMAN_TYPE])" +
+                " OUTPUT INSERTED.HUMAN_ID" +
                 " VALUES(" +
                 "@LastName," +
                 "@FirstName," +
@@ -197,15 +200,10 @@ namespace OneUmbrella.DAL.Repositories
                 command.Parameters.AddWithValue("@Password", human.HumanPassword);
                 command.Parameters.AddWithValue("@PhoneNumber", human.HumanPhoneNumber);
                 command.Parameters.AddWithValue("@Type", human.HumanType);
-                int rowsAffected = command.ExecuteNonQuery();
-                if (rowsAffected > 0)
-                {
-                    connection.Close();
-                    return true;
-                }
+                int insertedId = (int)command.ExecuteScalar();
+                connection.Close();
+                return insertedId;
             }
-            connection.Close();
-            return false;
         }
         public override bool update(int id, Human updatedHuman)
         {

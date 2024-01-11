@@ -10,7 +10,7 @@ namespace OneUmbrella.BLL.Interfaces
     public interface IStructuralElementService
     {
         IEnumerable<StructuralElement> getAllForOneGrid(int gridId);
-        bool create(StructuralElement element);
+        int create(StructuralElement element);
         bool update(int elementId, StructuralElement element);
         bool delete(int elementId);
     }

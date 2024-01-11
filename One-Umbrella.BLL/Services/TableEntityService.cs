@@ -26,7 +26,7 @@ namespace OneUmbrella.BLL.Services
         {
             return _tableEntityRepository.getById(tableId);
         }
-        public bool create(TableEntity table)
+        public int create(TableEntity table)
         {
             return _tableEntityRepository.create(table);
         }

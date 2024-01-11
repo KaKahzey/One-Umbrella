@@ -37,7 +37,6 @@ namespace OneUmbrella.DAL.Repositories
                         {
                             ReservationId = reader.GetInt32(reader.GetOrdinal("RESERVATION_ID")),
                             TableId = reader.GetInt32(reader.GetOrdinal("TABLE_ID"))
-
                         };
                         reservedTables.Add(reservedTable);
                     }
@@ -47,5 +46,29 @@ namespace OneUmbrella.DAL.Repositories
             return reservedTables;
         }
         
+        public bool create(int reservationId, int tableId)
+        {
+            connection.Open();
+            using (SqlCommand command = new SqlCommand(
+                "INSERT INTO Favorite(" +
+                "[HUMAN_ID]," +
+                "[RESTAURANT_ID])" +
+                " VALUES(" +
+                "@ReservationId," +
+                "@TableId)"
+                , connection))
+            {
+                command.Parameters.AddWithValue("@ReservationId", reservationId);
+                command.Parameters.AddWithValue("@TableId", tableId);
+                int rowsAffected = command.ExecuteNonQuery();
+                if (rowsAffected > 0)
+                {
+                    connection.Close();
+                    return true;
+                }
+            }
+            connection.Close();
+            return false;
+        }
     }
 }

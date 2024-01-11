@@ -106,7 +106,7 @@ namespace OneUmbrella.DAL.Repositories
             connection.Close();
             return table;
         }
-        public override bool create(TableEntity table)
+        public override int create(TableEntity table)
         {
             connection.Open();
             using (SqlCommand command = new SqlCommand(
@@ -118,6 +118,7 @@ namespace OneUmbrella.DAL.Repositories
                 "[END_COLUMN_INDEX]," +
                 "[SEAT_CAPABILITY]," +
                 "[TABLE_TYPE])" +
+                " OUTPUT INSERTED.TABLE_ID" +
                 " VALUES(" +
                 "@GridId," +
                 "@RowIndex," +
@@ -135,15 +136,10 @@ namespace OneUmbrella.DAL.Repositories
                 command.Parameters.AddWithValue("@EndColumnIndex", table.EndColumnIndex);
                 command.Parameters.AddWithValue("@SeatCapability", table.SeatCapability);
                 command.Parameters.AddWithValue("@TableType", table.TableType);
-                int rowsAffected = command.ExecuteNonQuery();
-                if (rowsAffected > 0)
-                {
-                    connection.Close();
-                    return true;
-                }
+                int insertedId = (int)command.ExecuteScalar();
+                connection.Close();
+                return insertedId;
             }
-            connection.Close();
-            return false;
         }
         public override bool update(int tableId,TableEntity table)
         {

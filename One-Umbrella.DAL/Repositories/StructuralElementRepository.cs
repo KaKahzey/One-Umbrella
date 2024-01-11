@@ -99,7 +99,7 @@ namespace OneUmbrella.DAL.Repositories
             connection.Close();
             return element;
         }
-        public override bool create(StructuralElement element)
+        public override int create(StructuralElement element)
         {
             connection.Open();
             using (SqlCommand command = new SqlCommand(
@@ -108,6 +108,7 @@ namespace OneUmbrella.DAL.Repositories
                 "[ROW_INDEX]," +
                 "[COLUMN_INDEX]," +
                 "[ELEMENT_TYPE])" +
+                " OUTPUT INSERTED.ELEMENT_ID" +
                 " VALUES(" +
                 "@GridId," +
                 "@RowIndex," +
@@ -119,15 +120,10 @@ namespace OneUmbrella.DAL.Repositories
                 command.Parameters.AddWithValue("@RowIndex", element.RowIndex);
                 command.Parameters.AddWithValue("@ColumnIndex", element.ColumnIndex);
                 command.Parameters.AddWithValue("@ElementType", element.ElementType);
-                int rowsAffected = command.ExecuteNonQuery();
-                if (rowsAffected > 0)
-                {
-                    connection.Close();
-                    return true;
-                }
+                int insertedId = (int)command.ExecuteScalar();
+                connection.Close();
+                return insertedId;
             }
-            connection.Close();
-            return false;
         }
         public override bool update(int elementId, StructuralElement element)
         {

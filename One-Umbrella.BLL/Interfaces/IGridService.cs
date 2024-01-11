@@ -11,7 +11,7 @@ namespace OneUmbrella.BLL.Interfaces
     {
         IEnumerable<Grid>? getAllForOneRestaurant(int restaurantId);
         Grid? getById(int gridId);
-        bool create(Grid grid);
+        int create(Grid grid);
         bool delete(int gridId);
     }
 }

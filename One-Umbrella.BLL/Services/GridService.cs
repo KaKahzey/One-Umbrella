@@ -26,7 +26,7 @@ namespace OneUmbrella.BLL.Services
         {
             return _gridRepository.getById(gridId);
         }
-        public bool create(Grid grid)
+        public int create(Grid grid)
         {
             return _gridRepository.create(grid);
         }

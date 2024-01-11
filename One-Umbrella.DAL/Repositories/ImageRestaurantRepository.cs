@@ -139,7 +139,7 @@ namespace OneUmbrella.DAL.Repositories
             connection.Close();
             return image;
         }
-        public override bool create(ImageRestaurant image)
+        public override int create(ImageRestaurant image)
         {
             connection.Open();
             using (SqlCommand command = new SqlCommand(
@@ -147,6 +147,7 @@ namespace OneUmbrella.DAL.Repositories
                 "[RESTAURANT_ID]," +
                 "[IMAGE_DATA]," +
                 "[IS_FRONT])" +
+                " OUTPUT INSERTED.IMAGE_ID" +
                 " VALUES(" +
                 "@RestaurantId," +
                 "@ImageData," +
@@ -158,15 +159,10 @@ namespace OneUmbrella.DAL.Repositories
                 command.Parameters.AddWithValue("@ImageData", image.ImageData);
                 command.Parameters.AddWithValue("@IsFront", image.IsFront);
                 command.Parameters.AddWithValue("@IsMenu", image.IsMenu);
-                int rowsAffected = command.ExecuteNonQuery();
-                if (rowsAffected > 0)
-                {
-                    connection.Close();
-                    return true;
-                }
+                int insertedId = (int)command.ExecuteScalar();
+                connection.Close();
+                return insertedId;
             }
-            connection.Close();
-            return false;
         }
         public override bool update(int imageId, ImageRestaurant image)
         {
