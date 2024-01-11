@@ -9,7 +9,8 @@ namespace OneUmbrella.DAL.Interfaces
 {
     public interface IRatingRepository
     {
-        IEnumerable<Rating> getAllByRestaurant(int id, bool isHuman);
+        IEnumerable<Rating> getAllByRestaurant(int restaurantId, bool isHuman);
+        int countForOneRestaurant(int restaurantId);
         bool create(Rating rating);
         bool update(Rating rating);
         bool delete(int humanId, int restaurantId);

@@ -116,8 +116,13 @@ export class ApiService {
   //#endregion
 
   //#region Restaurants
-  getAllRestaurantsByPagination(page : number, pageSize : number, sortBy : string, isDescending : boolean, id : number, city : string) : Observable<any> {
-    return this._httpClient.get(this._urlGetAllRestaurantsByPagination + page + "&pageSize=" + pageSize + "&sortBy=" + sortBy + "&isDescending=" + isDescending + (id ?? "&humanId=" + id) + (city ?? "&city=" + city))
+  getAllRestaurantsByPagination(page : number, pageSize : number, sortBy : string, isDescending : boolean, id? : number, city? : string) : Observable<any> {
+    const idResult = id !== undefined && id !== null ? "&humanId=" + id : "";
+    const cityResult = city ? "&city=" + city : "";
+
+    const url = this._urlGetAllRestaurantsByPagination + page + "&pageSize=" + pageSize + "&sortBy=" + sortBy + "&isDescending=" + isDescending + idResult + cityResult;
+
+    return this._httpClient.get(url);
   }
 
   getRestaurantsByIdentifier(name : string) : Observable<any> {
@@ -193,4 +198,5 @@ export class ApiService {
   updateRating(humanId : number, rating : Rating) : Observable<any> {
     return this._httpClient.put(this._urlRatingUpdate + humanId, rating, this.header)
   }
+  //#endregion
 }

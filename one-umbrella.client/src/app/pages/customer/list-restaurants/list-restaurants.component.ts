@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ListRestaurant } from '../../../shared/models/list-restaurant/listRestaurant';
+import { ApiService } from '../../../shared/services/api.service';
 
 @Component({
   selector: 'app-list-restaurants',
@@ -9,101 +10,30 @@ import { ListRestaurant } from '../../../shared/models/list-restaurant/listResta
   styleUrl: './list-restaurants.component.scss'
 })
 export class ListRestaurantsComponent {
-  restaurants : ListRestaurant[] = [
-    {
-      id : 1,
-      name : "McDonald",
-      street : "Rue de la Fontaine",
-      city : "Marbais",
-      postCode : "1495",
-      description : "Parfait domaine pour un moment en famille",
-      rating : 4,
-      image : ""
-    },
-    {
-      id : 1,
-      name : "McDonald",
-      street : "Rue de la Fontaine",
-      city : "Marbais",
-      postCode : "1495",
-      description : "Parfait domaine pour un moment en famille",
-      rating : 4,
-      image : ""
-    },
-    {
-      id : 1,
-      name : "McDonald",
-      street : "Rue de la Fontaine",
-      city : "Marbais",
-      postCode : "1495",
-      description : "Parfait domaine pour un moment en famille",
-      rating : 4,
-      image : ""
-    },
-    {
-      id : 1,
-      name : "McDonald",
-      street : "Rue de la Fontaine",
-      city : "Marbais",
-      postCode : "1495",
-      description : "Parfait domaine pour un moment en famille",
-      rating : 4,
-      image : ""
-    },
-    {
-      id : 1,
-      name : "McDonald",
-      street : "Rue de la Fontaine",
-      city : "Marbais",
-      postCode : "1495",
-      description : "Parfait domaine pour un moment en famille",
-      rating : 4,
-      image : ""
-    },
-    {
-      id : 1,
-      name : "McDonald",
-      street : "Rue de la Fontaine",
-      city : "Marbais",
-      postCode : "1495",
-      description : "Parfait domaine pour un moment en famille",
-      rating : 4,
-      image : ""
-    },
-    {
-      id : 1,
-      name : "McDonald",
-      street : "Rue de la Fontaine",
-      city : "Marbais",
-      postCode : "1495",
-      description : "Parfait domaine pour un moment en famille",
-      rating : 4,
-      image : ""
-    },
-    {
-      id : 1,
-      name : "McDonald",
-      street : "Rue de la Fontaine",
-      city : "Marbais",
-      postCode : "1495",
-      description : "Parfait domaine pour un moment en famille",
-      rating : 4,
-      image : ""
-    },
-    {
-      id : 1,
-      name : "McDonald",
-      street : "Rue de la Fontaine",
-      city : "Marbais",
-      postCode : "1495",
-      description : "Parfait domaine pour un moment en famille",
-      rating : 4,
-      image : ""
-    }
-  ]
+  restaurants : ListRestaurant[] = []
+  page : number = 1
+  pageSize : number = 10
 
+  constructor(private _apiService : ApiService) {
+    
+  }
 
-  
+  ngOnInit() : void {
+    this._apiService.getAllRestaurantsByPagination(1, 5, "restaurant_name", false).subscribe({
+      next : (resp) => {
+        this.restaurants = resp
+      },
+      error : (error) => {
+        console.log(error)
+      }
+    })
+  }
 
+  getList(page : number, pageSize : number, sortBy : string, isDescending : boolean) : void {
+
+  }
+  setStars(score : number) : void {
+
+  }
 
 }

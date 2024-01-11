@@ -12,29 +12,29 @@
             Aucun restaurant trouvé
         }
         @else{
-            @for(r of restaurants; track r.id){
+            @for(r of restaurants; track r.restaurantId){
                 <div class="card">
                     <div class="image-area">
-                        {{r.image}}<img src="/assets/img/list/placeholderFront.jpg" alt="façade restaurant" />
+                        {{r.restaurantImage}}<img src="/assets/img/list/placeholderFront.jpg" alt="façade restaurant" />
                     </div>
                     <div class="info">
                         <div class="title-area">
                             <div class="title-card">
-                                {{r.name}}
+                                {{r.restaurantName}}
                             </div>
                             <div></div>
                             <div></div>
                             <div></div>
                             <div></div>
                             <div></div>
-                            <div>(1024)</div>
+                            <div>({{r.restaurantTotalRatings}})</div>
                         </div>
                         <div class="address-area">
-                            <span class="name-category">Adresse :</span> {{r.street}} {{r.city}} {{r.postCode}}
+                            <span class="name-category">Adresse :</span> {{r.restaurantStreet}} {{r.restaurantCity}} {{r.restaurantPostCode}}
                         </div>
                         <div class="description">
                             <span class="name-category">Description :</span> <br />
-                            {{r.description}}
+                            {{r.restaurantDescription}}
                         </div>
                         <div class="ratin-area">
                         </div>

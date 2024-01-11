@@ -4,7 +4,7 @@ namespace OneUmbrella.Server.DataTransferObjects.Mappers
 {
     public static class ListRestaurantMapper
     {
-        public static ListRestaurantDTO ToDTO(Restaurant restaurant, string image)
+        public static ListRestaurantDTO ToDTO(Restaurant restaurant, int totalRatings, string image)
         {
             return new ListRestaurantDTO()
             {
@@ -15,6 +15,7 @@ namespace OneUmbrella.Server.DataTransferObjects.Mappers
                 RestaurantPostCode = restaurant.RestaurantPostCode,
                 RestaurantDescription = restaurant.RestaurantDescription,
                 RestaurantRating = restaurant.RestaurantRating,
+                RestaurantTotalRatings = totalRatings,
                 RestaurantImage = image
             };
         }

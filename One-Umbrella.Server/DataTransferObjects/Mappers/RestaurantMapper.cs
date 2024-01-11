@@ -15,6 +15,7 @@ namespace OneUmbrella.Server.DataTransferObjects.Mappers
                 RestaurantCity = restaurant.RestaurantCity,
                 RestaurantPostCode = restaurant.RestaurantPostCode,
                 RestaurantDescription = restaurant.RestaurantDescription,
+                RestaurantRating = restaurant.RestaurantRating,
                 RestaurantImages = images
             };
         }

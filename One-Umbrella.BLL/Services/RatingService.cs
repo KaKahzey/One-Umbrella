@@ -22,6 +22,10 @@ namespace OneUmbrella.BLL.Services
         {
             return _ratingRepository.getAllByRestaurant(id, isHuman);
         }
+        public int countForOneRestaurant(int restaurantId)
+        {
+            return _ratingRepository.countForOneRestaurant(restaurantId);
+        }
         public bool create(Rating rating)
         {
             return _ratingRepository.create(rating);

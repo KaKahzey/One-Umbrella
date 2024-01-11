@@ -17,7 +17,7 @@ namespace OneUmbrella.DAL.Repositories
         }
         protected SqlConnection connection;
 
-        public IEnumerable<Rating> getAllByRestaurant(int id, bool isHuman)
+        public IEnumerable<Rating> getAllByRestaurant(int restaurantId, bool isHuman)
         {
             List<Rating> ratings = new List<Rating>();
             SqlCommand command = null;
@@ -26,14 +26,14 @@ namespace OneUmbrella.DAL.Repositories
             {
                 command = new SqlCommand(
                 "Select * FROM Rating Where HUMAN_ID = @HumanId", connection);
-                command.Parameters.AddWithValue("@HumanId", id);
+                command.Parameters.AddWithValue("@HumanId", restaurantId);
 
             }
             else
             {
                 command = new SqlCommand(
                 "Select * FROM Rating Where RESTAURANT_ID = @RestaurantId", connection);
-                command.Parameters.AddWithValue("@RestaurantId", id);
+                command.Parameters.AddWithValue("@RestaurantId", restaurantId);
 
             }
             using (SqlDataReader reader = command.ExecuteReader())
@@ -54,6 +54,31 @@ namespace OneUmbrella.DAL.Repositories
             connection.Close();
             return ratings;
         }
+
+        public int countForOneRestaurant(int restaurantId)
+        {
+            int count = 0;
+            int i = 0;
+            connection.Open();
+            using(SqlCommand command = new SqlCommand(
+                "Select * FROM Rating Where RESTAURANT_ID = @RestaurantId"
+                , connection))
+            {
+                command.Parameters.AddWithValue("@RestaurantId", restaurantId);
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int score = reader.GetByte(reader.GetOrdinal("SCORE"));
+                        count += score;
+                        i++;
+                    }
+                }
+            }
+            connection.Close();
+            return i == 0 ? 0 : count / i;
+        }
+
         public bool create(Rating rating)
         {
             connection.Open();

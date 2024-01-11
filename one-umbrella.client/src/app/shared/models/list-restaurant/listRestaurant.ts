@@ -1,10 +1,11 @@
 export interface ListRestaurant{
-    id : number,
-    name : string,
-    street : string,
-    city : string,
-    postCode : string,
-    description : string,
-    rating : number,
-    image : string
+    restaurantId : number,
+    restaurantName : string,
+    restaurantStreet : string,
+    restaurantCity : string,
+    restaurantPostCode : string,
+    restaurantDescription : string,
+    restaurantRating : number,
+    restaurantTotalRatings : number,
+    restaurantImage : string
 }
