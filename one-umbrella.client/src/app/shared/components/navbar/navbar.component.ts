@@ -9,10 +9,12 @@ import { InputTextModule } from 'primeng/inputtext';
 import { RegisterData } from '../../models/account/registerData';
 import { ButtonModule } from 'primeng/button';
 import { LoginData } from '../../models/account/loginData';
+import { SelectButtonModule } from 'primeng/selectbutton';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink, DialogModule, PasswordModule, FormsModule, ReactiveFormsModule, InputTextModule, ButtonModule],
+  imports: [RouterLink, DialogModule, PasswordModule, FormsModule, ReactiveFormsModule, InputTextModule, ButtonModule, SelectButtonModule, OverlayPanelModule],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',
   providers: []
@@ -24,7 +26,10 @@ export class NavbarComponent {
   visible : boolean = false
   connectionChoice : string = ""
   loading: boolean = false
-
+  stateOptions: any[] = [
+    { label: 'Client', value: 'Customer' },
+    { label: 'Propriétaire', value: 'Owner' }
+]
   value : string = ""
   loginForm : FormGroup
   registerForm : FormGroup
@@ -48,6 +53,11 @@ export class NavbarComponent {
     })
   }
 
+  ngOnInit() : void {
+    const userConnected = this._authService.getType()
+    userConnected ? this.userType = userConnected : this.userType = ""
+  }
+
   login() : void {
     if(this.loginForm.valid){
       const user : LoginData = {
@@ -57,6 +67,8 @@ export class NavbarComponent {
       this._apiService.login(user).subscribe({
         next : (resp) => {
           console.log(resp)
+          this._authService.setUser(resp.user.humanId, resp.user.humanType, resp.token)
+          this.userType = resp.user.humanType
           this.visible = false
         },
         error : (error) => console.log(error)
@@ -84,6 +96,11 @@ export class NavbarComponent {
     }
   }
 
+  logout() : void {
+    this._authService.logout()
+    this.userType = ""
+  }
+
   showDialog(choice : string) :void {
     this.connectionChoice = choice
     this.visible = true;
@@ -95,4 +112,5 @@ export class NavbarComponent {
         this.loading = false
     }, 2000);
   }
+  
 }

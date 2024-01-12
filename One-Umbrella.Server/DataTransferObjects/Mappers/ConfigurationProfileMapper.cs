@@ -14,7 +14,8 @@ namespace OneUmbrella.Server.DataTransferObjects.Mappers
                 HumanMail = user.HumanMail,
                 HumanPassword = user.HumanPassword,
                 HumanPhoneNumber = user.HumanPhoneNumber,
-                HumanDateInscription = user.HumanDateInscription
+                HumanDateInscription = user.HumanDateInscription,
+                HumanType = user.HumanType
             };
         }
         public static Human ToEntity(this ConfigurationProfileDataDTO user)

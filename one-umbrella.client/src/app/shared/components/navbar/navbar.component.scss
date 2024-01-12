@@ -57,7 +57,7 @@
 }
 .connection-choice {
   cursor: pointer;
-  @apply space-x-3;
+  @apply space-x-6;
 }
 .account-area img {
     cursor :  pointer;
@@ -110,4 +110,19 @@
 }
 h2 {
   text-align: center;
+  font-size: 2.5em;
+  font-weight: bold;
+  margin-bottom: 3%;
+}
+#humanPhoneNumber{
+  margin-bottom: 2vh;
+}
+.logout {
+  font-size: 2em;
+}
+.logout:hover {
+  cursor: pointer;
+}
+form a {
+  
 }
