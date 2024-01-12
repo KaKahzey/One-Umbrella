@@ -22,13 +22,19 @@
 .bar-area img:hover{
   cursor: pointer;
 }
-input {
+.left input {
   border: none;
   outline: none;
   background-color: transparent;
   width :  100%;
 }
-input::placeholder {
+.bar-area input {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  width :  100%;
+}
+.left input::placeholder {
     @apply text-forest-300;
 }
 .main-title {
@@ -48,6 +54,10 @@ input::placeholder {
 }
 .in-account{
     margin-right :  3%;
+}
+.connection-choice {
+  cursor: pointer;
+  @apply space-x-3;
 }
 .account-area img {
     cursor :  pointer;
@@ -81,4 +91,23 @@ input::placeholder {
   text-overflow: ellipsis; 
   width : 90%;
   padding-left : 5%;
+}
+.connection-window{
+  width: 50vw;
+  font-size: 2em;
+  text-align: center;  
+  @apply space-y-5;
+}
+.connection-window form {
+  @apply space-y-8;
+} 
+.connection-window input, p-password {
+  text-align: center;
+  width : 70%;
+}
+.connection-window a {
+  cursor: pointer;
+}
+h2 {
+  text-align: center;
 }

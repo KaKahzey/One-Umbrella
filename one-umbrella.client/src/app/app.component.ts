@@ -17,4 +17,6 @@ import { ReservationComponent } from './shared/components/reservation/reservatio
 export class AppComponent {
   title = 'One-Umbrella';
 
+  constructor() {}
+
 }

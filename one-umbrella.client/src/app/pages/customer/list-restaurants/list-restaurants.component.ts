@@ -13,6 +13,7 @@ export class ListRestaurantsComponent {
   restaurants : ListRestaurant[] = []
   page : number = 1
   pageSize : number = 10
+  pageIndex : number = 1
 
   constructor(private _apiService : ApiService) {
     

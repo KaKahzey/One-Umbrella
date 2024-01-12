@@ -24,6 +24,7 @@
     "autoprefixer": "^10.4.16",
     "jest-editor-support": "*",
     "postcss": "^8.4.32",
+    "primeng": "^17.3.2",
     "run-script-os": "*",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
