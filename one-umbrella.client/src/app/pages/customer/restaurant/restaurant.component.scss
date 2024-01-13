@@ -1,0 +1,51 @@
+.title {
+    font-size: 2.5em;
+    font-weight: bold;
+    text-align: center;
+    @apply border-b-2;
+}
+.carousel {
+    width : 100%;
+    justify-content: center;
+    @apply flex;
+}
+p-carousel {
+    width:80%;
+    align-items:center;
+}
+.carousel-restaurant {
+    text-align: center;
+    @apply justify-between;
+}
+:host ::ng-deep {
+    .product-item {
+        .product-item-content {
+            border-radius: 3px;
+            margin: 1rem;
+            padding: 2em ;
+        }
+    
+        .product-image {
+            width: 22vw;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+            object-fit: cover;
+            @apply mx-10;
+        }
+    }
+}
+.grid-area {
+    font-size: 2em;
+}
+.grid {
+    display: grid;
+    width: fit-content;
+}
+.grid-row {
+    text-align: center;
+    display: flex;
+}
+.grid-cell {
+    width : 2vw;
+    height : 2vw;
+    @apply border;
+}

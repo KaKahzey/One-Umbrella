@@ -1,0 +1,97 @@
+.list-main {
+    font-size: 1em;
+    border-radius: 10px;
+    height: 100%;
+    padding : 2%;
+    overflow-y: auto;
+    background-color:  white;
+    
+}
+.list-top{
+    @apply flex justify-between items-center;
+}
+.list-title {
+    font-size: 1.9em;
+    font-weight: bold;
+}
+.list{
+    padding-top : 5vh;
+    column-gap : 2%;
+    @apply grid grid-cols-1;
+}
+.card{
+    width: 100%;
+    height : 30vh;
+    padding : 2%;
+    grid-template-columns : 35% 65%;
+    border-radius: 10px;
+    margin-bottom: 3%;
+    border-color: black;
+    @apply grid border bg-forest-100;
+}
+.card:hover {
+    cursor: pointer;
+    border-width:4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.image-area{
+    width : 100%;
+    min-width : 100%;
+    max-width : 100%;
+    height : 100%;
+    min-height : 100%;
+    max-height : 100%;
+}
+.image-area img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+.info {
+    padding-left : 4%;
+    row-gap : 40%;
+    @apply grid-cols-2 grid-rows-3;
+}
+.main-info-area {
+
+}
+.title-area {
+    font-size: 1.3em;
+    @apply flex justify-between;
+}
+.title-card {
+    max-width: 60%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.name-category {
+    font-weight: bold;
+}
+.connection-window {
+    width: 50vw;
+  font-size: 2em;
+  
+}
+.create-form {
+    text-align: center;
+    width : 100%;
+    @apply space-y-5 grid col-span-1;
+}
+h2 {
+    text-align: center;
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 3%;
+}
+input {
+    text-align: center;
+}
+.text-area {
+    text-align: justify;
+    margin-bottom: 2vh;
+}
+#restaurantPostCode{
+    width : 30%;
+}

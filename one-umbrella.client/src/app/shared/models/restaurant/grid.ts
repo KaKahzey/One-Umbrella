@@ -2,11 +2,11 @@ import { StructuralElment } from "./structuralElement";
 import { Table } from "./table";
 
 export interface Grid {
-    id : number,
+    gridId : number,
     restaurantId : number,
-    name : string,
-    rows : number,
-    columns : number,
-    tables : Table[],
-    elements : StructuralElment[]
+    gridName : string,
+    gridRows : number,
+    gridColumns : number,
+    gridTables : Table[],
+    gridElements : StructuralElment[]
 }

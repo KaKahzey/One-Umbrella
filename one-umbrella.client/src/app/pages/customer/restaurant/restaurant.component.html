@@ -1,1 +1,76 @@
-{{restaurantId}}
+<div class="restaurant">
+    <div class="banner">
+        
+    </div>
+    <div class="title">
+        {{restaurant.restaurantName}}
+    </div>
+    <div class="info">
+        <div>
+            {{restaurant.restaurantStreet}} {{restaurant.restaurantCity}} {{restaurant.restaurantPostCode}}
+        </div>
+        <div>
+            {{restaurant.restaurantDescription}}
+        </div>
+    </div>
+    <div class="carousel">
+        @if (restaurant.images != undefined) {
+            <p-carousel [value]="restaurant.images" [numVisible]="2" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions">
+                <ng-template class="carousel-restaurant" pTemplate="item">
+                    <div class="product-item">
+                        <img class="product-image" src="/assets/img/list/placeholderFront.jpg" alt="image menu" />
+                    </div>
+                </ng-template>
+            </p-carousel>
+        }
+    </div>
+    @if(hasMenu){
+        <p-carousel [value]="restaurant.images" [numVisible]="2" [numScroll]="1" [responsiveOptions]="responsiveOptions">
+            <ng-template pTemplate="header">
+                <p>Menu</p>
+            </ng-template>
+            <ng-template let-product pTemplate="item">
+                <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
+                    <div class="mb-3">
+                        <img src="/assets/img/list/placeholderFront.jpg" alt="image menu" class="w-6 shadow-2" />
+                    </div>
+                    <div>
+                    </div>
+                </div>
+            </ng-template>
+        </p-carousel>
+    }
+    @if(restaurant == null){
+
+        {{restaurantId}}
+    }
+    <p-tabView>
+        @for(g of grids; track g.gridId){
+
+        }
+        @if(grids.length < 3){
+            <p-tabPanel header="+">
+                <form [formGroup]="sizeForm" (ngSubmit)="setNewGridSize()">
+                    <input pInputText pKeyFilter="int" placeholder="Nombre de rangées" formControlName="rows" /><input pInputText pKeyFilter="int" placeholder="Nombre de colonnes" formControlName="columns" />
+                    <p-button label="Confirmer" [loading]="loading" type="submit"></p-button>
+                </form>
+                @if(newGrid != null){
+                    <div class="play-zone">
+                        <div class="grid">
+                            @for (row of newArrayRowsSubject | async ; track $index) {
+                                <div class="grid-row">
+                                    @for (column of newArrayColumnsSubject | async; track $index) {
+                                        <div class="grid-cell">
+                                            <span>{{ row }} - {{ column }}</span>
+                                        </div>
+                                    }
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+            </p-tabPanel>
+        }
+    </p-tabView>
+</div>
+    

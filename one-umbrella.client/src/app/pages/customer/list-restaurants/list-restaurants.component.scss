@@ -4,7 +4,7 @@
     height: 100%;
     padding : 2%;
     overflow-y: auto;
-    @apply bg-forest-0;
+    background-color:  white;
     
 }
 .list-top{
@@ -12,6 +12,7 @@
 }
 .list-title {
     font-size: 1.9em;
+    font-weight: bold;
 }
 .list{
     padding-top : 5vh;
@@ -27,6 +28,11 @@
     margin-bottom: 3%;
     border-color: black;
     @apply grid border bg-forest-100;
+}
+.card:hover {
+    cursor: pointer;
+    border-width:4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 .image-area{
     width : 100%;

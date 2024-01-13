@@ -24,6 +24,7 @@ namespace OneUmbrella.Server.DataTransferObjects.Mappers
             return new Restaurant()
             {
                 RestaurantName = restaurant.RestaurantName,
+                HumanId = restaurant.OwnerId,
                 RestaurantStreet = restaurant.RestaurantStreet,
                 RestaurantCity = restaurant.RestaurantCity,
                 RestaurantPostCode = restaurant.RestaurantPostCode,

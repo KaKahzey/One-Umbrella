@@ -78,5 +78,31 @@ namespace OneUmbrella.Server.Controllers
             return Ok(convertedRestaurants);
         }
 
+        [HttpGet("{id}")]
+        [AllowAnonymous]
+        [Produces("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<ListRestaurantDTO>))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult GetAllForOneOwner(int id)
+        {
+            List<ListRestaurantDTO> restaurantsDTO = new List<ListRestaurantDTO>();
+            IEnumerable<Restaurant>? restaurants = _restaurantService.getAllForOneOwner(id);
+            foreach (Restaurant r in restaurants)
+            {
+                if (_imageService.getFrontImage(r.RestaurantId) != null)
+                {
+                    string image = _imageService.getFrontImage(r.RestaurantId).ToDTO().ImageData;
+                    restaurantsDTO.Add(ListRestaurantMapper.ToDTO(r, _ratingService.getAllByRestaurant(r.RestaurantId, false).Count(), image));
+                }
+                else
+                {
+                    restaurantsDTO.Add(ListRestaurantMapper.ToDTO(r, _ratingService.getAllByRestaurant(r.RestaurantId, false).Count(), "")); ;
+                }
+                r.RestaurantRating = _ratingService.countForOneRestaurant(r.RestaurantId);
+            }
+            IEnumerable<ListRestaurantDTO> convertedRestaurants = restaurantsDTO;
+            return Ok(convertedRestaurants);
+        }
+
     }
 }

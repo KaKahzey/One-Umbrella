@@ -3,7 +3,7 @@
     height:10vh;
     font-size :  2em;
     position: fixed;
-    @apply flex bg-forest-500 text-forest-200 justify-between;
+    @apply flex bg-emerald-700 text-forest-200 justify-between;
 }
 .search-area {
   width: 35%;
@@ -72,7 +72,7 @@
   border-top-color: white; 
   border-top-width: 1px;
   overflow-y: auto;
-  @apply bg-forest-500 text-forest-200;
+  @apply bg-emerald-700 text-forest-200;
 }
 .left input {
   padding-left: 1%;
@@ -95,7 +95,6 @@
 .connection-window{
   width: 50vw;
   font-size: 2em;
-  text-align: center;  
   @apply space-y-5;
 }
 .connection-window form {

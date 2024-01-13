@@ -30,6 +30,14 @@ namespace OneUmbrella.BLL.Services
         {
             return _restaurantRepository.getByIdentifier(restaurantName);
         }
+        public IEnumerable<Restaurant>? getAllForOneOwner(int ownerId)
+        {
+            return _restaurantRepository.getAllForOneOwner(ownerId);
+        }
+        public int getTotalRestaurants()
+        {
+            return _restaurantRepository.getTotalRestaurants();
+        }
         public int createRestaurant(Restaurant restaurant)
         {
             return _restaurantRepository.create(restaurant);

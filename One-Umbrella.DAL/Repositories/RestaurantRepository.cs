@@ -101,6 +101,42 @@ namespace OneUmbrella.DAL.Repositories
                 }
             }
         }
+
+        public IEnumerable<Restaurant>? getAllForOneOwner(int ownerId)
+        {
+            List<Restaurant> restaurants = new List<Restaurant>();
+            connection.Open();
+            using (SqlCommand command = new SqlCommand(
+                "SELECT " +
+                "*" +
+                " FROM Restaurant" +
+                " WHERE [HUMAN_ID] = @OwnerId "
+                , connection))
+            {
+                command.Parameters.AddWithValue("@OwnerId", ownerId);
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Restaurant restaurant = new Restaurant
+                        {
+                            RestaurantId = reader.GetInt32(reader.GetOrdinal("RESTAURANT_ID")),
+                            HumanId = reader.GetInt32(reader.GetOrdinal("HUMAN_ID")),
+                            RestaurantName = reader.GetString(reader.GetOrdinal("RESTAURANT_NAME")),
+                            RestaurantStreet = reader.GetString(reader.GetOrdinal("RESTAURANT_STREET")),
+                            RestaurantCity = reader.GetString(reader.GetOrdinal("RESTAURANT_CITY")),
+                            RestaurantPostCode = reader.GetString(reader.GetOrdinal("RESTAURANT_POSTCODE")),
+                            RestaurantDescription = reader.GetString(reader.GetOrdinal("RESTAURANT_DESCRIPTION")),
+                            RestaurantRating = reader.GetByte(reader.GetOrdinal("RESTAURANT_RATING"))
+                        };
+                        restaurants.Add(restaurant);
+                    }
+                }
+            }
+            connection.Close();
+            return restaurants;
+        }
+
         public int getTotalRestaurants()
         {
             int total = 0;

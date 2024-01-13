@@ -19,8 +19,9 @@ export class AuthService {
     return localStorage.getItem('token')
   }
   
-  getUser() : string | null {
-    return localStorage.getItem('userId')
+  getUser() : number | null {
+    const userString = localStorage.getItem('userId')
+    return userString ? parseInt(userString) : null
   }
   
   getType() : string | null {

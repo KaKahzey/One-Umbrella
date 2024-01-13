@@ -1,13 +1,13 @@
 import { onlyBlob } from "../shared/onlyBlob";
 
 export interface Restaurant {
-    RestaurantId : number,
-    OwnerId : number,
-    RestaurantName : string,
-    RestaurantStreet : string,
-    RestaurantCity : string,
-    RestaurantPostCode : string,
-    RestaurantRating : number,
-    RestaurantDescription : string,
+    restaurantId : number,
+    ownerId : number,
+    restaurantName : string,
+    restaurantStreet : string,
+    restaurantCity : string,
+    restaurantPostCode : string,
+    restaurantRating : number,
+    restaurantDescription : string,
     images : onlyBlob[]
 }

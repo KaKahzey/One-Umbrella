@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OneUmbrella.Server")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1f966c57a48a0869f3981561648061f7b1ee5c11")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cb44f320e6bd92c5ebc012f8278f7f719f8b92f0")]
 [assembly: System.Reflection.AssemblyProductAttribute("OneUmbrella.Server")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OneUmbrella.Server")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -8,6 +8,7 @@ import { UserInfoData } from '../models/account/userInfoData';
 import { Restaurant } from '../models/restaurant/restaurant';
 import { Grid } from '../models/restaurant/grid';
 import { Rating } from '../models/rating/rating';
+import { RestaurantData } from '../models/restaurant/restaurantData';
 
 @Injectable({
   providedIn: 'root'
@@ -48,8 +49,10 @@ export class ApiService {
 
   //#region Restaurants
   private _urlGetAllRestaurantsByPagination : string = "https://localhost:7159/api/ListRestaurant?page="
+  private _urlGetAllRestaurantsForOneOwner : string = "https://localhost:7159/api/ListRestaurant/"
   private _urlGetRestaurantsByIdentifier : string = "https://localhost:7159/api/ListRestaurant/Identifier?name="
   private _urlGetRestaurantById : string = "https://localhost:7159/api/Restaurant/"
+  
   //#endregion
 
   //#region Favorites
@@ -129,6 +132,10 @@ export class ApiService {
     return this._httpClient.get(this._urlGetRestaurantsByIdentifier + name)
   }
 
+  getAllForOneOwner(ownerId : number) : Observable<any> {
+    return this._httpClient.get(this._urlGetAllRestaurantsForOneOwner + ownerId, this.header)
+  }
+
   getRestaurantById(id : number) : Observable<any> {
     return this._httpClient.get(this._urlGetRestaurantById + id)
   }
@@ -141,7 +148,7 @@ export class ApiService {
     return this._httpClient.get(this._urlGetRestaurantById + id, this.header)
   }
 
-  createRestaurant(restaurant : Restaurant) : Observable<any> {
+  createRestaurant(restaurant : RestaurantData) : Observable<any> {
     return this._httpClient.post(this._urlGetRestaurantById, restaurant, this.header)
   }
   //#endregion

@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { ListRestaurant } from '../../../shared/models/list-restaurant/listRestaurant';
 import { ApiService } from '../../../shared/services/api.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-list-restaurants',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './list-restaurants.component.html',
   styleUrl: './list-restaurants.component.scss'
 })

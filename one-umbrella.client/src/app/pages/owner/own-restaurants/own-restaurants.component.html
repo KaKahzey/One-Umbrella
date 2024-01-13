@@ -1,1 +1,67 @@
-<p>own-restaurants works!</p>
+<div class="list-main">
+    <div class="list-top">
+        <span class="list-title">
+            Mes restaurants
+        </span>
+        <span>
+            <p-button label="Créer" (click)="showDialog()"></p-button>
+        </span>
+        <!-- <span class="list-tri">
+            <label>Trier par : </label>
+            <select id="dropdown" name="dropdown">
+                <option value="option1">Nom</option>
+                <option value="option2">Score</option>
+                <option value="option3">Nombre de votes</option>
+            </select>
+        </span> -->
+    </div>
+    <div class="list">
+        @if(restaurants.length < 1){
+            Aucun restaurant trouvé
+        }
+        @else{
+            @for(r of restaurants; track r.restaurantId){
+                <div class="card">
+                    <div class="image-area">
+                        {{r.restaurantImage}}<img src="/assets/img/list/placeholderFront.jpg" alt="façade restaurant" />
+                    </div>
+                    <div class="info">
+                        <div class="title-area">
+                            <div class="title-card">
+                                {{r.restaurantName}}
+                            </div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div>({{r.restaurantTotalRatings}})</div>
+                        </div>
+                        <div class="address-area">
+                            <span class="name-category">Adresse :</span> {{r.restaurantStreet}} {{r.restaurantCity}} {{r.restaurantPostCode}}
+                        </div>
+                        <div class="description">
+                            <span class="name-category">Description :</span> <br />
+                            {{r.restaurantDescription}}
+                        </div>
+                        <div class="ratin-area">
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
+<p-dialog [(visible)]="visible" [modal]="true"  [draggable]="false" [resizable]="false">
+    <div class="connection-window">
+        <h2>Création restaurant</h2>
+        <form [formGroup]="createForm" class="create-form">
+                <input pInputText id="restaurantName"  formControlName="restaurantName" placeholder="Nom du restaurant" />
+                <input pInputText id="restaurantStreet" formControlName="restaurantStreet" placeholder="Rue" />
+                <input pInputText id="restaurantCity" formControlName="restaurantCity" placeholder="Commune" />
+                <input pInputText id="restaurantPostCode" formControlName="restaurantPostCode" placeholder="Code postal" />
+                <textarea class="text-area" rows="5" cols="30" pInputTextarea formControlName="restaurantDescription"></textarea>
+            <p-button label="Créer restaurant" [loading]="loading" (onClick)=" createRestaurant(); load()"></p-button>
+        </form>
+    </div>
+</p-dialog>

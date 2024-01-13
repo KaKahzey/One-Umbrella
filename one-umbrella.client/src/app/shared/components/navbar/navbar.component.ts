@@ -7,7 +7,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { ApiService } from '../../services/api.service';
 import { InputTextModule } from 'primeng/inputtext';
 import { RegisterData } from '../../models/account/registerData';
-import { ButtonModule } from 'primeng/button';
+import { Button, ButtonModule } from 'primeng/button';
 import { LoginData } from '../../models/account/loginData';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
@@ -105,6 +105,7 @@ export class NavbarComponent {
     this.connectionChoice = choice
     this.visible = true;
   }
+  
   load() {
     this.loading = true;
 

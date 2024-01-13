@@ -11,6 +11,7 @@ namespace OneUmbrella.DAL.Interfaces
     {
         IEnumerable<Restaurant>? getByIdentifier(string identifier);
         IEnumerable<Restaurant>? getByPageAndSorted(int page, int pageSize, string sortBy, bool isDescending, int? humanId, string? city);
+        IEnumerable<Restaurant>? getAllForOneOwner(int ownerId);
         int getTotalRestaurants();
     }
 }

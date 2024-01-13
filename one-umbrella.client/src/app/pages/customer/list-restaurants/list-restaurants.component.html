@@ -4,12 +4,12 @@
             Liste des restaurants
         </span>
         <span class="list-tri">
-            <label>Trier par : </label>
+            <!-- <label>Trier par : </label>
             <select id="dropdown" name="dropdown">
                 <option value="option1">Nom</option>
                 <option value="option2">Score</option>
                 <option value="option3">Nombre de votes</option>
-            </select>
+            </select> -->
         </span>
     </div>
     <div class="list">
@@ -18,33 +18,35 @@
         }
         @else{
             @for(r of restaurants; track r.restaurantId){
-                <div class="card">
-                    <div class="image-area">
-                        {{r.restaurantImage}}<img src="/assets/img/list/placeholderFront.jpg" alt="façade restaurant" />
-                    </div>
-                    <div class="info">
-                        <div class="title-area">
-                            <div class="title-card">
-                                {{r.restaurantName}}
+                <a [routerLink]="['/restaurant', r.restaurantId]">
+                    <div class="card">
+                        <div class="image-area" >
+                            {{r.restaurantImage}}<img src="/assets/img/list/placeholderFront.jpg" alt="façade restaurant" />
+                        </div>
+                        <div class="info">
+                            <div class="title-area">
+                                <div class="title-card">
+                                    {{r.restaurantName}}
+                                </div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div>({{r.restaurantTotalRatings}})</div>
                             </div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div>({{r.restaurantTotalRatings}})</div>
-                        </div>
-                        <div class="address-area">
-                            <span class="name-category">Adresse :</span> {{r.restaurantStreet}} {{r.restaurantCity}} {{r.restaurantPostCode}}
-                        </div>
-                        <div class="description">
-                            <span class="name-category">Description :</span> <br />
-                            {{r.restaurantDescription}}
-                        </div>
-                        <div class="ratin-area">
+                            <div class="address-area">
+                                <span class="name-category">Adresse :</span> {{r.restaurantStreet}} {{r.restaurantCity}} {{r.restaurantPostCode}}
+                            </div>
+                            <div class="description">
+                                <span class="name-category">Description :</span> <br />
+                                {{r.restaurantDescription}}
+                            </div>
+                            <div class="ratin-area">
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
             }
         }
     </div>
