@@ -1,8 +1,8 @@
-export interface StructuralElment {
+export interface StructuralElement {
     id : number,
     rowIndex : number,
     columnIndex : number,
-    type : number
+    elementType : number
     /* 
      * 1 pour mur
      * 2 pour fenêtre

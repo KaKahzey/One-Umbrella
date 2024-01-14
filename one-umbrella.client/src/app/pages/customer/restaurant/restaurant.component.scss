@@ -33,19 +33,51 @@ p-carousel {
         }
     }
 }
-.grid-area {
+.button-grid-choice-area {
+    @apply flex justify-between;
+}
+.grid-window {
+    width : 90vw;
+    height : 80vh;
+    min-height : 80vh;
     font-size: 2em;
 }
+.grid-size-form {
+    @apply space-x-3 space-y-3;
+}
+.grid-area {
+    
+}
+.play-zone {
+    height : 97%;
+    @apply flex;
+}
 .grid {
-    display: grid;
-    width: fit-content;
+    width : 80%;
+    height : 100%
 }
 .grid-row {
     text-align: center;
     display: flex;
 }
 .grid-cell {
-    width : 2vw;
-    height : 2vw;
+    width : 1.8vw;
+    height : 1.8vw;
+    font-size: 0.3em;
+    margin: 0;
+    padding: 0;
+    @apply border;
+}
+.grid-cell img {
+    width : 100%;
+    height : 100%;
+}
+.control-panel {
+    width : 20%;
+    height : 100%;
+    padding-left: 2vw;
+    @apply border ;
+}
+.active {
     @apply border;
 }

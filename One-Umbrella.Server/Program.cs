@@ -67,8 +67,8 @@ namespace OneUmbrella.Server
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
-                    Title = "Event Manager API",
-                    Description = "Web API pour créer et rejoindre des evenement",
+                    Title = "One Umbrella API",
+                    Description = "Transfer all data between back and front",
                     License = new OpenApiLicense
                     {
                         Name = "MIT License",

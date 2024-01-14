@@ -5,7 +5,7 @@ export interface Table {
     columnIndex : number,
     endRowIndex : number,
     endColumnIndex : number,
-    seatCapability : string,
+    seatCapability : number,
     tableType : number
     //1 square, 2 rectangle, 3 round
 }

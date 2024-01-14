@@ -9,6 +9,7 @@ import { Restaurant } from '../models/restaurant/restaurant';
 import { Grid } from '../models/restaurant/grid';
 import { Rating } from '../models/rating/rating';
 import { RestaurantData } from '../models/restaurant/restaurantData';
+import { GridData } from '../models/restaurant/gridData';
 
 @Injectable({
   providedIn: 'root'
@@ -172,7 +173,7 @@ export class ApiService {
     return this._httpClient.get(this._urlGetAllGridsForOneRestaurant + id, this.header)
   }
 
-  createGrid(grid : Grid) : Observable<any> {
+  createGrid(grid : GridData) : Observable<any> {
     return this._httpClient.post(this._urlCreateGrid, grid)
   }
 

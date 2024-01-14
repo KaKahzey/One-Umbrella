@@ -1,0 +1,42 @@
+﻿** Highlights
+     Tables that will be recreated with data migrated
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [dbo].[Favorite] (Table)
+       [dbo].[Grid] (Table)
+       [dbo].[Human] (Table)
+       [dbo].[ImageRestaurant] (Table)
+       [dbo].[Rating] (Table)
+       [dbo].[Reservation] (Table)
+       [dbo].[ReservedTable] (Table)
+       [dbo].[Restaurant] (Table)
+       [dbo].[StructuralElement] (Table)
+       [dbo].[TableEntity] (Table)
+       Default Constraint: unnamed constraint on [dbo].[Human] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[Reservation] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[Restaurant] (Default Constraint)
+       [dbo].[FK_FAVORITE_USER] (Foreign Key)
+       [dbo].[FK_FAVORITE_RESTAURANT] (Foreign Key)
+       [dbo].[FK_GRID_RESTAURANT] (Foreign Key)
+       [dbo].[FK_IMAGE_RESTAURANT] (Foreign Key)
+       [dbo].[RATING_HUMAN] (Foreign Key)
+       [dbo].[RATING_RESTAURANT] (Foreign Key)
+       [dbo].[FK_RESERVATION_RESTAURANT] (Foreign Key)
+       [dbo].[FK_RESERVATION_USER] (Foreign Key)
+       [dbo].[FK_RESERVEDTABLE_RESERVATION] (Foreign Key)
+       [dbo].[FK_RESERVEDTABLE_TABLE] (Foreign Key)
+       [dbo].[FK_RESTAURANT_OWNER] (Foreign Key)
+       [dbo].[FK_ELEMENT_GRID] (Foreign Key)
+       [dbo].[FK_TABLE_GRID] (Foreign Key)
+       Check Constraint: unnamed constraint on [dbo].[Human] (Check Constraint)
+       [dbo].[ENSURE_BIT] (Check Constraint)
+
+** Supporting actions

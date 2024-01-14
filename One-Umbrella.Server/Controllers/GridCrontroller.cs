@@ -49,6 +49,16 @@ namespace OneUmbrella.Server.Controllers
         {
             Grid newGrid = grid.ToEntity();
             int createdGridId = _gridService.create(newGrid);
+            IEnumerable<TableEntity> tables = grid.GridTables.Select(t => { t.GridId = createdGridId; return t; });
+            IEnumerable<StructuralElement> elements = grid.GridElements.Select(e => { e.GridId = createdGridId; return e; });
+            foreach(TableEntity t in tables)
+            {
+                _tableService.create(t);
+            }
+            foreach(StructuralElement e in elements)
+            {
+                _elementService.create(e);
+            }
             return createdGridId != null ? Ok(createdGridId) : BadRequest();
         }
 

@@ -1,7 +1,7 @@
 ﻿--HUMANS
 
 INSERT INTO [dbo].[Human] ([HUMAN_LASTNAME], [HUMAN_FIRSTNAME], [HUMAN_MAIL], [HUMAN_PASSWORD], [HUMAN_PHONE_NUMBER], [HUMAN_TYPE])
-VALUES ('Gnorp', 'John', 'john@gnorp.be', 'test1234', '0476323655', 'Owner')
+VALUES ('Gnorp', 'John', 'megatest@test.com', 'b45cffe084dd3d20d928bee85e7b0f21d4ca49decb7b02b45b6531b8bdc9998', '0476323655', 'Owner')
 
 INSERT INTO [dbo].[Human] ([HUMAN_LASTNAME], [HUMAN_FIRSTNAME], [HUMAN_MAIL], [HUMAN_PASSWORD], [HUMAN_PHONE_NUMBER], [HUMAN_TYPE])
 VALUES ('Noël', 'Brody', 'brody@gnorp.be', 'test14', '0032476322655', 'Customer')
@@ -30,10 +30,10 @@ VALUES (1, 'Aucun', 'pareil', 'same', '80085', 'nice nice', '5')
 --GRIDS
 
 INSERT INTO dbo.Grid([GRID_NAME], [RESTAURANT_ID], [GRID_ROWS], [GRID_COLUMNS]) 
-VALUES ('Main hall', '1', 100, 50)
+VALUES ('Main hall', '3', 100, 50)
 
 INSERT INTO dbo.Grid([GRID_NAME], [RESTAURANT_ID], [GRID_ROWS], [GRID_COLUMNS]) 
-VALUES ('First floor', '1', 50, 30)
+VALUES ('First floor', '3', 50, 30)
 
 INSERT INTO dbo.Grid([GRID_NAME], [RESTAURANT_ID], [GRID_ROWS], [GRID_COLUMNS]) 
 VALUES ('Main hall', '2', 75, 62)
