@@ -10,14 +10,7 @@ import { Reservation } from '../../models/reservations/reservation';
   styleUrl: './reservation.component.scss'
 })
 export class ReservationComponent {
-  reservations : Reservation[] = [
-    {reservationId : 1, restaurantId : 1, restaurantName : "testzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz", reservationTimeStart : new Date, reservationTimeEnd : new Date, reservationStatus : 0},
-    {reservationId : 1, restaurantId : 1, restaurantName : "testzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz", reservationTimeStart : new Date, reservationTimeEnd : new Date, reservationStatus : 1},
-    {reservationId : 1, restaurantId : 1, restaurantName : "testzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz", reservationTimeStart : new Date, reservationTimeEnd : new Date, reservationStatus : 2},
-    {reservationId : 1, restaurantId : 1, restaurantName : "testzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz", reservationTimeStart : new Date, reservationTimeEnd : new Date, reservationStatus : 2},
-    {reservationId : 1, restaurantId : 1, restaurantName : "testzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz", reservationTimeStart : new Date, reservationTimeEnd : new Date, reservationStatus : 2},
-    {reservationId : 1, restaurantId : 1, restaurantName : "testzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz", reservationTimeStart : new Date, reservationTimeEnd : new Date, reservationStatus : 2}
-  ]
+  reservations : Reservation[] = []
 
   setReservationStatus(status : number) : string{
     switch(status){

@@ -81,10 +81,10 @@ namespace OneUmbrella.Server.Controllers
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult Create(ReservationDataDTO reservation, int tableId)
+        public IActionResult Create(ReservationDataDTO reservation)
         {
             int createdReservationId = _reservationService.create(reservation.ToEntity());
-            return createdReservationId != null ? Ok(_reservedTableService.create(createdReservationId, tableId)) : BadRequest();
+            return createdReservationId != null ? Ok(_reservedTableService.create(createdReservationId, reservation.TableId)) : BadRequest();
         }
 
         [HttpDelete("{id}")]

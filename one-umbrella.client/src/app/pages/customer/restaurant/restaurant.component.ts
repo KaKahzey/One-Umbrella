@@ -16,6 +16,10 @@ import { Table } from '../../../shared/models/restaurant/table';
 import { GridData } from '../../../shared/models/restaurant/gridData';
 import { StructuralElementData } from '../../../shared/models/restaurant/structuralElementData';
 import { TableData } from '../../../shared/models/restaurant/tableData';
+import { ReservationData } from '../../../shared/models/reservations/reservationData';
+import { Reservation } from '../../../shared/models/reservations/reservation';
+import { ReservedTable } from '../../../shared/models/reservations/reservedTable';
+import { AuthService } from '../../../shared/services/auth.service';
 
 @Component({
   selector: 'app-restaurant',
@@ -25,11 +29,18 @@ import { TableData } from '../../../shared/models/restaurant/tableData';
   styleUrl: './restaurant.component.scss'
 })
 export class RestaurantComponent {
-  restaurantId: number = 0;
+  restaurantId: number = 0
+  userId : number = 0
   restaurant : Restaurant = {restaurantId : this.restaurantId, restaurantName : "", ownerId : 0, restaurantStreet : "", restaurantCity : "", restaurantPostCode : "", restaurantRating : 0, restaurantDescription : "", images : []}
   responsiveOptions: any[] | undefined
   hasMenu : boolean = false
   showNewGridForm : boolean = false
+
+  // Reservations
+  reservations : Reservation[] = []
+  reservedTables : ReservedTable[] = []
+  newReservation : ReservationData = {restaurantId : 0, humanId : 0, reservationTimeStart : new Date(), reservationTimeEnd : new Date(), tableId : 0}
+  selectedTime : Date = new Date()
 
   grids : Grid[] = []
   newGrid : GridData = {gridName : "", restaurantId : 0, gridRows : 0, gridColumns : 0, gridElements : [], gridTables : []}
@@ -57,7 +68,7 @@ export class RestaurantComponent {
   tvPath : string = "/assets/img/grid/tv.png"
   //
 
-  constructor(private _route: ActivatedRoute, private _apiService : ApiService, private _fb : FormBuilder) {
+  constructor(private _route: ActivatedRoute, private _apiService : ApiService, private _authService : AuthService, private _fb : FormBuilder) {
     this.sizeForm = this._fb.group({
       rows :[null, [Validators.required]],
       columns :[null, [Validators.required]],
@@ -102,11 +113,50 @@ export class RestaurantComponent {
       }
     ]
   }
+
+  // Vérifie si il y a des images du menu
   verifyMenu(): boolean | undefined {
     const menuExists = this.restaurant?.images;
     return menuExists?.some(i => i.isMenu === true);
   }
 
+  // Affichage et création des réservations
+
+  // Set une réservation et lui accorde une table si la cellule
+  // visée est valide (une table et valide)
+  setReservation(index : number, rowIndex : number, columnIndex : number) : void {
+    const foundTable = this.grids[0].gridTables.find(
+      (table: Table) =>
+      table.rowIndex == rowIndex && table.columnIndex == columnIndex
+    )
+
+    if(foundTable){
+      this.newReservation.reservationTimeStart = this.selectedTime
+      this.newReservation.reservationTimeEnd = this.selectedTime
+      const timeEnd = new Date(this.selectedTime)
+      timeEnd.setHours(timeEnd.getHours() + 2)
+      this.newReservation.reservationTimeEnd = new Date()
+      this.newReservation.tableId = foundTable.tableId
+      this.newReservation.restaurantId = this.restaurantId
+      this.newReservation.humanId = this._authService.getUser()
+      console.log(this.newReservation);
+      
+    }
+  }
+
+  // envoie la nouvelle réservation et table réservée au back
+  uploadReservation() : void {
+    this._apiService.createReservation(this.newReservation).subscribe({
+      next : resp => {
+          console.log(resp)
+      },
+      error : error => console.log(error)
+    })
+  }
+
+  // Affichage et modification des grilles
+
+  // Initialise les données de la nouvelle grille
   setNewGrid() : void {
     const newRows = parseInt(this.sizeForm.get("rows")?.value)
     const newColumns = parseInt(this.sizeForm.get("columns")?.value)
@@ -121,11 +171,14 @@ export class RestaurantComponent {
     }
   }
 
+  // Crée des tableaux pour que les @for puissent les utiliser pour 
+  // créer les grilles
   setGridSize(rows : number, columns : number) : void {
     this.arrayRows = Array(rows).fill(0).map((_, index) => index + 1)
     this.arrayColumns = Array(columns).fill(0).map((_, index) => index + 1)
   }
   
+  //affiche ou non les modales spécifiques
   updateDialog(choice : string) :void {
     switch(choice){
       case "visibleCreate":
@@ -152,12 +205,14 @@ export class RestaurantComponent {
     }, 2000);
   }
 
-  //
+  // Modifie l'élément qui sera envoyé dans la grille
   setElementToPlace(element : string) : void {
     this.elementToPlace = element
   }
 
-  //
+  // Met un élément dans la nouvelle grille, vérifie d'abord si
+  // les coordonnées sont déjà utilisée par une entité et si oui 
+  // la supprime
   setElement(element : string, rowIndex : number, columnIndex : number) : void {
     const elementToDelete = this.newGrid.gridElements.findIndex(
       (element: StructuralElementData) =>
@@ -176,11 +231,9 @@ export class RestaurantComponent {
     const entity = this.createElement(element, rowIndex, columnIndex)
     if(element == "table") {
       this.newGrid.gridTables.push(entity)
-      console.log(this.newGrid.gridTables)
     }
     else{
       this.newGrid.gridElements.push(entity)
-      console.log(this.newGrid.gridElements)
     }
   }
 
@@ -229,6 +282,9 @@ export class RestaurantComponent {
     }
   }
 
+  // Chaque fois que la fonction est appelée, elle va voir si un élément
+  // a ces coordonnées, si oui elle retourne le chemin pour l'image
+  // correspondante
   getIcon(index : number, rowIndex : number, columnIndex : number) : string {
     const foundElement = this.grids[index].gridElements.find(
       (element: StructuralElement) =>
@@ -262,6 +318,8 @@ export class RestaurantComponent {
     return ""
   }
 
+  // Pareil que le fonction précédente mais seulement pour la nouvelle 
+  // grille
   getIconNewGrid(rowIndex : number, columnIndex : number) : string {
     const foundElement = this.newGrid.gridElements.find(
       (element: StructuralElementData) =>
@@ -295,11 +353,13 @@ export class RestaurantComponent {
     return ""
   }
   
+  // Supprime tous les éléments de la nouvelle grille
   emptyGrid() : void {
     this.newGrid.gridElements.splice(0, this.newGrid.gridElements.length)
     this.newGrid.gridTables.splice(0, this.newGrid.gridTables.length)
   }
 
+  // envoie la nouvelle grille au back
   uploadGrid() : void {
     this._apiService.createGrid(this.newGrid).subscribe({
       next : (resp) =>{
@@ -310,5 +370,7 @@ export class RestaurantComponent {
     })
   }
 
-
+  checkOwnerId() : number | null {
+    return this._authService.getUser()
+  }
 }

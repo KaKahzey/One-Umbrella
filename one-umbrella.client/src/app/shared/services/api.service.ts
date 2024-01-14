@@ -10,6 +10,7 @@ import { Grid } from '../models/restaurant/grid';
 import { Rating } from '../models/rating/rating';
 import { RestaurantData } from '../models/restaurant/restaurantData';
 import { GridData } from '../models/restaurant/gridData';
+import { ReservationData } from '../models/reservations/reservationData';
 
 @Injectable({
   providedIn: 'root'
@@ -114,8 +115,8 @@ export class ApiService {
     return this._httpClient.delete(this._urlReservationDelete + id, this.header)
   }
 
-  createReservation(id : number) : Observable<any> {
-    return this._httpClient.post(this._urlCreateReservation + id, this.header)
+  createReservation(reservation : ReservationData) : Observable<any> {
+    return this._httpClient.post(this._urlCreateReservation, reservation, this.header)
   }
   //#endregion
 

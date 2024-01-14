@@ -39,7 +39,6 @@ p-carousel {
 .grid-window {
     width : 90vw;
     height : 80vh;
-    min-height : 80vh;
     font-size: 2em;
 }
 .grid-size-form {
@@ -54,12 +53,14 @@ p-carousel {
 }
 .grid {
     width : 80%;
-    height : 100%
+    height: fit-content;
+    @apply justify-center;
 }
 .grid-row {
     text-align: center;
     display: flex;
 }
+
 .grid-cell {
     width : 1.8vw;
     height : 1.8vw;
@@ -80,4 +81,7 @@ p-carousel {
 }
 .active {
     @apply border;
+}
+.pending-list {
+    overflow-y: auto;
 }

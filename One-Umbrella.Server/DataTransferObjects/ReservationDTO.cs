@@ -16,6 +16,7 @@
         public int HumanId { get; set; }
         public DateTime ReservationTimeStart { get; set; }
         public DateTime ReservationTimeEnd { get; set; }
+        public int TableId { get; set; }
     }
 
     public class ReservationForUserDTO
