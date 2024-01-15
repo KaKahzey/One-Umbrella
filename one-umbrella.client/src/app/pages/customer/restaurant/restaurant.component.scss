@@ -2,7 +2,7 @@
     font-size: 2.5em;
     font-weight: bold;
     text-align: center;
-    @apply border-b-2;
+    border-bottom: solid;
 }
 .carousel {
     width : 100%;
@@ -24,7 +24,6 @@ p-carousel {
             margin: 1rem;
             padding: 2em ;
         }
-    
         .product-image {
             width: 22vw;
             box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
@@ -34,6 +33,11 @@ p-carousel {
     }
 }
 .button-grid-choice-area {
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     @apply flex justify-between;
 }
 .grid-window {
@@ -49,16 +53,19 @@ p-carousel {
 }
 .play-zone {
     height : 97%;
-    @apply flex;
+    display: flex;
+    justify-content: center;
+    vertical-align: middle;
 }
 .grid {
     width : 80%;
     height: fit-content;
-    @apply justify-center;
+    justify-content: center;
+    align-items: center;
 }
 .grid-row {
-    text-align: center;
     display: flex;
+    justify-content: center;
 }
 
 .grid-cell {
@@ -67,7 +74,6 @@ p-carousel {
     font-size: 0.3em;
     margin: 0;
     padding: 0;
-    @apply border;
 }
 .grid-cell img {
     width : 100%;
@@ -76,12 +82,38 @@ p-carousel {
 .control-panel {
     width : 20%;
     height : 100%;
-    padding-left: 2vw;
-    @apply border ;
+    padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.control-buttons {
+    text-align: center;
+    
+}
+.reservation-form {
+    @apply space-y-4;
+}
+.reservation-form input {
+    margin-bottom: 10%;
+}
+.p-slider {
+    
+}
+.control-buttons p-button {
+    padding-left: 2%;
+    padding-right: 2%;
 }
 .active {
-    @apply border;
+    text-decoration: underline;
 }
 .pending-list {
     overflow-y: auto;
+}
+.is-table {
+    
+}
+.reserved-table {
+    background-color: rgba(255, 0, 0, 0.5);
 }

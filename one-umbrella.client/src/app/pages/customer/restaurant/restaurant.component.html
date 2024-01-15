@@ -65,9 +65,9 @@
                         <div class="grid-row">
                             @for (column of arrayColumns; track $index) {
                                 <a (click)="setReservation(0, row, column)">
-                                <div class="grid-cell">
+                                <div class="grid-cell" [class.reserved-table]="displayReservations(0, row, column, sliderValue)">
                                         <img [src]="getIcon(0, row, column)" />
-                                    </div>
+                                </div>
                                 </a>
                             }
                         </div>
@@ -76,7 +76,13 @@
                 <div class="control-panel">
                     <p-tabView>
                         <p-tabPanel header="Réservation">
-                            <div class="control-">
+                            <form [formGroup]="reservationForm" class="reservation-form">
+                                <p-calendar class="max-w-full" formControlName="calendar" [inline]="true" [showWeek]="true" (click)="switchDay()"></p-calendar>
+                                <input type="text" pInputText formControlName="timeDisplayed" class="w-full"  />
+                                <p-slider formControlName="time" class="w-full" [min]="0" [max]="1440" [step]="10"></p-slider>
+                            </form>
+                              
+                            <div class="control-buttons">
                                 <p-button label="Recommencer" (click)="emptyGrid()"></p-button>
                                 <p-button label="Envoyer" (click)="uploadReservation()"></p-button>
                             </div>
@@ -144,7 +150,7 @@
                             <li [class.active]="elementToPlace == 'tv'"><a (click)="setElementToPlace('tv')">Tv</a></li>
                         </ul>
                     </div>
-                    <div class="control-">
+                    <div class="control-buttons">
                         <p-button label="Recommencer" (click)="emptyGrid()"></p-button>
                         <p-button label="Envoyer" (click)="uploadGrid()"></p-button>
                     </div>

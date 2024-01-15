@@ -95,8 +95,8 @@ export class ApiService {
   //#endregion
 
   //#region Reservations
-  getReservationsByRestaurantByDay(id : number, date : Date) : Observable<any> {
-    return this._httpClient.get(this._urlListReservationsRestaurantByDay +id + "?date=" + date, this.header)
+  getReservationsByRestaurantByDay(id : number, date : string) : Observable<any> {
+    return this._httpClient.get(this._urlListReservationsRestaurantByDay +id + "?date=" + date)
   }
 
   getReservationsByUser(id : number) : Observable<any> {

@@ -17,14 +17,16 @@ import { GridData } from '../../../shared/models/restaurant/gridData';
 import { StructuralElementData } from '../../../shared/models/restaurant/structuralElementData';
 import { TableData } from '../../../shared/models/restaurant/tableData';
 import { ReservationData } from '../../../shared/models/reservations/reservationData';
-import { Reservation } from '../../../shared/models/reservations/reservation';
 import { ReservedTable } from '../../../shared/models/reservations/reservedTable';
 import { AuthService } from '../../../shared/services/auth.service';
-
+import { SliderModule } from 'primeng/slider';
+import { CalendarModule } from 'primeng/calendar';
+import { WholeReservation } from '../../../shared/models/reservations/wholeReservation';
+import { Reservation } from '../../../shared/models/reservations/reservation';
 @Component({
   selector: 'app-restaurant',
   standalone: true,
-  imports: [CarouselModule, TabViewModule, DialogModule, InputTextModule, ReactiveFormsModule, FormsModule, ButtonModule, SelectButtonModule],
+  imports: [CarouselModule, TabViewModule, DialogModule, InputTextModule, ReactiveFormsModule, FormsModule, ButtonModule, SelectButtonModule, SliderModule, CalendarModule],
   templateUrl: './restaurant.component.html',
   styleUrl: './restaurant.component.scss'
 })
@@ -37,10 +39,8 @@ export class RestaurantComponent {
   showNewGridForm : boolean = false
 
   // Reservations
-  reservations : Reservation[] = []
-  reservedTables : ReservedTable[] = []
+  wholeReservations : WholeReservation = {reservations : [], reservedTables : []}
   newReservation : ReservationData = {restaurantId : 0, humanId : 0, reservationTimeStart : new Date(), reservationTimeEnd : new Date(), tableId : 0}
-  selectedTime : Date = new Date()
 
   grids : Grid[] = []
   newGrid : GridData = {gridName : "", restaurantId : 0, gridRows : 0, gridColumns : 0, gridElements : [], gridTables : []}
@@ -51,10 +51,13 @@ export class RestaurantComponent {
   visibleCreate : boolean = false
   loading: boolean = false
 
+  reservationForm : FormGroup
   sizeForm : FormGroup
   nameForm : FormGroup
   arrayRows : Array<any> = []
   arrayColumns : Array<any> = []
+
+  sliderValue : number = 0
 
   elementToPlace : string = ""
 
@@ -69,6 +72,11 @@ export class RestaurantComponent {
   //
 
   constructor(private _route: ActivatedRoute, private _apiService : ApiService, private _authService : AuthService, private _fb : FormBuilder) {
+    this.reservationForm = this._fb.group({
+    calendar : [null, [Validators.required]],
+    time :[0],
+    timeDisplayed : ["00:00"]
+    })
     this.sizeForm = this._fb.group({
       rows :[null, [Validators.required]],
       columns :[null, [Validators.required]],
@@ -83,6 +91,12 @@ export class RestaurantComponent {
     this._route.params.subscribe(data => {
       this.restaurantId = parseInt(data['id'])
     })
+
+    this.reservationForm.get('time')!.valueChanges.subscribe(value => {
+      this.updateTime(value)
+      this.sliderValue = value
+    })
+    
 
     this._apiService.getRestaurantById(this.restaurantId).subscribe({
       next : (resp) => {
@@ -99,7 +113,7 @@ export class RestaurantComponent {
       },
       error : error => console.log(error)
     })
-
+    this.getReservationsByDay(new Date())
     this.responsiveOptions = [
       {
           breakpoint: '1199px',
@@ -116,36 +130,109 @@ export class RestaurantComponent {
 
   // Vérifie si il y a des images du menu
   verifyMenu(): boolean | undefined {
-    const menuExists = this.restaurant?.images;
-    return menuExists?.some(i => i.isMenu === true);
+    const menuExists = this.restaurant?.images
+    return menuExists?.some(i => i.isMenu === true)
   }
 
   // Affichage et création des réservations
 
+  // Get all reservations for the day
+  getReservationsByDay(date : Date) : void {
+    const year = date.getFullYear()
+    const month = date.getMonth()
+    const day = date.getDate()
+    const formattedDate = `${year}-${month + 1}-${day}`
+    this._apiService.getReservationsByRestaurantByDay(this.restaurantId, formattedDate).subscribe({
+      next : resp => {
+        this.wholeReservations = resp
+        console.log(this.wholeReservations);
+        
+      },
+      error : error => console.log(error)
+    })
+  }
+
+  // Change la date du jour par rapport au calendrier
+  switchDay() : void {
+    this.getReservationsByDay(this.reservationForm.get("calendar")!.value)
+  }
+
+  // Affiche les réservations par rapport à la valeur du slider et du 
+  // calendrier
+  displayReservations(index: number, row: number, column: number, sliderValue: number): boolean {
+    for (let reservedTable of this.wholeReservations.reservedTables) {
+      for (let table of this.grids[index].gridTables) {
+        if (
+          table.tableId === reservedTable.tableId &&
+          table.rowIndex === row &&
+          table.columnIndex === column
+        ) {
+          const reservation = this.wholeReservations.reservations.find(
+            (r) => r.reservationId === reservedTable.reservationId
+          )
+          if (reservation) {
+            const startTime = this.getMinutesFromDate(reservation.reservationTimeStart)
+            const endTime = this.getMinutesFromDate(reservation.reservationTimeEnd)
+  
+            return sliderValue >= startTime && sliderValue <= endTime
+          }
+        }
+      }
+    }
+    return false
+  }
+  
+  // 
+  getMinutesFromDate(date: Date | string): number {
+    const dateObject = typeof date === 'string' ? new Date(date) : date
+    return dateObject.getHours() * 60 + dateObject.getMinutes()
+  }
+
+  // Modifie le temps affiché par rapport au slider
+  updateTime(timeInMinutes : number) : void {
+    const hours = Math.floor(timeInMinutes / 60)
+    const remainingMinutes = timeInMinutes % 60
+
+    const convertedTime = `${this.convertNumberToDisplay(hours)}:${this.convertNumberToDisplay(remainingMinutes)}`
+    this.reservationForm.get("timeDisplayed")!.setValue(convertedTime, { emitEvent: false })
+  }
+
+  // Ajoute un zéro si l'heure ou les minutes n'ont qu'un nombre
+  private convertNumberToDisplay(number: number): string {
+    return number < 10 ? `0${number}` : `${number}`
+  }
+
+  // Modifie date + heure de la nouvelle réservation
+  updateDateTime(): Date {
+    const calendarValue: Date = this.reservationForm.get("calendar")!.value
+    const timeValue : number = this.reservationForm.get("time")!.value
+    const year = calendarValue.getFullYear()
+    const month = calendarValue.getMonth()
+    const day = calendarValue.getDate()
+    const updatedDate = new Date(Date.UTC(year, month, day, Math.floor(timeValue / 60), timeValue % 60))
+    this.newReservation.reservationTimeStart = updatedDate
+    return updatedDate
+  }
+
   // Set une réservation et lui accorde une table si la cellule
   // visée est valide (une table et valide)
   setReservation(index : number, rowIndex : number, columnIndex : number) : void {
-    const foundTable = this.grids[0].gridTables.find(
+    const foundTable = this.grids[index].gridTables.find(
       (table: Table) =>
       table.rowIndex == rowIndex && table.columnIndex == columnIndex
     )
-
     if(foundTable){
-      this.newReservation.reservationTimeStart = this.selectedTime
-      this.newReservation.reservationTimeEnd = this.selectedTime
-      const timeEnd = new Date(this.selectedTime)
-      timeEnd.setHours(timeEnd.getHours() + 2)
-      this.newReservation.reservationTimeEnd = new Date()
       this.newReservation.tableId = foundTable.tableId
       this.newReservation.restaurantId = this.restaurantId
       this.newReservation.humanId = this._authService.getUser()
-      console.log(this.newReservation);
-      
     }
   }
 
   // envoie la nouvelle réservation et table réservée au back
   uploadReservation() : void {
+    const timeEnd = new Date(this.updateDateTime())
+    timeEnd.setHours(timeEnd.getHours() + 2)
+    this.newReservation.reservationTimeEnd = timeEnd
     this._apiService.createReservation(this.newReservation).subscribe({
       next : resp => {
           console.log(resp)
@@ -365,6 +452,7 @@ export class RestaurantComponent {
       next : (resp) =>{
         console.log(resp)
         this.updateDialog('visibleCreate')
+        this.ngOnInit()
     },
       error : error => console.log(error)     
     })

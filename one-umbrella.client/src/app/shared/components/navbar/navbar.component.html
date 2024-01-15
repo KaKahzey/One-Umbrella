@@ -45,7 +45,7 @@
         }
         <div>
             <span class="title-list">Favoris</span>
-            <ul class="list favorites">
+            <ul class="">
                 <li>zzzzzzzzzzzzzzzzzzzzzzzzzzzzz</li>
             </ul>
         </div>
@@ -55,9 +55,9 @@
     @if(connectionChoice === "login") {
         <div class="login-container connection-window">
             <h2>Connexion</h2>
-            <form [formGroup]="loginForm">
+            <form [formGroup]="loginForm" class="login-form">
                 <input pInputText id="humanIdentifier"  formControlName="humanIdentifier" placeholder="Adresse e-mail / Numéro de téléphone" />
-                <input pInputText id="humanPassword" formControlName="humanPassword" placeholder="Mot de passe" /><br />
+                <p-password id="humanPassword" formControlName="humanPassword" placeholder="Mot de passe" [feedback]="false" [toggleMask]="true" /><br />
                 <a (click)="connectionChoice = 'register'">Pas de compte?</a><br />
                 <p-button label="Se connecter" [loading]="loading" (onClick)=" login(); load()"></p-button>
             </form>
@@ -70,8 +70,8 @@
                     <input pInputText id="humanLastName"  formControlName="humanLastName" placeholder="Nom de famille" />
                     <input pInputText id="humanFirstName" formControlName="humanFirstName" placeholder="Prénom" />
                     <input pInputText id="humanMail" formControlName="humanMail" placeholder="Adresse e-mail" />
-                    <input pInputText id="humanPassword" formControlName="humanPassword" placeholder="Mot de passe" />
                     <input pInputText id="humanPhoneNumber" formControlName="humanPhoneNumber" placeholder="Numéro de téléphone" />
+                    <p-password id="humanPassword" formControlName="humanPassword" placeholder="Mot de passe" [feedback]="false" [toggleMask]="true" />
                     <p-selectButton [options]="stateOptions" formControlName="humanType" optionLabel="label" optionValue="value" ></p-selectButton><br />
                 <a (click)="connectionChoice = 'login'">Déjà un compte?</a><br />
                 <p-button label="Créer mon compte" [loading]="loading" (onClick)=" register(); load()"></p-button>

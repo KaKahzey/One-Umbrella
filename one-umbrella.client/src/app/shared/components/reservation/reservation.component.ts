@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Reservation } from '../../models/reservations/reservation';
+import { ReservationUser } from '../../models/reservations/reservationUser';
 
 @Component({
   selector: 'app-reservation',
@@ -10,7 +10,7 @@ import { Reservation } from '../../models/reservations/reservation';
   styleUrl: './reservation.component.scss'
 })
 export class ReservationComponent {
-  reservations : Reservation[] = []
+  reservations : ReservationUser[] = []
 
   setReservationStatus(status : number) : string{
     switch(status){

@@ -12,7 +12,8 @@
 .bar-area {
   height: 50%;
   min-width: 100%;
-  
+  border-bottom: solid ;
+  border-bottom-width: 2px;
   @apply border-b-2 border-forest-300 flex;
 }
 .bar-area img{
@@ -22,20 +23,15 @@
 .bar-area img:hover{
   cursor: pointer;
 }
-.left input {
-  border: none;
-  outline: none;
-  background-color: transparent;
-  width :  100%;
-}
 .bar-area input {
+  font-size: 1.2em;
   border: none;
   outline: none;
   background-color: transparent;
   width :  100%;
 }
-.left input::placeholder {
-    @apply text-forest-300;
+.bar-area input::placeholder{
+  @apply text-forest-300;
 }
 .main-title {
   font-size :  2em;
@@ -76,7 +72,15 @@
 }
 .left input {
   padding-left: 1%;
+  height : 2em;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  width :  100%;
   @apply bg-forest-300;
+}
+.left input::placeholder {
+  @apply text-forest-300;
 }
 .left input::placeholder{
   @apply text-forest-600;
@@ -85,12 +89,15 @@
   margin-left : 15%;
   font-size: 0.80em;
 }
+.left ul {
+  padding: 0;
+}
 .left li{
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis; 
+  padding-left: 5%;
   width : 90%;
-  padding-left : 5%;
 }
 .connection-window{
   width: 50vw;
@@ -98,14 +105,32 @@
   @apply space-y-5;
 }
 .connection-window form {
+  text-align: center;
+  margin-bottom: 10%;
   @apply space-y-8;
 } 
-.connection-window input, p-password {
+.connection-window input {
   text-align: center;
+  font-size: 1.5em;
   width : 70%;
+}
+::ng-deep .p-password-input {
+  font-size: 3em;
+  width : 100%;
+}
+::ng-deep .p-password-panel {
+  margin : 10vh;
+  width : 70%;
+  height: 1.5em;
+}
+p-selectButton {
+  font-size: 1.5em;
 }
 .connection-window a {
   cursor: pointer;
+}
+.login-form {
+  @apply space-y-5;
 }
 h2 {
   text-align: center;
