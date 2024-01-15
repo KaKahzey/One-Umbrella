@@ -23,10 +23,13 @@ import { SliderModule } from 'primeng/slider';
 import { CalendarModule } from 'primeng/calendar';
 import { WholeReservation } from '../../../shared/models/reservations/wholeReservation';
 import { Reservation } from '../../../shared/models/reservations/reservation';
+import { FileUploadModule } from 'primeng/fileupload';
+import { CheckboxModule } from 'primeng/checkbox';
+import { onlyBlobData } from '../../../shared/models/shared/onlyBlobData';
 @Component({
   selector: 'app-restaurant',
   standalone: true,
-  imports: [CarouselModule, TabViewModule, DialogModule, InputTextModule, ReactiveFormsModule, FormsModule, ButtonModule, SelectButtonModule, SliderModule, CalendarModule],
+  imports: [CarouselModule, TabViewModule, DialogModule, InputTextModule, ReactiveFormsModule, FormsModule, ButtonModule, SelectButtonModule, SliderModule, CalendarModule, FileUploadModule, CheckboxModule],
   templateUrl: './restaurant.component.html',
   styleUrl: './restaurant.component.scss'
 })
@@ -37,6 +40,7 @@ export class RestaurantComponent {
   responsiveOptions: any[] | undefined
   hasMenu : boolean = false
   showNewGridForm : boolean = false
+  newImage : onlyBlobData = {restaurantId : this.restaurantId, imageData : "", isFront : false, isMenu : false}
 
   // Reservations
   wholeReservations : WholeReservation = {reservations : [], reservedTables : []}
@@ -44,18 +48,19 @@ export class RestaurantComponent {
 
   grids : Grid[] = []
   newGrid : GridData = {gridName : "", restaurantId : 0, gridRows : 0, gridColumns : 0, gridElements : [], gridTables : []}
-  
+  arrayRows : Array<any> = []
+  arrayColumns : Array<any> = []
+
   visibleFirst : boolean = false
   visibleSecond : boolean = false
   visibleThird : boolean = false
   visibleCreate : boolean = false
+  visiblePicture : boolean = false
   loading: boolean = false
 
   reservationForm : FormGroup
   sizeForm : FormGroup
-  nameForm : FormGroup
-  arrayRows : Array<any> = []
-  arrayColumns : Array<any> = []
+  imageForm : FormGroup
 
   sliderValue : number = 0
 
@@ -73,7 +78,7 @@ export class RestaurantComponent {
 
   constructor(private _route: ActivatedRoute, private _apiService : ApiService, private _authService : AuthService, private _fb : FormBuilder) {
     this.reservationForm = this._fb.group({
-    calendar : [null, [Validators.required]],
+    calendar : [new Date(), [Validators.required]],
     time :[0],
     timeDisplayed : ["00:00"]
     })
@@ -82,8 +87,9 @@ export class RestaurantComponent {
       columns :[null, [Validators.required]],
       name :[null, [Validators.required]]
     })
-    this.nameForm = this._fb.group({
-      name :[null, [Validators.required]]
+    this.imageForm = this._fb.group({
+      isFront : [],
+      isMenu : []
     })
   }
 
@@ -104,12 +110,19 @@ export class RestaurantComponent {
         this._apiService.getAllGridsForOneRestaurant(this.restaurantId).subscribe({
           next : resp => {
             this.grids = resp
-            console.log(this.grids);
             
           },
           error : error => console.log(error)
           
         })
+        this._apiService.getAllImagesForOneRestaurant(this.restaurantId).subscribe(
+          (data: any[]) => {
+            this.restaurant.images = data;
+          },
+          error => {
+            console.error('Error fetching images', error);
+          }
+        );
       },
       error : error => console.log(error)
     })
@@ -145,7 +158,6 @@ export class RestaurantComponent {
     this._apiService.getReservationsByRestaurantByDay(this.restaurantId, formattedDate).subscribe({
       next : resp => {
         this.wholeReservations = resp
-        console.log(this.wholeReservations);
         
       },
       error : error => console.log(error)
@@ -182,10 +194,11 @@ export class RestaurantComponent {
     return false
   }
   
-  // 
+  // Il y a un problème de formattage quelque part,
+  // en attendant, on extrait le nombre de minutes de la date entrée
   getMinutesFromDate(date: Date | string): number {
-    const dateObject = typeof date === 'string' ? new Date(date) : date
-    return dateObject.getHours() * 60 + dateObject.getMinutes()
+    const formattedDate = typeof date === 'string' ? new Date(date) : date
+    return formattedDate.getHours() * 60 + formattedDate.getMinutes()
   }
 
   // Modifie le temps affiché par rapport au slider
@@ -279,6 +292,9 @@ export class RestaurantComponent {
         break
       case "visibleThird":
         this.visibleThird = !this.visibleThird
+        break
+      case "visiblePicture":
+        this.visiblePicture = !this.visiblePicture
         break
     }
   }
@@ -460,5 +476,46 @@ export class RestaurantComponent {
 
   checkOwnerId() : number | null {
     return this._authService.getUser()
+  }
+
+  storeImage(event: any): void {
+    const uploadedFile: Blob = event.files[0];
+    const reader = new FileReader();
+
+    reader.onload = () => {
+        const base64Image = btoa(reader.result as string);
+        this.newImage.imageData = base64Image;
+    };
+
+    reader.readAsBinaryString(uploadedFile);
+  } 
+
+  sendImage(): void {
+    this.newImage.isFront = this.imageForm.get("isFront")!.value === 1;
+    this.newImage.isMenu = this.imageForm.get("isMenu")!.value === 1;
+    this.newImage.restaurantId = this.restaurantId
+    if (this.newImage.imageData) {
+      this._apiService.createImage(this.newImage).subscribe({
+        next: resp => console.log(resp),
+        error: error => console.log(error)
+      });
+    }
+  }
+
+  getImageUrl(imageData: string): string {
+    // Convert Base64 string back to binary data
+    const binaryData = atob(imageData);
+    
+    // Create a Uint8Array from the binary data
+    const byteArray = new Uint8Array(binaryData.length);
+    for (let i = 0; i < binaryData.length; i++) {
+      byteArray[i] = binaryData.charCodeAt(i);
+    }
+
+    // Create a Blob from the Uint8Array
+    const blob = new Blob([byteArray], { type: 'image/png' });
+
+    // Create a data URL from the Blob
+    return URL.createObjectURL(blob);
   }
 }

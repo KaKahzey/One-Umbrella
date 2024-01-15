@@ -1,6 +1,7 @@
 export interface onlyBlob {
-    id : number,
-    image : string,
+    imageId : number,
+    restaurantId : number,
+    imageData : string,
     isFront : boolean,
     isMenu : boolean
 }

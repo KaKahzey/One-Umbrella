@@ -6,8 +6,8 @@
         </div>
         <div class="search-area">
             <div class="bar-area">
-                <input type="text" placeholder=" Restaurant / adresse" />
-                <img src="/assets/img/navbar/search.svg" alt="loupe" />
+                <input [(ngModel)]="searchValue" type="text" placeholder=" Restaurant / adresse" />
+                <a (click)="searchRestaurant(searchValue)"><img src="/assets/img/navbar/search.svg" alt="loupe" /></a>
             </div>
         </div>
         <div class="account-area">

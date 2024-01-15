@@ -146,7 +146,8 @@ namespace OneUmbrella.DAL.Repositories
                 "INSERT INTO ImageRestaurant(" +
                 "[RESTAURANT_ID]," +
                 "[IMAGE_DATA]," +
-                "[IS_FRONT])" +
+                "[IS_FRONT]," +
+                "[IS_MENU])" +
                 " OUTPUT INSERTED.IMAGE_ID" +
                 " VALUES(" +
                 "@RestaurantId," +

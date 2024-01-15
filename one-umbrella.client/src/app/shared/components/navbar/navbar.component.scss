@@ -30,6 +30,10 @@
   background-color: transparent;
   width :  100%;
 }
+.bar-area a {
+  align-items: center;
+  @apply flex;
+}
 .bar-area input::placeholder{
   @apply text-forest-300;
 }

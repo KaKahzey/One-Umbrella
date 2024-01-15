@@ -117,3 +117,17 @@ p-carousel {
 .reserved-table {
     background-color: rgba(255, 0, 0, 0.5);
 }
+
+.picture-window {
+}
+.picture-window form {
+    align-items: center;
+    @apply flex space-x-8;
+}
+.checks {
+    align-items: center;
+    @apply flex space-x-1; 
+}
+.picture-info {
+    
+}

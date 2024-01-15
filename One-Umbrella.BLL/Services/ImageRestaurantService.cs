@@ -26,6 +26,7 @@ namespace OneUmbrella.BLL.Services
         {
             return _imageRepository.getAllForOneRestaurant(restaurantId);
         }
+
         public int create(ImageRestaurant image)
         {
             return _imageRepository.create(image);

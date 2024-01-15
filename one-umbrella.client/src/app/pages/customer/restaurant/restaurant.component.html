@@ -18,7 +18,7 @@
             <p-carousel [value]="restaurant.images" [numVisible]="2" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions">
                 <ng-template class="carousel-restaurant" pTemplate="item">
                     <div class="product-item">
-                        <img class="product-image" src="/assets/img/list/placeholderFront.jpg" alt="image menu" />
+                        <img class="product-image" [src]="getImageUrl(restaurant.images[0].imageData)" alt="image menu" />
                     </div>
                 </ng-template>
             </p-carousel>
@@ -40,6 +40,7 @@
             </ng-template>
         </p-carousel>
     }
+    <p-button (click)="updateDialog('visiblePicture')" label="Ajouter photo" [loading]="loading"></p-button>
     <div class="button-grid-choice-area">
         @if(grids.length > 0){
             <p-button (click)="updateDialog('visibleFirst'); setGridSize(grids[0].gridRows, grids[0].gridColumns)" [label]="grids[0].gridName" [loading]="loading"></p-button>
@@ -157,5 +158,21 @@
                 </div>
             </div>
         }
+    </div>
+</p-dialog>
+<p-dialog [(visible)]="visiblePicture" [modal]="true"  [draggable]="false" [resizable]="false">
+    <div class="picture-window">
+        <form [formGroup]="imageForm">
+            <p-fileUpload mode="basic" name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php" accept="image/*" [maxFileSize]="1000000" (onUpload)="storeImage($event)" [auto]="true" chooseLabel="Browse"></p-fileUpload>
+            <div class="checks">
+                <p-checkbox formControlName="isFront" [binary]="true" inputId="isFront"></p-checkbox>
+                <label for="isFront">Façade?</label>
+            </div>
+            <div class="checks">
+                <p-checkbox formControlName="isMenu" [binary]="true" inputId="isMenu"></p-checkbox>
+                <label for="isMenu">Menu?</label>
+            </div>
+            <p-button (click)="sendImage()" label="Envoyer" [loading]="loading"></p-button>
+        </form>
     </div>
 </p-dialog>

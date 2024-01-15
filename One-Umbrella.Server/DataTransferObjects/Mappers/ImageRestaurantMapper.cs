@@ -15,6 +15,17 @@ namespace OneUmbrella.Server.DataTransferObjects.Mappers
                 IsMenu = image.IsMenu
             };
         }
-        
+
+        public static ImageRestaurant ToEntity(this ImageRestaurantDataDTO image)
+        {
+            return new ImageRestaurant()
+            {
+                RestaurantId = image.RestaurantId,
+                ImageData = image.ImageData,
+                IsFront = image.IsFront,
+                IsMenu = image.IsMenu
+            };
+        }
+
     }
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { DialogModule } from 'primeng/dialog';
 import { PasswordModule } from 'primeng/password';
@@ -35,7 +35,9 @@ export class NavbarComponent {
   registerForm : FormGroup
   filterForm : FormGroup
 
-  constructor(private _authService : AuthService, private _apiService : ApiService, private _fb : FormBuilder){
+  searchValue : string = ""
+
+  constructor(private _authService : AuthService, private _apiService : ApiService, private _fb : FormBuilder, private _router : Router){
     this.loginForm = this._fb.group({
       humanIdentifier : [null, [Validators.required]],
       humanPassword : [null, [Validators.required]]
@@ -112,6 +114,14 @@ export class NavbarComponent {
     setTimeout(() => {
         this.loading = false
     }, 2000);
+  }
+
+  searchRestaurant(name : string) {
+    console.log("test");
+    
+    this._apiService.getRestaurantsByIdentifier(name).subscribe({
+      next : resp => this._router.navigateByUrl("restaurant/" + resp[0].restaurantId)
+    })
   }
   
 }

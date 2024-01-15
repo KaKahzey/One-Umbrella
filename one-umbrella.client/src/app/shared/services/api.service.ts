@@ -11,6 +11,8 @@ import { Rating } from '../models/rating/rating';
 import { RestaurantData } from '../models/restaurant/restaurantData';
 import { GridData } from '../models/restaurant/gridData';
 import { ReservationData } from '../models/reservations/reservationData';
+import { onlyBlob } from '../models/shared/onlyBlob';
+import { onlyBlobData } from '../models/shared/onlyBlobData';
 
 @Injectable({
   providedIn: 'root'
@@ -74,6 +76,16 @@ export class ApiService {
   private _urlRatingPost : string = "https://localhost:7159/api/Rating"
   private _urlRatingDelete : string = "https://localhost:7159/api/Rating?humanId="
   private _urlRatingUpdate : string = "https://localhost:7159/api/Rating/"
+  //#endregion
+ 
+  //#region Images
+  private _urlGetAllImagesForOneRestaurant : string = "https://localhost:7159/api/ImageRestaurant/GetAllForOneRestaurant/"
+  private _urlGetFrontImage : string = "https://localhost:7159/api/ImageRestaurant/GetFrontImage/"
+  private _urlPostImage : string = "https://localhost:7159/api/ImageRestaurant"
+  private _urlDeleteImage : string = "https://localhost:7159/api/ImageRestaurant/"
+
+  //#endregion
+
   constructor(private _httpClient : HttpClient, private _authService : AuthService ) { }
   
   //#region Account
@@ -208,4 +220,22 @@ export class ApiService {
     return this._httpClient.put(this._urlRatingUpdate + humanId, rating, this.header)
   }
   //#endregion
+
+  //#region Images
+  getAllImagesForOneRestaurant(id : number) : Observable<any> {
+    return this._httpClient.get(this._urlGetAllImagesForOneRestaurant + id)
+  }
+
+  getFrontImage(id : number) : Observable<any> {
+    return this._httpClient.get(this._urlGetFrontImage + id)
+  }
+
+  createImage(image : onlyBlobData) : Observable<any> {
+    return this._httpClient.post(this._urlPostImage, image, this.header)
+  }
+
+  deleteImage(id : number) : Observable<any> {
+    return this._httpClient.delete(this._urlDeleteImage + id, this.header)
+  }
+
 }
