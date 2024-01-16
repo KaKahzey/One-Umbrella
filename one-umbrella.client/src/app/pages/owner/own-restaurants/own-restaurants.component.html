@@ -24,7 +24,12 @@
                 <a [routerLink]="['/restaurant', r.restaurantId]">
                     <div class="card">
                         <div class="image-area">
-                            {{r.restaurantImage}}<img src="/assets/img/list/placeholderFront.jpg" alt="façade restaurant" />
+                            @if(r.restaurantImage){
+                                <img [src]="'data:image/png;base64,' + r.restaurantImage" alt="façade restaurant" />
+                            }
+                            @else {
+                                <img src="/assets/img/list/placeholderFront.jpg" alt="façade restaurant" />
+                            }
                         </div>
                         <div class="info">
                             <div class="title-area">
@@ -39,7 +44,7 @@
                                 <div>({{r.restaurantTotalRatings}})</div>
                             </div>
                             <div class="address-area">
-                                <span class="name-category">Adresse :</span> {{r.restaurantStreet}} {{r.restaurantCity}} {{r.restaurantPostCode}}
+                                <span class="name-category">Adresse :</span> {{r.restaurantStreet}}, {{r.restaurantCity}} {{r.restaurantPostCode}}
                             </div>
                             <div class="description">
                                 <span class="name-category">Description :</span> <br />

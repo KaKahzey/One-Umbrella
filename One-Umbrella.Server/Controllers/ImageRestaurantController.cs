@@ -31,7 +31,7 @@ namespace OneUmbrella.Server.Controllers
             IEnumerable<ImageRestaurantDTO>? images = _imageRestaurantService.getAllForOneRestaurant(id).Select(i => i.ToDTO());
             if (images.Count() < 1)
             {
-                return NotFound();
+                return Ok();
             }
             return Ok(images);
         }

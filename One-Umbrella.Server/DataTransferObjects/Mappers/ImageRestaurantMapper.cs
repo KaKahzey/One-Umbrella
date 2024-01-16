@@ -6,11 +6,23 @@ namespace OneUmbrella.Server.DataTransferObjects.Mappers
     {
         public static ImageRestaurantDTO ToDTO(this ImageRestaurant image)
         {
+            if (image == null)
+            {
+                return new ImageRestaurantDTO()
+                {
+                    ImageId = 0,
+                    RestaurantId = 0,
+                    ImageData = "",
+                    IsFront = false,
+                    IsMenu = false
+                };
+            }
+
             return new ImageRestaurantDTO()
             {
                 ImageId = image.ImageId,
                 RestaurantId = image.RestaurantId,
-                ImageData = Convert.ToBase64String(image.ImageData),
+                ImageData = image.ImageData != null ? Convert.ToBase64String(image.ImageData) : "",
                 IsFront = image.IsFront,
                 IsMenu = image.IsMenu
             };

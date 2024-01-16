@@ -26,10 +26,12 @@ import { Reservation } from '../../../shared/models/reservations/reservation';
 import { FileUploadModule } from 'primeng/fileupload';
 import { CheckboxModule } from 'primeng/checkbox';
 import { onlyBlobData } from '../../../shared/models/shared/onlyBlobData';
+import { RatingModule } from 'primeng/rating';
+import { Rating } from '../../../shared/models/rating/rating';
 @Component({
   selector: 'app-restaurant',
   standalone: true,
-  imports: [CarouselModule, TabViewModule, DialogModule, InputTextModule, ReactiveFormsModule, FormsModule, ButtonModule, SelectButtonModule, SliderModule, CalendarModule, FileUploadModule, CheckboxModule],
+  imports: [CarouselModule, TabViewModule, DialogModule, InputTextModule, ReactiveFormsModule, FormsModule, ButtonModule, SelectButtonModule, SliderModule, CalendarModule, FileUploadModule, CheckboxModule, RatingModule],
   templateUrl: './restaurant.component.html',
   styleUrl: './restaurant.component.scss'
 })
@@ -41,6 +43,7 @@ export class RestaurantComponent {
   hasMenu : boolean = false
   showNewGridForm : boolean = false
   newImage : onlyBlobData = {restaurantId : this.restaurantId, imageData : "", isFront : false, isMenu : false}
+  rating : number = 0
 
   // Reservations
   wholeReservations : WholeReservation = {reservations : [], reservedTables : []}
@@ -60,7 +63,6 @@ export class RestaurantComponent {
 
   reservationForm : FormGroup
   sizeForm : FormGroup
-  imageForm : FormGroup
 
   sliderValue : number = 0
 
@@ -87,10 +89,8 @@ export class RestaurantComponent {
       columns :[null, [Validators.required]],
       name :[null, [Validators.required]]
     })
-    this.imageForm = this._fb.group({
-      isFront : [],
-      isMenu : []
-    })
+
+    
   }
 
   ngOnInit(): void {
@@ -102,8 +102,6 @@ export class RestaurantComponent {
       this.updateTime(value)
       this.sliderValue = value
     })
-    
-
     this._apiService.getRestaurantById(this.restaurantId).subscribe({
       next : (resp) => {
         this.restaurant = resp
@@ -115,37 +113,70 @@ export class RestaurantComponent {
           error : error => console.log(error)
           
         })
-        this._apiService.getAllImagesForOneRestaurant(this.restaurantId).subscribe(
-          (data: any[]) => {
-            this.restaurant.images = data;
+        this._apiService.getAllImagesForOneRestaurant(this.restaurantId).subscribe({
+          next : pictures => {            
+            this.restaurant.images = pictures
+            this.verifyMenu()
           },
-          error => {
-            console.error('Error fetching images', error);
-          }
-        );
+          error : error => console.error(error)
+        })
       },
       error : error => console.log(error)
     })
     this.getReservationsByDay(new Date())
     this.responsiveOptions = [
       {
-          breakpoint: '1199px',
-          numVisible: 1,
-          numScroll: 1
-      },
-      {
-          breakpoint: '1199px',
-          numVisible: 2,
-          numScroll: 1
-      }
+      breakpoint: '1199px',
+      numVisible: 1,
+      numScroll: 1
+    },
+    {
+      breakpoint: '979px',
+      numVisible: 1,
+      numScroll: 1
+    }
     ]
+    
+  }
+
+  // Envoie la note du restaurant, si déjà noté => update
+  sendRating(event: any): void {
+    const rating: Rating = {
+      humanId: this._authService.getUser()!,
+      restaurantId: this.restaurantId,
+      score: event.value,
+      comment: ""
+    }  
+    this._apiService.getAllRatingsForOneHuman(rating.humanId).subscribe({
+      next: (resp) => {
+        const alreadyRated = resp ? resp.some((r: any) => r.humanId === rating.humanId && r.restaurantId === rating.restaurantId) : false
+  
+        if (alreadyRated) {
+          this._apiService.updateRating(rating).subscribe({
+            next: (resp) => console.log("changed"),
+            error: (error) => console.error(error)
+          })
+        } else {
+          this._apiService.createRating(rating).subscribe({
+            next: (resp) => console.log("changed"),
+            error: (error) => console.error(error)
+          })
+        }
+      },
+      error: (error) => console.error(error)
+    })
   }
 
   // Vérifie si il y a des images du menu
-  verifyMenu(): boolean | undefined {
-    const menuExists = this.restaurant?.images
-    return menuExists?.some(i => i.isMenu === true)
+  verifyMenu(): void {
+    const menuExists = this.restaurant.images
+    this.hasMenu = menuExists?.some(i => i.isMenu === true)
   }
+
+  // Pour les carrousels, images du menu ou pas
+  getMenuImages(wantMenu : boolean) : onlyBlob[] {
+    return this.restaurant.images.filter(image => image.isMenu === wantMenu)
+}
 
   // Affichage et création des réservations
 
@@ -248,7 +279,7 @@ export class RestaurantComponent {
     this.newReservation.reservationTimeEnd = timeEnd
     this._apiService.createReservation(this.newReservation).subscribe({
       next : resp => {
-          console.log(resp)
+          this.ngOnInit()
       },
       error : error => console.log(error)
     })
@@ -335,7 +366,7 @@ export class RestaurantComponent {
     if(element == "table") {
       this.newGrid.gridTables.push(entity)
     }
-    else{
+    else if(element != "remove") {
       this.newGrid.gridElements.push(entity)
     }
   }
@@ -479,43 +510,27 @@ export class RestaurantComponent {
   }
 
   storeImage(event: any): void {
-    const uploadedFile: Blob = event.files[0];
-    const reader = new FileReader();
+    const uploadedFile: Blob = event.files[0]
+    const reader = new FileReader()
 
     reader.onload = () => {
-        const base64Image = btoa(reader.result as string);
-        this.newImage.imageData = base64Image;
-    };
-
-    reader.readAsBinaryString(uploadedFile);
+        const base64Image = btoa(reader.result as string)
+        this.newImage.imageData = base64Image
+    }
+    reader.readAsBinaryString(uploadedFile)
   } 
 
   sendImage(): void {
-    this.newImage.isFront = this.imageForm.get("isFront")!.value === 1;
-    this.newImage.isMenu = this.imageForm.get("isMenu")!.value === 1;
     this.newImage.restaurantId = this.restaurantId
     if (this.newImage.imageData) {
       this._apiService.createImage(this.newImage).subscribe({
-        next: resp => console.log(resp),
+        next: resp =>{
+          this.ngOnInit()
+        },
         error: error => console.log(error)
-      });
+      })
     }
   }
 
-  getImageUrl(imageData: string): string {
-    // Convert Base64 string back to binary data
-    const binaryData = atob(imageData);
-    
-    // Create a Uint8Array from the binary data
-    const byteArray = new Uint8Array(binaryData.length);
-    for (let i = 0; i < binaryData.length; i++) {
-      byteArray[i] = binaryData.charCodeAt(i);
-    }
-
-    // Create a Blob from the Uint8Array
-    const blob = new Blob([byteArray], { type: 'image/png' });
-
-    // Create a data URL from the Blob
-    return URL.createObjectURL(blob);
-  }
+  
 }

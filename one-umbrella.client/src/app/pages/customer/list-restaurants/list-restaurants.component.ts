@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { ListRestaurant } from '../../../shared/models/list-restaurant/listRestaurant';
 import { ApiService } from '../../../shared/services/api.service';
 import { RouterLink } from '@angular/router';
-
+import { RatingModule } from 'primeng/rating';
+import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-list-restaurants',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, RatingModule, FormsModule],
   templateUrl: './list-restaurants.component.html',
   styleUrl: './list-restaurants.component.scss'
 })
@@ -24,6 +25,18 @@ export class ListRestaurantsComponent {
     this._apiService.getAllRestaurantsByPagination(1, 5, "restaurant_name", false).subscribe({
       next : (resp) => {
         this.restaurants = resp
+        this.restaurants.forEach(restaurant => {
+          console.log(restaurant.restaurantRating);
+          
+          restaurant.restaurantRating = Math.floor(restaurant.restaurantRating)
+        this._apiService.getFrontImage(restaurant.restaurantId).subscribe({
+          next : resp => {
+            resp.imageData? restaurant.restaurantImage = resp : restaurant.restaurantImage = ""
+          },
+          error : error => console.error(error)
+          
+        })          
+        })
       },
       error : (error) => {
         console.log(error)

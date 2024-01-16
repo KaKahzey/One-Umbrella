@@ -1,60 +1,68 @@
 <div class="restaurant">
-    <div class="banner">
-        
-    </div>
-    <div class="title">
-        {{restaurant.restaurantName}}
-    </div>
-    <div class="info">
-        <div>
-            {{restaurant.restaurantStreet}} {{restaurant.restaurantCity}} {{restaurant.restaurantPostCode}}
+    <div class="restaurant-infos-area">
+        <div class="title">
+            {{restaurant.restaurantName}}
         </div>
-        <div>
-            {{restaurant.restaurantDescription}}
+        <div class="info">
+            <div class="address-area">
+                <span class="name-category">Adresse :</span> {{restaurant.restaurantStreet}}, {{restaurant.restaurantCity}} {{restaurant.restaurantPostCode}}
+                <p-rating [(ngModel)]="rating" (onRate)="sendRating($event)" [cancel]="false"></p-rating>
+            </div>
+            <div class="description">
+                <span class="name-category">Description :</span> <br />
+                {{restaurant.restaurantDescription}}
+            </div>
         </div>
     </div>
-    <div class="carousel">
-        @if (restaurant.images != undefined) {
-            <p-carousel [value]="restaurant.images" [numVisible]="2" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions">
-                <ng-template class="carousel-restaurant" pTemplate="item">
+    @if(restaurant.images){
+        <div class="carousel">
+            <p-carousel [value]="getMenuImages(false)" [numVisible]="1" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions">
+                <ng-template pTemplate="header">
+                    <p class="carousel-title">Photos du restaurant</p>
+                </ng-template>
+                <ng-template class="carousel-restaurant" let-image pTemplate="item">
                     <div class="product-item">
-                        <img class="product-image" [src]="getImageUrl(restaurant.images[0].imageData)" alt="image menu" />
+                        <img class="product-image" [src]="'data:image/png;base64,' + image.imageData" alt="image menu" />
                     </div>
                 </ng-template>
             </p-carousel>
-        }
-    </div>
-    @if(hasMenu){
-        <p-carousel [value]="restaurant.images" [numVisible]="2" [numScroll]="1" [responsiveOptions]="responsiveOptions">
-            <ng-template pTemplate="header">
-                <p>Menu</p>
-            </ng-template>
-            <ng-template let-product pTemplate="item">
-                <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
-                    <div class="mb-3">
-                        <img src="/assets/img/list/placeholderFront.jpg" alt="image menu" class="w-6 shadow-2" />
-                    </div>
-                    <div>
-                    </div>
-                </div>
-            </ng-template>
-        </p-carousel>
+        </div>
     }
-    <p-button (click)="updateDialog('visiblePicture')" label="Ajouter photo" [loading]="loading"></p-button>
-    <div class="button-grid-choice-area">
-        @if(grids.length > 0){
-            <p-button (click)="updateDialog('visibleFirst'); setGridSize(grids[0].gridRows, grids[0].gridColumns)" [label]="grids[0].gridName" [loading]="loading"></p-button>
-        }
-        @if(grids.length > 1){
-            <p-button (click)="updateDialog('visibleSecond'); setGridSize(grids[1].gridRows, grids[1].gridColumns)" [label]="grids[1].gridName" [loading]="loading"></p-button>
-        }
-        @if(grids.length > 2){
-            <p-button (click)="updateDialog('visibleThird'); setGridSize(grids[2].gridRows, grids[2].gridColumns)" [label]="grids[2].gridName" [loading]="loading"></p-button>
-        }
-        @if(grids.length < 3){
-            <p-button (click)="updateDialog('visibleCreate'); showNewGridForm = true; arrayRows = []; arrayColumns = []" label="Créer nouvelle grille" [loading]="loading"></p-button>
-        }
-    </div>
+    @if(hasMenu && restaurant.images){
+        <div class="carousel">
+            <p-carousel [value]="getMenuImages(true)" [numVisible]="1" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions">
+                <ng-template pTemplate="header">
+                    <p class="carousel-title">Menu</p>
+                </ng-template>
+                <ng-template class="carousel-restaurant" let-image pTemplate="item">
+                    <div class="product-item">
+                        <img class="product-image" [src]="'data:image/png;base64,' + image.imageData" alt="image menu" />
+                    </div>
+                </ng-template>
+            </p-carousel>
+        </div>
+    }
+    @if(checkOwnerId() == restaurant.ownerId){
+        <div class="add-photo">
+            <p-button (click)="updateDialog('visiblePicture')" label="Ajouter photo" [loading]="loading"></p-button>
+        </div>
+    }
+    @if(grids.length != 0 && checkOwnerId() != userId){
+        <div class="button-grid-choice-area">
+            @if(grids.length > 0){
+                <p-button (click)="updateDialog('visibleFirst'); setGridSize(grids[0].gridRows, grids[0].gridColumns)" [label]="grids[0].gridName" [loading]="loading"></p-button>
+            }
+            @if(grids.length > 1){
+                <p-button (click)="updateDialog('visibleSecond'); setGridSize(grids[1].gridRows, grids[1].gridColumns)" [label]="grids[1].gridName" [loading]="loading"></p-button>
+            }
+            @if(grids.length > 2){
+                <p-button (click)="updateDialog('visibleThird'); setGridSize(grids[2].gridRows, grids[2].gridColumns)" [label]="grids[2].gridName" [loading]="loading"></p-button>
+            }
+            @if(grids.length < 3 && checkOwnerId() == restaurant.ownerId){
+                <p-button (click)="updateDialog('visibleCreate'); showNewGridForm = true; arrayRows = []; arrayColumns = []" label="Créer nouvelle grille" [loading]="loading"></p-button>
+            }
+        </div>
+    }
 </div>
 
 <p-dialog [(visible)]="visibleFirst" [modal]="true"  [draggable]="false" [resizable]="false">
@@ -68,6 +76,51 @@
                                 <a (click)="setReservation(0, row, column)">
                                 <div class="grid-cell" [class.reserved-table]="displayReservations(0, row, column, sliderValue)">
                                         <img [src]="getIcon(0, row, column)" />
+                                </div>
+                                </a>
+                            }
+                        </div>
+                    }
+                </div>
+                <div class="control-panel reservation-form">
+                    <p-tabView class="tabViewPanel reservation-form">
+                        <p-tabPanel header="Réservation" class="tabViewPanel reservation-form">
+                            <form [formGroup]="reservationForm" class="reservation-form">
+                                <p-calendar class="max-w-full" formControlName="calendar" [inline]="true" [showWeek]="true" (click)="switchDay()"></p-calendar>
+                                <input type="text" pInputText formControlName="timeDisplayed" class="w-full"  />
+                                <p-slider formControlName="time" class="w-full" [min]="0" [max]="1440" [step]="10"></p-slider>
+                            </form>
+                              
+                            <div class="control-buttons">
+                                <p-button label="Recommencer" (click)="emptyGrid()"></p-button>
+                                <p-button label="Envoyer" (click)="uploadReservation()"></p-button>
+                            </div>
+                        </p-tabPanel>
+                        @if(checkOwnerId() == restaurant.ownerId){
+                            <p-tabPanel header="En attente">
+                                <div class="pending-list">
+
+                                </div>
+                            </p-tabPanel>
+                        }
+                    </p-tabView>
+                </div>
+            </div>
+        }
+    </div>
+</p-dialog>
+
+<p-dialog [(visible)]="visibleSecond" [modal]="true"  [draggable]="false" [resizable]="false">
+    <div class="grid-window">
+        @if(grids[1]){
+            <div class="play-zone">
+                <div class="grid">
+                    @for (row of arrayRows ; track $index) {
+                        <div class="grid-row">
+                            @for (column of arrayColumns; track $index) {
+                                <a (click)="setReservation(1, row, column)">
+                                <div class="grid-cell" [class.reserved-table]="displayReservations(1, row, column, sliderValue)">
+                                        <img [src]="getIcon(1, row, column)" />
                                 </div>
                                 </a>
                             }
@@ -102,12 +155,49 @@
     </div>
 </p-dialog>
 
-<p-dialog [(visible)]="visibleSecond" [modal]="true"  [draggable]="false" [resizable]="false">
-
-</p-dialog>
-
 <p-dialog [(visible)]="visibleThird" [modal]="true"  [draggable]="false" [resizable]="false">
+    <div class="grid-window">
+        @if(grids[2]){
+            <div class="play-zone">
+                <div class="grid">
+                    @for (row of arrayRows ; track $index) {
+                        <div class="grid-row">
+                            @for (column of arrayColumns; track $index) {
+                                <a (click)="setReservation(2, row, column)">
+                                <div class="grid-cell" [class.reserved-table]="displayReservations(2, row, column, sliderValue)">
+                                        <img [src]="getIcon(2, row, column)" />
+                                </div>
+                                </a>
+                            }
+                        </div>
+                    }
+                </div>
+                <div class="control-panel">
+                    <p-tabView>
+                        <p-tabPanel header="Réservation">
+                            <form [formGroup]="reservationForm" class="reservation-form">
+                                <p-calendar class="max-w-full" formControlName="calendar" [inline]="true" [showWeek]="true" (click)="switchDay()"></p-calendar>
+                                <input type="text" pInputText formControlName="timeDisplayed" class="w-full"  />
+                                <p-slider formControlName="time" class="w-full" [min]="0" [max]="1440" [step]="10"></p-slider>
+                            </form>
+                              
+                            <div class="control-buttons">
+                                <p-button label="Recommencer" (click)="emptyGrid()"></p-button>
+                                <p-button label="Envoyer" (click)="uploadReservation()"></p-button>
+                            </div>
+                        </p-tabPanel>
+                        @if(checkOwnerId() == restaurant.ownerId){
+                            <p-tabPanel header="En attente">
+                                <div class="pending-list">
 
+                                </div>
+                            </p-tabPanel>
+                        }
+                    </p-tabView>
+                </div>
+            </div>
+        }
+    </div>
 </p-dialog>
 
 <!-- Zone de création de grille -->
@@ -142,13 +232,14 @@
                     </div>
                     <div class="control-elements">
                         <ul>
-                            <li class="" [class.active]="elementToPlace == 'table'"><a (click)="setElementToPlace('table')">Table</a></li>
-                            <li [class.active]="elementToPlace == 'wall'" ><a (click)="setElementToPlace('wall')">Mur</a></li>
-                            <li [class.active]="elementToPlace == 'window'"><a (click)="setElementToPlace('window')">Fenêtre</a></li>
-                            <li [class.active]="elementToPlace == 'stair'"><a (click)="setElementToPlace('stair')">Escalier</a></li>
-                            <li [class.active]="elementToPlace == 'door'"><a (click)="setElementToPlace('door')">Porte</a></li>
-                            <li [class.active]="elementToPlace == 'bar'"><a (click)="setElementToPlace('bar')">Bar</a></li>
-                            <li [class.active]="elementToPlace == 'tv'"><a (click)="setElementToPlace('tv')">Tv</a></li>
+                            <li class="specific-element" [class.active]="elementToPlace == 'table'"><a (click)="setElementToPlace('table')">Table</a></li>
+                            <li class="specific-element" [class.active]="elementToPlace == 'wall'" ><a (click)="setElementToPlace('wall')">Mur</a></li>
+                            <li class="specific-element" [class.active]="elementToPlace == 'window'"><a (click)="setElementToPlace('window')">Fenêtre</a></li>
+                            <li class="specific-element" [class.active]="elementToPlace == 'stair'"><a (click)="setElementToPlace('stair')">Escalier</a></li>
+                            <li class="specific-element" [class.active]="elementToPlace == 'door'"><a (click)="setElementToPlace('door')">Porte</a></li>
+                            <li class="specific-element" [class.active]="elementToPlace == 'bar'"><a (click)="setElementToPlace('bar')">Bar</a></li>
+                            <li class="specific-element" [class.active]="elementToPlace == 'tv'"><a (click)="setElementToPlace('tv')">Tv</a></li>
+                            <li class="specific-element" [class.active]="elementToPlace == 'remove'"><a (click)="setElementToPlace('remove')">Supprimer</a></li>
                         </ul>
                     </div>
                     <div class="control-buttons">
@@ -162,17 +253,15 @@
 </p-dialog>
 <p-dialog [(visible)]="visiblePicture" [modal]="true"  [draggable]="false" [resizable]="false">
     <div class="picture-window">
-        <form [formGroup]="imageForm">
             <p-fileUpload mode="basic" name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php" accept="image/*" [maxFileSize]="1000000" (onUpload)="storeImage($event)" [auto]="true" chooseLabel="Browse"></p-fileUpload>
             <div class="checks">
-                <p-checkbox formControlName="isFront" [binary]="true" inputId="isFront"></p-checkbox>
+                <p-checkbox [(ngModel)]="newImage.isFront" [binary]="true" inputId="isFront"></p-checkbox>
                 <label for="isFront">Façade?</label>
             </div>
             <div class="checks">
-                <p-checkbox formControlName="isMenu" [binary]="true" inputId="isMenu"></p-checkbox>
+                <p-checkbox [(ngModel)]="newImage.isMenu" [binary]="true" inputId="isMenu"></p-checkbox>
                 <label for="isMenu">Menu?</label>
             </div>
             <p-button (click)="sendImage()" label="Envoyer" [loading]="loading"></p-button>
-        </form>
     </div>
 </p-dialog>

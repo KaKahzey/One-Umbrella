@@ -37,7 +37,8 @@ namespace OneUmbrella.Server.Controllers
             IEnumerable<Restaurant>? restaurants = _restaurantService.getListRestaurants(page, pageSize, sortBy, isDescending, humanId, city);
             foreach (Restaurant r in restaurants)
             {
-                if(_imageService.getFrontImage(r.RestaurantId) != null)
+                r.RestaurantRating = _ratingService.countForOneRestaurant(r.RestaurantId);
+                if (_imageService.getFrontImage(r.RestaurantId) != null)
                 {
                     string image = _imageService.getFrontImage(r.RestaurantId).ToDTO().ImageData;
                     restaurantsDTO.Add(ListRestaurantMapper.ToDTO(r, _ratingService.getAllByRestaurant(r.RestaurantId, false).Count(), image));
@@ -46,7 +47,6 @@ namespace OneUmbrella.Server.Controllers
                 {
                     restaurantsDTO.Add(ListRestaurantMapper.ToDTO(r, _ratingService.getAllByRestaurant(r.RestaurantId, false).Count(), "")); ;
                 }
-                r.RestaurantRating = _ratingService.countForOneRestaurant(r.RestaurantId);
             }
             IEnumerable<ListRestaurantDTO> convertedRestaurants = restaurantsDTO;
             return Ok(convertedRestaurants);

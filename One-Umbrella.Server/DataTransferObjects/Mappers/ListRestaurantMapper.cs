@@ -16,7 +16,7 @@ namespace OneUmbrella.Server.DataTransferObjects.Mappers
                 RestaurantDescription = restaurant.RestaurantDescription,
                 RestaurantRating = restaurant.RestaurantRating,
                 RestaurantTotalRatings = totalRatings,
-                RestaurantImage = image
+                RestaurantImage = image ?? string.Empty
             };
         }
     }

@@ -16,6 +16,7 @@
   <ItemGroup>
     <ProjectReference Include="..\One-Umbrella.BLL\OneUmbrella.BLL.csproj" />
     <ProjectReference Include="..\One-Umbrella.DAL\OneUmbrella.DAL.csproj" />
+    <ProjectReference Include="..\One-Umbrella.Server\OneUmbrella.Server.csproj" />
   </ItemGroup>
 
 </Project>

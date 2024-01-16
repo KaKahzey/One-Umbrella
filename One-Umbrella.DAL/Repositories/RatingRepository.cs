@@ -55,7 +55,7 @@ namespace OneUmbrella.DAL.Repositories
             return ratings;
         }
 
-        public int countForOneRestaurant(int restaurantId)
+        public decimal countForOneRestaurant(int restaurantId)
         {
             int count = 0;
             int i = 0;
@@ -76,7 +76,7 @@ namespace OneUmbrella.DAL.Repositories
                 }
             }
             connection.Close();
-            return i == 0 ? 0 : count / i;
+            return i == 0 ? 0 : (decimal)count / i;
         }
 
         public bool create(Rating rating)

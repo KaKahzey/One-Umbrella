@@ -40,7 +40,7 @@ namespace OneUmbrella.DAL.Repositories
                             RestaurantCity = reader.GetString(reader.GetOrdinal("RESTAURANT_CITY")),
                             RestaurantPostCode = reader.GetString(reader.GetOrdinal("RESTAURANT_POSTCODE")),
                             RestaurantDescription = reader.GetString(reader.GetOrdinal("RESTAURANT_DESCRIPTION")),
-                            RestaurantRating = reader.GetByte(reader.GetOrdinal("RESTAURANT_RATING"))
+                            RestaurantRating = reader.GetDecimal(reader.GetOrdinal("RESTAURANT_RATING"))
                         };
                         restaurants.Add(restaurant);
                     }
@@ -91,7 +91,7 @@ namespace OneUmbrella.DAL.Repositories
                             RestaurantCity = reader.GetString(reader.GetOrdinal("RESTAURANT_CITY")),
                             RestaurantPostCode = reader.GetString(reader.GetOrdinal("RESTAURANT_POSTCODE")),
                             RestaurantDescription = reader.GetString(reader.GetOrdinal("RESTAURANT_DESCRIPTION")),
-                            RestaurantRating = reader.GetByte(reader.GetOrdinal("RESTAURANT_RATING"))
+                            RestaurantRating = reader.GetDecimal(reader.GetOrdinal("RESTAURANT_RATING"))
                         };
 
                         restaurants.Add(restaurant);
@@ -127,7 +127,7 @@ namespace OneUmbrella.DAL.Repositories
                             RestaurantCity = reader.GetString(reader.GetOrdinal("RESTAURANT_CITY")),
                             RestaurantPostCode = reader.GetString(reader.GetOrdinal("RESTAURANT_POSTCODE")),
                             RestaurantDescription = reader.GetString(reader.GetOrdinal("RESTAURANT_DESCRIPTION")),
-                            RestaurantRating = reader.GetByte(reader.GetOrdinal("RESTAURANT_RATING"))
+                            RestaurantRating = reader.GetDecimal(reader.GetOrdinal("RESTAURANT_RATING"))
                         };
                         restaurants.Add(restaurant);
                     }
@@ -171,7 +171,7 @@ namespace OneUmbrella.DAL.Repositories
                             RestaurantCity = reader.GetString(reader.GetOrdinal("RESTAURANT_CITY")),
                             RestaurantPostCode = reader.GetString(reader.GetOrdinal("RESTAURANT_POSTCODE")),
                             RestaurantDescription = reader.GetString(reader.GetOrdinal("RESTAURANT_DESCRIPTION")),
-                            RestaurantRating = reader.GetByte(reader.GetOrdinal("RESTAURANT_RATING"))
+                            RestaurantRating = reader.GetDecimal(reader.GetOrdinal("RESTAURANT_RATING"))
                         };
 
                         restaurants.Add(restaurant);
@@ -207,7 +207,7 @@ namespace OneUmbrella.DAL.Repositories
                             RestaurantCity = reader.GetString(reader.GetOrdinal("RESTAURANT_CITY")),
                             RestaurantPostCode = reader.GetString(reader.GetOrdinal("RESTAURANT_POSTCODE")),
                             RestaurantDescription = reader.GetString(reader.GetOrdinal("RESTAURANT_DESCRIPTION")),
-                            RestaurantRating = reader.GetByte(reader.GetOrdinal("RESTAURANT_RATING"))
+                            RestaurantRating = reader.GetDecimal(reader.GetOrdinal("RESTAURANT_RATING"))
                         };
                     }
                 }

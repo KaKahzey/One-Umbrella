@@ -38,6 +38,7 @@ namespace OneUmbrella.Server.Controllers
 
 
         [HttpPut("{id}")]
+        [AllowAnonymous]
         [Consumes("application/json")]
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ConfigurationProfileDataDTO))]

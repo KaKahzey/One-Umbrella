@@ -22,7 +22,7 @@ namespace OneUmbrella.BLL.Services
         {
             return _ratingRepository.getAllByRestaurant(id, isHuman);
         }
-        public int countForOneRestaurant(int restaurantId)
+        public decimal countForOneRestaurant(int restaurantId)
         {
             return _ratingRepository.countForOneRestaurant(restaurantId);
         }

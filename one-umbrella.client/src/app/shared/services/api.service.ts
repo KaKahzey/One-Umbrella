@@ -44,7 +44,7 @@ export class ApiService {
   // Liste des réservation pour un restaurant par statut : reservation
   private _urlListReservationsByStatus : string = "https://localhost:7159/api/Reservation/getAllByStatus/"
   // Modification du statut d'une réservation
-  private _urlReservationUpdateStatus : string = "https://localhost:7159/api/Reservation/getAllByStatus/"
+  private _urlReservationUpdateStatus : string = "https://localhost:7159/api/Reservation/"
   // Delete réservation
   private _urlReservationDelete : string = "https://localhost:7159/api/Reservation/"
   // Créer réservation
@@ -75,7 +75,7 @@ export class ApiService {
   private _urlGetAllRatingsForOneHuman : string = "https://localhost:7159/api/Rating/GetAllForOneUser/"
   private _urlRatingPost : string = "https://localhost:7159/api/Rating"
   private _urlRatingDelete : string = "https://localhost:7159/api/Rating?humanId="
-  private _urlRatingUpdate : string = "https://localhost:7159/api/Rating/"
+  private _urlRatingUpdate : string = "https://localhost:7159/api/Rating"
   //#endregion
  
   //#region Images
@@ -216,8 +216,8 @@ export class ApiService {
     return this._httpClient.delete(this._urlRatingDelete + humanId + "&restaurantId=" + restaurantId, this.header)
   }
 
-  updateRating(humanId : number, rating : Rating) : Observable<any> {
-    return this._httpClient.put(this._urlRatingUpdate + humanId, rating, this.header)
+  updateRating(rating : Rating) : Observable<any> {
+    return this._httpClient.put(this._urlRatingUpdate, rating, this.header)
   }
   //#endregion
 
@@ -237,5 +237,5 @@ export class ApiService {
   deleteImage(id : number) : Observable<any> {
     return this._httpClient.delete(this._urlDeleteImage + id, this.header)
   }
-
+  //#endregion
 }

@@ -3,6 +3,7 @@
     height:10vh;
     font-size :  2em;
     position: fixed;
+    z-index: 1000; 
     @apply flex bg-emerald-700 text-forest-200 justify-between;
 }
 .search-area {

@@ -1,36 +1,83 @@
+.restaurant{
+    font-size: 1em;
+    border-radius: 10px;
+    height: 100%;
+    padding : 2%;
+    overflow-y: auto;
+    background-color:  white;
+}
+.address-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  
+  .name-category {
+    margin-right: 8px;
+  }
+  
+  ::ng-deep p-rating {
+    font-size:large;
+  }
 .title {
     font-size: 2.5em;
     font-weight: bold;
     text-align: center;
     border-bottom: solid;
 }
+.info {
+    margin: 5%;
+    @apply space-y-8;
+}
+.name-category {
+    font-weight: bold;
+}
 .carousel {
-    width : 100%;
+    width: 100%;
+    display: flex;
     justify-content: center;
-    @apply flex;
+}
+.carousel-title{
+    font-size: 1.3em;
+    text-align: center;
 }
 p-carousel {
-    width:80%;
-    align-items:center;
+width: 80%;
+align-items: center;
+
+.ui-carousel-items-wrapper {
+    display: flex;
+    justify-content: center;
 }
-.carousel-restaurant {
+
+.product-item {
+    width: 100%;
+    height: 45vh;
     text-align: center;
-    @apply justify-between;
-}
-:host ::ng-deep {
-    .product-item {
-        .product-item-content {
-            border-radius: 3px;
-            margin: 1rem;
-            padding: 2em ;
-        }
-        .product-image {
-            width: 22vw;
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-            object-fit: cover;
-            @apply mx-10;
-        }
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .product-item-content {
+    box-sizing: border-box;
+    padding: 2rem 0;
+    width: 35vw; 
+    height: 20vh; 
     }
+
+    .product-image {
+    max-width: 100%;
+    width: 100%;
+    max-height: 100%;
+    height: 100%;
+    object-fit:cover;
+    }
+}
+}
+.add-photo {
+    text-align: center;
+    margin-bottom: 3%;
 }
 .button-grid-choice-area {
     padding: 20px;
@@ -69,8 +116,8 @@ p-carousel {
 }
 
 .grid-cell {
-    width : 1.8vw;
-    height : 1.8vw;
+    width : 1.5vw;
+    height : 1.5vw;
     font-size: 0.3em;
     margin: 0;
     padding: 0;
@@ -88,12 +135,16 @@ p-carousel {
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+.tabViewPanel {
+    height:100%
+}
 .control-buttons {
     text-align: center;
     
 }
 .reservation-form {
-    @apply space-y-4;
+    height : 100%;
+    @apply my-auto;
 }
 .reservation-form input {
     margin-bottom: 10%;
@@ -105,8 +156,23 @@ p-carousel {
     padding-left: 2%;
     padding-right: 2%;
 }
+ul {
+    list-style: none;
+  }
+.specific-element {
+    cursor: pointer;
+    @apply my-4;
+}
 .active {
-    text-decoration: underline;
+    background-color: #3498db;
+  color: #fff; 
+  border: 2px solid #2980b9;
+  border-radius: 10px; 
+  padding: 8px;
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+  @apply my-4;
 }
 .pending-list {
     overflow-y: auto;
@@ -119,6 +185,8 @@ p-carousel {
 }
 
 .picture-window {
+    align-items: center;
+    @apply flex space-x-8;
 }
 .picture-window form {
     align-items: center;

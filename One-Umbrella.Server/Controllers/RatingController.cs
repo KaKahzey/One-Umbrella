@@ -28,7 +28,7 @@ namespace OneUmbrella.Server.Controllers
         public IActionResult getAllForOneRestaurant([FromRoute] int id)
         {
             IEnumerable<RatingDTO> ratings = _ratingService.getAllByRestaurant(id, false).Select(r => r.ToDTO());
-            return ratings.Any() ? Ok(ratings) : NotFound();
+            return Ok(ratings);
         }
 
         [HttpGet("GetAllForOneUser/{id}")]
@@ -39,7 +39,7 @@ namespace OneUmbrella.Server.Controllers
         public IActionResult getAllForOneUser([FromRoute] int id)
         {
             IEnumerable<RatingDTO> ratings = _ratingService.getAllByRestaurant(id, true).Select(r => r.ToDTO());
-            return ratings.Any() ? Ok(ratings) : NotFound();
+            return Ok(ratings);
         }
 
         [HttpPost]
@@ -53,12 +53,12 @@ namespace OneUmbrella.Server.Controllers
             return result ? Ok() : BadRequest();
         }
 
-        [HttpPut("{id}")]
+        [HttpPut]
         [Consumes("application/json")]
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult Update([FromRoute] int id, RatingDataDTO rating)
+        public IActionResult Update(RatingDataDTO rating)
         {
             Rating changedRating = rating.ToEntity();
             return _ratingService.update(changedRating) ? Ok() : BadRequest();

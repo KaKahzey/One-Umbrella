@@ -12,10 +12,12 @@
     @apply flex justify-between;
 }
 .main{
-    width : 73%;
+    width : 70%;
     height : 100%;
 }
 .reservation {
+    left: 75%;
     width :  25%;
     height : 100%;
+    position: fixed;
 }

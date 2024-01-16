@@ -8,7 +8,7 @@
         public string RestaurantCity { get; set; }
         public string RestaurantPostCode { get; set; }
         public string RestaurantDescription { get; set; }
-        public int RestaurantRating { get; set; }
+        public decimal RestaurantRating { get; set; }
         public int RestaurantTotalRatings { get; set; }
         public string RestaurantImage { get; set; }
     }

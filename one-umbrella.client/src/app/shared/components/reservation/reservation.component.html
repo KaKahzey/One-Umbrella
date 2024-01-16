@@ -8,38 +8,40 @@
     }
     @else{
         @for(r of reservations; track r.reservationId){
-            <div class="card">
-                <div class="title">
-                    <span class="title-name">
-                        <a [routerLink]="['/restaurant', r.restaurantId]" >
-                            {{r.restaurantName}}
-                        </a>
-                        
-                    </span>
-                    <span [class]="setReservationStatus(r.reservationStatus)">
+            @if(r.reservationStatus !== 3){
+                <div class="card">
+                    <div class="title">
+                        <span class="title-name">
+                            <a [routerLink]="['/restaurant', r.restaurantId]" >
+                                {{r.restaurantName}}
+                            </a>
                             
-                    </span>
+                        </span>
+                        <span [class]="setReservationStatus(r.reservationStatus)">
+                                
+                        </span>
+                    </div>
+                    <div class="period">
+                        <span>
+                            {{addZero(r.reservationTimeStart.getHours())}} : {{addZero(r.reservationTimeStart.getMinutes())}}
+                        </span>
+                        <span>
+                            {{addZero(r.reservationTimeStart.getDate())}} {{getMonthName(r.reservationTimeStart.getMonth())}}
+                        </span>
+                    </div>
+                    <div class="option">
+                        @if(r.reservationStatus == 0){
+                            <button class="btn-pending" (click)="updateStatus(r.reservationId)"></button>
+                        }
+                        @else if(r.reservationStatus == 1){
+                            <button class="btn-validated" (click)="updateStatus(r.reservationId)"></button>
+                        }
+                        @else if(r.reservationStatus == 2){
+                            <button class="btn-denied" (click)="updateStatus(r.reservationId)"></button>
+                        }
+                    </div>
                 </div>
-                <div class="period">
-                    <span>
-                        {{addZero(r.reservationTimeStart.getHours())}} : {{addZero(r.reservationTimeStart.getMinutes())}}
-                    </span>
-                    <span>
-                        {{addZero(r.reservationTimeStart.getDate())}} {{getMonthName(r.reservationTimeStart.getMonth())}}
-                    </span>
-                </div>
-                <div class="option">
-                    @if(r.reservationStatus == 0){
-                        <button class="btn-pending"></button>
-                    }
-                    @else if(r.reservationStatus == 1){
-                        <button class="btn-validated"></button>
-                    }
-                    @else if(r.reservationStatus == 2){
-                        <button class="btn-denied"></button>
-                    }
-                </div>
-            </div>
+            }
         }
     }
 </div>
