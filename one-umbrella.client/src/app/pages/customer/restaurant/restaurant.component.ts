@@ -278,8 +278,11 @@ export class RestaurantComponent {
     timeEnd.setHours(timeEnd.getHours() + 2)
     this.newReservation.reservationTimeEnd = timeEnd
     this._apiService.createReservation(this.newReservation).subscribe({
-      next : resp => {
+      next : () => {
           this.ngOnInit()
+          this.visibleFirst = false
+          this.visibleSecond = false
+          this.visibleThird = false
       },
       error : error => console.log(error)
     })

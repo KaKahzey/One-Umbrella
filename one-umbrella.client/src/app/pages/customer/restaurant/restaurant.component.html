@@ -47,7 +47,7 @@
             <p-button (click)="updateDialog('visiblePicture')" label="Ajouter photo" [loading]="loading"></p-button>
         </div>
     }
-    @if(grids.length != 0 && checkOwnerId() != userId){
+    @if(grids.length > 0 || checkOwnerId() == restaurant.ownerId){
         <div class="button-grid-choice-area">
             @if(grids.length > 0){
                 <p-button (click)="updateDialog('visibleFirst'); setGridSize(grids[0].gridRows, grids[0].gridColumns)" [label]="grids[0].gridName" [loading]="loading"></p-button>

@@ -25,9 +25,7 @@ export class ListRestaurantsComponent {
     this._apiService.getAllRestaurantsByPagination(1, 5, "restaurant_name", false).subscribe({
       next : (resp) => {
         this.restaurants = resp
-        this.restaurants.forEach(restaurant => {
-          console.log(restaurant.restaurantRating);
-          
+        this.restaurants.forEach(restaurant => {          
           restaurant.restaurantRating = Math.floor(restaurant.restaurantRating)
         this._apiService.getFrontImage(restaurant.restaurantId).subscribe({
           next : resp => {
