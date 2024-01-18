@@ -50,6 +50,7 @@ export class RestaurantComponent {
   // Reservations
   wholeReservations : WholeReservation = {reservations : [], reservedTables : []}
   newReservation : ReservationData = {restaurantId : 0, humanId : 0, reservationTimeStart : new Date(), reservationTimeEnd : new Date(), tableId : 0}
+  answerFavorite : boolean = false
 
   grids : Grid[] = []
   newGrid : GridData = {gridName : "", restaurantId : 0, gridRows : 0, gridColumns : 0, gridElements : [], gridTables : []}
@@ -106,7 +107,7 @@ export class RestaurantComponent {
       this.updateTime(value)
       this.sliderValue = value
     })
-    
+    this._infoService.setFavorites()
     this.responsiveOptions = [
       {
       breakpoint: '1199px',
@@ -120,6 +121,15 @@ export class RestaurantComponent {
     }
     ]
     
+  }
+
+  checkIfFavorite() : boolean {
+    return this._infoService.getFavorites().some(r => r.restaurantId == this.restaurantId)
+  }
+
+  modifyFavorite() : void {
+    this.answerFavorite = this._infoService.modifyFavorite(this.restaurantId)
+    this._infoService.setFavorites()
   }
 
   // Va chercher les données du restaurant avec Id

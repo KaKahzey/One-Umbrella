@@ -46,6 +46,23 @@ export class InfoService {
     return this.favorites
   }
 
+  modifyFavorite(restaurantId : number) : boolean {
+    const alreadyFavorite = this.getFavorites().some(r => r.restaurantId == restaurantId)
+    if(alreadyFavorite){
+     this._apiService.deleteFavorite(this._authService.getUser()!, restaurantId).subscribe({
+      next : () => this.setFavorites(),
+      error : error => console.error(error)
+     })
+    }
+    else{
+      this._apiService.createFavorite(this._authService.getUser()!, restaurantId).subscribe({
+        next : () => this.setFavorites(),
+        error : error => console.error(error)
+      })
+    }
+    return alreadyFavorite
+  }
+
   emptyArrays() : void {
     this.favorites = []
     this.reservations = []

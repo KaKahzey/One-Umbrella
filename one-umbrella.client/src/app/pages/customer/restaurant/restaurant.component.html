@@ -8,7 +8,15 @@
                 <span class="name-category">Adresse :</span> {{restaurant.restaurantStreet}}, {{restaurant.restaurantCity}} {{restaurant.restaurantPostCode}}
                 <p-rating [(ngModel)]="rating" (onRate)="sendRating($event)" [cancel]="false"></p-rating>
             </div>
-            
+            <div class="heart-area">
+                @if(checkIfFavorite()){
+                    <img (click)="modifyFavorite()" src="/assets/img/favorites/fullHeart.png" alt="heart" />
+                }
+                @else if(!checkIfFavorite()) {
+                    <img (click)="modifyFavorite()" src="/assets/img/favorites/emptyHeart.png" alt="heart" />
+
+                }
+            </div>
             <div class="description">
                 <span class="name-category">Description :</span> <br />
                 {{restaurant.restaurantDescription}}
