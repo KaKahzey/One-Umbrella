@@ -28,6 +28,8 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { onlyBlobData } from '../../../shared/models/shared/onlyBlobData';
 import { RatingModule } from 'primeng/rating';
 import { Rating } from '../../../shared/models/rating/rating';
+import { InfoService } from '../../../shared/services/info.service';
+
 @Component({
   selector: 'app-restaurant',
   standalone: true,
@@ -67,6 +69,7 @@ export class RestaurantComponent {
   sliderValue : number = 0
 
   elementToPlace : string = ""
+  highlightedCell : any = {row : 0, column : 0}
 
   // Liste des logos
   tablePath : string = "/assets/img/grid/table.png"
@@ -78,7 +81,7 @@ export class RestaurantComponent {
   tvPath : string = "/assets/img/grid/tv.png"
   //
 
-  constructor(private _route: ActivatedRoute, private _apiService : ApiService, private _authService : AuthService, private _fb : FormBuilder) {
+  constructor(private _route: ActivatedRoute, private _apiService : ApiService, private _authService : AuthService, private _fb : FormBuilder, private _infoService : InfoService) {
     this.reservationForm = this._fb.group({
     calendar : [new Date(), [Validators.required]],
     time :[0],
@@ -96,34 +99,14 @@ export class RestaurantComponent {
   ngOnInit(): void {
     this._route.params.subscribe(data => {
       this.restaurantId = parseInt(data['id'])
+      this.fetchRestaurant(this.restaurantId)
     })
-
+    this.fetchRestaurant(this.restaurantId)
     this.reservationForm.get('time')!.valueChanges.subscribe(value => {
       this.updateTime(value)
       this.sliderValue = value
     })
-    this._apiService.getRestaurantById(this.restaurantId).subscribe({
-      next : (resp) => {
-        this.restaurant = resp
-        this._apiService.getAllGridsForOneRestaurant(this.restaurantId).subscribe({
-          next : resp => {
-            this.grids = resp
-            
-          },
-          error : error => console.log(error)
-          
-        })
-        this._apiService.getAllImagesForOneRestaurant(this.restaurantId).subscribe({
-          next : pictures => {            
-            this.restaurant.images = pictures
-            this.verifyMenu()
-          },
-          error : error => console.error(error)
-        })
-      },
-      error : error => console.log(error)
-    })
-    this.getReservationsByDay(new Date())
+    
     this.responsiveOptions = [
       {
       breakpoint: '1199px',
@@ -137,6 +120,32 @@ export class RestaurantComponent {
     }
     ]
     
+  }
+
+  // Va chercher les données du restaurant avec Id
+  fetchRestaurant(id : number) : void {
+    this._apiService.getRestaurantById(id).subscribe({
+      next : (resp) => {
+        this.restaurant = resp
+        this._apiService.getAllGridsForOneRestaurant(id).subscribe({
+          next : resp => {
+            this.grids = resp
+            
+          },
+          error : error => console.log(error)
+          
+        })
+        this._apiService.getAllImagesForOneRestaurant(id).subscribe({
+          next : pictures => {            
+            this.restaurant.images = pictures
+            this.verifyMenu()
+          },
+          error : error => console.error(error)
+        })
+      },
+      error : error => console.log(error)
+    })
+    this.getReservationsByDay(new Date())
   }
 
   // Envoie la note du restaurant, si déjà noté => update
@@ -269,6 +278,13 @@ export class RestaurantComponent {
       this.newReservation.tableId = foundTable.tableId
       this.newReservation.restaurantId = this.restaurantId
       this.newReservation.humanId = this._authService.getUser()
+      this.highlightedCell.row = rowIndex
+      this.highlightedCell.column = columnIndex
+      
+    }
+    else {
+      this.highlightedCell.row = 0
+      this.highlightedCell.column = 0
     }
   }
 
@@ -279,6 +295,7 @@ export class RestaurantComponent {
     this.newReservation.reservationTimeEnd = timeEnd
     this._apiService.createReservation(this.newReservation).subscribe({
       next : () => {
+        this._infoService.setReservations()
           this.ngOnInit()
           this.visibleFirst = false
           this.visibleSecond = false

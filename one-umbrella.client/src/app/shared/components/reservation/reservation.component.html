@@ -1,5 +1,5 @@
 <div class="main">
-    @if(reservations.length == 0) {
+    @if(getReservations().length == 0) {
         <div class="card">
             <div class="title">
                 Vous n'avez pas de réservation
@@ -7,7 +7,7 @@
         </div>
     }
     @else{
-        @for(r of reservations; track r.reservationId){
+        @for(r of getReservations(); track r.reservationId){
             @if(r.reservationStatus !== 3){
                 <div class="card">
                     <div class="title">

@@ -11,6 +11,8 @@ import { Button, ButtonModule } from 'primeng/button';
 import { LoginData } from '../../models/account/loginData';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { Favorite } from '../../models/navbar/favorite';
+import { InfoService } from '../../services/info.service';
 @Component({
   selector: 'app-navbar',
   standalone: true,
@@ -37,7 +39,7 @@ export class NavbarComponent {
 
   searchValue : string = ""
 
-  constructor(private _authService : AuthService, private _apiService : ApiService, private _fb : FormBuilder, private _router : Router){
+  constructor(private _authService : AuthService, private _apiService : ApiService, private _fb : FormBuilder, private _router : Router, private _infoService : InfoService){
     this.loginForm = this._fb.group({
       humanIdentifier : [null, [Validators.required]],
       humanPassword : [null, [Validators.required]]
@@ -58,6 +60,11 @@ export class NavbarComponent {
   ngOnInit() : void {
     const userConnected = this._authService.getType()
     userConnected ? this.userType = userConnected : this.userType = ""
+    this._infoService.setFavorites()
+  }
+
+  getFavorites() : Favorite[] {    
+    return this._infoService.getFavorites()
   }
 
   login() : void {
@@ -71,6 +78,8 @@ export class NavbarComponent {
           console.log(resp)
           this._authService.setUser(resp.user.humanId, resp.user.humanType, resp.token)
           this.userType = resp.user.humanType
+          this._infoService.getReservations()
+          this._infoService.getFavorites()
           this.visible = false
         },
         error : (error) => console.log(error)

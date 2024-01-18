@@ -35,18 +35,11 @@ namespace OneUmbrella.Server.Controllers
         {
             List<ListRestaurantDTO> restaurantsDTO = new List<ListRestaurantDTO>();
             IEnumerable<Restaurant>? restaurants = _restaurantService.getListRestaurants(page, pageSize, sortBy, isDescending, humanId, city);
-            foreach (Restaurant r in restaurants)
+            foreach (Restaurant r in restaurants!)
             {
                 r.RestaurantRating = _ratingService.countForOneRestaurant(r.RestaurantId);
-                if (_imageService.getFrontImage(r.RestaurantId) != null)
-                {
-                    string image = _imageService.getFrontImage(r.RestaurantId).ToDTO().ImageData;
-                    restaurantsDTO.Add(ListRestaurantMapper.ToDTO(r, _ratingService.getAllByRestaurant(r.RestaurantId, false).Count(), image));
-                }
-                else
-                {
-                    restaurantsDTO.Add(ListRestaurantMapper.ToDTO(r, _ratingService.getAllByRestaurant(r.RestaurantId, false).Count(), "")); ;
-                }
+                string image = _imageService.getFrontImage(r.RestaurantId)!.ToDTO().ImageData;
+                restaurantsDTO.Add(ListRestaurantMapper.ToDTO(r, _ratingService.getAllByRestaurant(r.RestaurantId, false).Count(), image));
             }
             IEnumerable<ListRestaurantDTO> convertedRestaurants = restaurantsDTO;
             return Ok(convertedRestaurants);
@@ -62,11 +55,11 @@ namespace OneUmbrella.Server.Controllers
         {
             List<ListRestaurantDTO> restaurantsDTO = new List<ListRestaurantDTO>();
             IEnumerable<Restaurant>? restaurants = _restaurantService.getRestaurantsByIdentifier(name);
-            foreach (Restaurant r in restaurants)
+            foreach (Restaurant r in restaurants!)
             {
                 if (_imageService.getFrontImage(r.RestaurantId) != null)
                 {
-                    string image = _imageService.getFrontImage(r.RestaurantId).ToDTO().ImageData;
+                    string image = _imageService.getFrontImage(r.RestaurantId)!.ToDTO().ImageData;
                     restaurantsDTO.Add(ListRestaurantMapper.ToDTO(r, _ratingService.getAllByRestaurant(r.RestaurantId, false).Count(), image));
                 }
                 else

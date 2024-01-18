@@ -10,15 +10,15 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-  }
+}
   
-  .name-category {
+.name-category {
     margin-right: 8px;
-  }
+}
   
-  ::ng-deep p-rating {
+::ng-deep p-rating {
     font-size:large;
-  }
+}
 .title {
     font-size: 2.5em;
     font-weight: bold;
@@ -122,6 +122,9 @@ align-items: center;
     margin: 0;
     padding: 0;
 }
+.grid-cell {
+    cursor: pointer;
+}
 .grid-cell img {
     width : 100%;
     height : 100%;
@@ -134,13 +137,21 @@ align-items: center;
   border: 1px solid #ddd;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  @apply my-auto;
+}
+.control-title {
+    border-bottom: solid 2px;
 }
 .tabViewPanel {
     height:100%
 }
 .control-buttons {
     text-align: center;
-    
+    height : 45%;
+    @apply my-5;
+}
+.space-between-buttons{
+    height : 2vh;
 }
 .reservation-form {
     height : 100%;
@@ -202,4 +213,8 @@ ul {
 }
 .picture-info {
     
+}
+.highlighted-cell {
+    border: 2px solid green;
+    box-shadow: 0 0 10px rgba(0, 255, 115, 0.7);
 }

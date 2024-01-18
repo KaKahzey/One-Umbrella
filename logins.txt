@@ -3,3 +3,13 @@ string
 
 andreas.muller@email.com
 string
+
+
+somee
+
+vercel
+herokou
+
+design pattern
+clean architecture
+trois tiers

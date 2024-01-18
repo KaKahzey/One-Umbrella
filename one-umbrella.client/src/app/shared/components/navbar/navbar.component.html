@@ -14,7 +14,7 @@
             @if(userType === "Owner"){
                 <a routerLink="/mes-restaurants" class="in-account">Mes restaurants</a>
             }
-            @else {
+            @else if(!userType) {
                 <div class="connection-choice">
                     <a (click)="showDialog('login')">Se connecter</a>
                     <a (click)="showDialog('register')">S'enregister </a>
@@ -43,10 +43,12 @@
                 
             </div>
         }
-        <div>
+        <div class="list-favorites">
             <span class="title-list">Favoris</span>
             <ul class="">
-                <li>zzzzzzzzzzzzzzzzzzzzzzzzzzzzz</li>
+                @for(f of getFavorites(); track $index){
+                    <li><a [routerLink]="['/restaurant', f.restaurantId]">{{f.restaurantName}}</a></li>
+                }
             </ul>
         </div>
     </div>

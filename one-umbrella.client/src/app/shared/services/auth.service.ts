@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { InfoService } from './info.service';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +32,5 @@ export class AuthService {
   logout() : void {
     localStorage.clear()
     this._router.navigateByUrl("/")
-    
   }
 }

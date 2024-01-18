@@ -8,6 +8,7 @@
                 <span class="name-category">Adresse :</span> {{restaurant.restaurantStreet}}, {{restaurant.restaurantCity}} {{restaurant.restaurantPostCode}}
                 <p-rating [(ngModel)]="rating" (onRate)="sendRating($event)" [cancel]="false"></p-rating>
             </div>
+            
             <div class="description">
                 <span class="name-category">Description :</span> <br />
                 {{restaurant.restaurantDescription}}
@@ -74,7 +75,7 @@
                         <div class="grid-row">
                             @for (column of arrayColumns; track $index) {
                                 <a (click)="setReservation(0, row, column)">
-                                <div class="grid-cell" [class.reserved-table]="displayReservations(0, row, column, sliderValue)">
+                                <div class="grid-cell" [class.reserved-table]="displayReservations(0, row, column, sliderValue)" [class.highlighted-cell]="row == highlightedCell.row && column == highlightedCell.column">
                                         <img [src]="getIcon(0, row, column)" />
                                 </div>
                                 </a>
@@ -119,7 +120,7 @@
                         <div class="grid-row">
                             @for (column of arrayColumns; track $index) {
                                 <a (click)="setReservation(1, row, column)">
-                                <div class="grid-cell" [class.reserved-table]="displayReservations(1, row, column, sliderValue)">
+                                <div class="grid-cell" [class.reserved-table]="displayReservations(1, row, column, sliderValue)" [class.highlighted-cell]="row == highlightedCell.row && column == highlightedCell.column">
                                         <img [src]="getIcon(1, row, column)" />
                                 </div>
                                 </a>
@@ -164,7 +165,7 @@
                         <div class="grid-row">
                             @for (column of arrayColumns; track $index) {
                                 <a (click)="setReservation(2, row, column)">
-                                <div class="grid-cell" [class.reserved-table]="displayReservations(2, row, column, sliderValue)">
+                                <div class="grid-cell" [class.reserved-table]="displayReservations(2, row, column, sliderValue)" [class.highlighted-cell]="row == highlightedCell.row && column == highlightedCell.column">
                                         <img [src]="getIcon(2, row, column)" />
                                 </div>
                                 </a>
@@ -243,8 +244,15 @@
                         </ul>
                     </div>
                     <div class="control-buttons">
-                        <p-button label="Recommencer" (click)="emptyGrid()"></p-button>
-                        <p-button label="Envoyer" (click)="uploadGrid()"></p-button>
+                        <div>
+                            <p-button label="Recommencer" (click)="emptyGrid()"></p-button>
+                        </div>
+                        <div class="space-between-buttons">
+
+                        </div>
+                        <div>
+                            <p-button label="Envoyer" (click)="uploadGrid()"></p-button>
+                        </div>
                     </div>
                 </div>
             </div>

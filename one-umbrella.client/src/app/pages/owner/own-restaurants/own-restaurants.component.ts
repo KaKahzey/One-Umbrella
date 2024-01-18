@@ -8,11 +8,12 @@ import { ButtonModule } from 'primeng/button';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { RestaurantData } from '../../../shared/models/restaurant/restaurantData';
+import { RatingModule } from 'primeng/rating';
 
 @Component({
   selector: 'app-own-restaurants',
   standalone: true,
-  imports: [RouterLink, DialogModule, ButtonModule, FormsModule, ReactiveFormsModule, InputTextareaModule],
+  imports: [RouterLink, DialogModule, ButtonModule, FormsModule, ReactiveFormsModule, InputTextareaModule, RatingModule],
   templateUrl: './own-restaurants.component.html',
   styleUrl: './own-restaurants.component.scss'
 })

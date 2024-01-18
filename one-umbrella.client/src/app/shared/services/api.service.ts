@@ -168,8 +168,8 @@ export class ApiService {
   //#endregion
 
   //#region Favorites
-  getFavorites(humanId : number, restaurantId : number) : Observable<any> {
-    return this._httpClient.post(this._urlFavoriteGetAllForOne + humanId, restaurantId, this.header)
+  getFavorites(humanId : number) : Observable<any> {
+    return this._httpClient.get(this._urlFavoriteGetAllForOne + humanId, this.header)
   }
 
   createFavorite(humanId : number, restaurantId : number) : Observable<any> {

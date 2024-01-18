@@ -4,11 +4,12 @@ import { ListRestaurantsComponent } from './pages/customer/list-restaurants/list
 import { RestaurantComponent } from './pages/customer/restaurant/restaurant.component';
 import { ModifyRestaurantComponent } from './pages/owner/modify-restaurant/modify-restaurant.component';
 import { OwnRestaurantsComponent } from './pages/owner/own-restaurants/own-restaurants.component';
+import { connectedGuard } from './shared/guards/connected.guard';
 
 export const routes: Routes = [
   { path : "", component: ListRestaurantsComponent },
   { path : "restaurant/:id", component : RestaurantComponent },
-  { path : "mes-restaurants", component : OwnRestaurantsComponent },
+  { path : "mes-restaurants", component : OwnRestaurantsComponent, canActivate : [connectedGuard] },
   { path : "modification", component : ModifyRestaurantComponent },
   { path : "**", component : NotFoundComponent }
 ];

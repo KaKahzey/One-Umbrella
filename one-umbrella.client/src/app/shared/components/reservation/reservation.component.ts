@@ -3,6 +3,7 @@ import { RouterLink } from '@angular/router';
 import { ReservationUser } from '../../models/reservations/reservationUser';
 import { ApiService } from '../../services/api.service';
 import { AuthService } from '../../services/auth.service';
+import { InfoService } from '../../services/info.service';
 
 @Component({
   selector: 'app-reservation',
@@ -12,22 +13,16 @@ import { AuthService } from '../../services/auth.service';
   styleUrl: './reservation.component.scss'
 })
 export class ReservationComponent {
-  reservations : ReservationUser[] = []
 
-  constructor(private _apiService : ApiService, private _authService : AuthService){}
+  constructor(private _apiService : ApiService, private _authService : AuthService, private _infoService : InfoService){}
 
   ngOnInit() : void {
-    this._apiService.getReservationsByUser(this._authService.getUser()!).subscribe({
-      next : (resp) => {
-        this.reservations = resp
-        this.reservations.forEach(element => {
-          element.reservationTimeStart = new Date(element.reservationTimeStart)
-          element.reservationTimeEnd = new Date(element.reservationTimeEnd)
-        })
-      },
-      error : error => console.error(error)   
-      
-    })
+    this._infoService.setReservations()
+    this.getReservations()
+  }
+
+  getReservations() : ReservationUser[] {
+    return this._infoService.getReservations()
   }
 
   setReservationStatus(status : number) : string{
